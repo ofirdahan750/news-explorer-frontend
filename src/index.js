@@ -12,6 +12,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
+    <div>test test test 1-2-3</div>
     <Router>
       <App />
     </Router>
