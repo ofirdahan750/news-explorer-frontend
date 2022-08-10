@@ -6,7 +6,3 @@
 
 /* Keyframe */
 @import url("./keyframe/keyframe.css");
-
-/* Page */
-@import url("./blocks/page/page.css");
-@import url("./blocks/__content/page__content.css");

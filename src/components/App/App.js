@@ -1,3 +1,4 @@
+import "./App.css";
 import React, {useCallback, useEffect, useState} from "react";
 import {
   Routes,
@@ -6,19 +7,22 @@ import {
   useNavigate,
   useLocation
 } from "react-router-dom";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {
   loadingInitState,
   loadingInitError,
   txtErr,
   errImg
-} from "../utils/constants";
+} from "../../utils/constants";
+
+import Header from "../Header/Header";
+
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div>
-        <pre>{JSON.stringify(currentUser) || "loading.."}</pre>
+      <div className="page__content">
+        <Header></Header>
       </div>
     </CurrentUserContext.Provider>
   );
