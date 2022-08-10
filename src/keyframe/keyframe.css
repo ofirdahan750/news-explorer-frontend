@@ -1,0 +1,10 @@
+@keyframes animate-center {
+  from {
+    /* bottom: -0px; */
+    opacity: 0;
+  }
+  to {
+    /* bottom: 0; */
+    opacity: 1;
+  }
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import {StrictMode} from "react";
-// import "./index.css";
+import "./index.css";
 
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
@@ -12,7 +12,6 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <div>test test test 1-2-3</div>
     <Router>
       <App />
     </Router>
