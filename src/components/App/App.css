@@ -19,3 +19,17 @@
   animation-duration: 1s;
   margin: 0 auto;
 }
+.hero-cover {
+  background-image: url("../../images/hero_img.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 576px;
+  /* margin: 0 auto 92px; */
+  /* max-width: 1184px; */
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* position: relative; */
+  z-index: 3;
+}

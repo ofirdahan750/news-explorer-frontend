@@ -22,7 +22,9 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <Header></Header>
+        <div className="hero-cover">
+          <Header></Header>
+        </div>
       </div>
     </CurrentUserContext.Provider>
   );

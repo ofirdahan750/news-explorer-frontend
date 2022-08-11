@@ -6,3 +6,6 @@
 
 /* Keyframe */
 @import url("./keyframe/keyframe.css");
+
+/* Modifier */
+@import url("./modifier/modifier.css");

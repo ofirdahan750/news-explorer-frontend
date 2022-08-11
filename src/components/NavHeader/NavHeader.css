@@ -1,0 +1,16 @@
+.header__nav-container {
+  display: flex;
+  align-items: center;
+  gap: 0 42px;
+}
+.header__nav-btn {
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+}
+
+.header__nav-btn_type_signin {
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  padding: 11.5px 58.5px;
+}
