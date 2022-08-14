@@ -16,6 +16,7 @@ import {
 } from "../../utils/constants";
 
 import Header from "../Header/Header";
+import Search from "../Search/Search";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -24,6 +25,7 @@ const App = () => {
       <div className="page__content">
         <div className="hero-cover">
           <Header></Header>
+          <Search></Search>
         </div>
       </div>
     </CurrentUserContext.Provider>

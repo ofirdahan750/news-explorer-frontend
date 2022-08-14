@@ -9,6 +9,7 @@
   font-style: normal;
   font-weight: 400;
   color: #1a1b22;
+  width: 100vw;
 }
 /* Div that's wrapper the app */
 
@@ -25,11 +26,13 @@
   background-position: center;
   background-size: cover;
   height: 576px;
+  color: #ffffff;
   /* margin: 0 auto 92px; */
   /* max-width: 1184px; */
   display: flex;
+  flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
   /* position: relative; */
-  z-index: 3;
+  z-index: 30;
 }
