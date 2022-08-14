@@ -1,14 +1,14 @@
 const mobileMenuHeader = ({
-    isLoggedIn,
-    isMoblieMenuOpen,
-    setIsMoblieMenuOpen
-  }) => {
-    // const location = useLocation();
-  
-    return (
-      <>
+  isLoggedIn,
+  isMoblieMenuOpen,
+  setIsMoblieMenuOpen
+}) => {
+  // const location = useLocation();
+
+  return (
+    <>
       <div>yes</div>
-        {/* <nav className="header__nav-container header__nav-container_type_moblie">
+      {/* <nav className="header__nav-container header__nav-container_type_moblie">
           {!isLoggedIn && location.pathname === "/signin" && (
             <div className="header__nav-loggedout_type_moblie link-modifier ">
               <Link to="/signup">Sign up</Link>
@@ -43,9 +43,8 @@ const mobileMenuHeader = ({
             )}
           </>
         )} */}
-      </>
-    );
-  };
-  
-  export default mobileMenuHeader;
-  
+    </>
+  );
+};
+
+export default mobileMenuHeader;
