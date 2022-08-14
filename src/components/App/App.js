@@ -17,6 +17,7 @@ import {
 
 import Header from "../Header/Header";
 import Search from "../Search/Search";
+import AboutAuthor from "../AboutAuthor/AboutAuthor";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -28,6 +29,9 @@ const App = () => {
           <Search></Search>
         </div>
       </div>
+      <main className="main">
+        <AboutAuthor></AboutAuthor>
+      </main>
     </CurrentUserContext.Provider>
   );
 };

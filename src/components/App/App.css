@@ -11,8 +11,6 @@
   color: #1a1b22;
   width: 100vw;
 }
-/* Div that's wrapper the app */
-
 .page__content {
   -webkit-animation-name: animate-center;
   -webkit-animation-duration: 1s;
@@ -27,12 +25,11 @@
   background-size: cover;
   height: 576px;
   color: #ffffff;
-  /* margin: 0 auto 92px; */
-  /* max-width: 1184px; */
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* position: relative; */
   z-index: 30;
+}
+.main {
+  max-width: calc(100vw - (104px * 2));
+  margin: 0 auto;
 }
