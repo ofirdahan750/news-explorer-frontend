@@ -25,7 +25,7 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <div className="hero-cover" role="img" aria-label="Main photo cover of the the site - a Hand holding a white mobile phone">
+        <div style={{maxWidth:'100vw'}} className="hero-cover" role="img" aria-label="Main photo cover of the the site - a Hand holding a white mobile phone">
           <Header></Header>
           <Search></Search>
         </div>

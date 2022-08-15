@@ -1,13 +1,13 @@
 import {Link} from "react-router-dom";
+
 import "./footer.css";
-// import test from '../images/footer/github.svg'
-const Footer = () => {
+const Footer = () => {  
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer__copyright-text">
         {new Date().getFullYear()} Ofir News Explorer, Powered by News API
       </div>
-      <nav>
+      <nav className="footer__nav">
         <ul>
           <li>
             <Link to="/">
@@ -20,9 +20,12 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="/">
-              <img src={require("../images/footer/github.svg").default} alt="Github Page Icon"></img>
-            </Link>
+            <a href="https://github.com/ofirdahan750" target="_blank">
+              <img
+                src={require("../images/Footer/github.svg").default}
+                alt="Github Page Icon"
+              />
+            </a>
           </li>
         </ul>
       </nav>

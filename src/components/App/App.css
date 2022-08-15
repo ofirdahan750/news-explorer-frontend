@@ -2,24 +2,24 @@
   box-sizing: border-box;
 }
 
-/* Body Element */
+/* .page = Body Element */
 .page {
   background-color: #ffffff;
   font-family: "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #1a1b22;
-  width: 100vw;
-}
-.page__content {
   -webkit-animation-name: animate-center;
   -webkit-animation-duration: 1s;
   animation-name: animate-center;
   animation-duration: 1s;
+  font-size: 1rem;
+}
+.page__content {
   margin: 0 auto;
 }
 .hero-cover {
-  background-image: url("../../images/hero_img.png");
+  background-image: url("../../images/App/hero_img.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

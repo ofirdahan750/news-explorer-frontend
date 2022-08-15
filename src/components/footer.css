@@ -1,3 +1,10 @@
 .footer {
-    
+  display: flex;
+  justify-content: space-between;
+}
+.footer__copyright-text {
+  line-height: 1.375;
+  color: #b6bcbf;
+}
+.footer__nav {
 }
