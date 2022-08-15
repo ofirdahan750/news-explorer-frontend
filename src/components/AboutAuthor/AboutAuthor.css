@@ -1,6 +1,7 @@
 .about-author {
   display: flex;
   gap: 0 56px;
+  margin: 80px auto;
 }
 .about-author__img {
   width: 464px;

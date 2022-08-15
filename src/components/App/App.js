@@ -15,16 +15,17 @@ import {
   errImg
 } from "../../utils/constants";
 
-import Header from "../Header/Header";
-import Search from "../Search/Search";
-import AboutAuthor from "../AboutAuthor/AboutAuthor";
+import Header from "../Header/Header.js";
+import Search from "../Search/Search.js";
+import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
+import Footer from '../Footer.js'
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <div className="hero-cover">
+        <div className="hero-cover" role="img" aria-label="Main photo cover of the the site - a Hand holding a white mobile phone">
           <Header></Header>
           <Search></Search>
         </div>
@@ -32,6 +33,7 @@ const App = () => {
       <main className="main">
         <AboutAuthor></AboutAuthor>
       </main>
+      <Footer></Footer>
     </CurrentUserContext.Provider>
   );
 };
