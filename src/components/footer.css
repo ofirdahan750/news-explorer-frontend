@@ -12,8 +12,7 @@
 .footer__copyright-text::before {
   content: "\00a9";
 }
-/* .footer__nav {
-} */
+
 .footer__nav-list {
   list-style: none;
   display: flex;
