@@ -38,7 +38,7 @@ const Footer = () => {
           <li className="footer__nav-item footer__nav-item_type_img">
             <a
               className="btn-link-modifier"
-              href="https://github.com/ofirdahan750"
+              href="https://www.linkedin.com/in/ofir-dahan-8ba3a318a/"
               target="_blank"
             >
               <img
