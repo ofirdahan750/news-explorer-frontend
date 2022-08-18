@@ -1,20 +1,18 @@
 .search {
-  max-width: calc(100vw - (104px * 2));
+  max-width: 285px; /*Moblie */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 .search__heading {
+  font-size: 2.25rem; /*Moblie */
+  line-height: 1.1111111111; /*Moblie */
   font-weight: 400;
-  font-size: 3.75rem;
-  line-height: 1.0666666667;
   padding: 0;
   margin: 0;
-  max-width: 608px;
 }
 .search__subheading {
   font-weight: 400;
-  font-family: "Roboto";
   font-size: 1.125rem;
   line-height: 1.3333333333;
   padding: 0;
@@ -25,13 +23,13 @@
   position: relative;
 }
 .search__input {
+  min-height: 56px; /*Moblie*/
+  backdrop-filter: blur(100px); /*Moblie*/
+  padding: 0 0 0 16px; /*Moblie*/
   width: 100%;
   background: #ffffff;
   border: 1px solid #d1d2d6;
-  min-height: 64px;
-  backdrop-filter: blur(8px);
   border-radius: 100px;
-  padding: 0 0 0 24px;
   color: #1a1b22;
 }
 .search__input::placeholder {
@@ -39,12 +37,12 @@
   font-size: 1rem;
   line-height: 1.375;
   color: #b6bcbf;
-  pad: 0 0 24px;
 }
 .search__btn {
-  position: absolute;
-  right: 0;
-  /* width: 168px; */
+  padding: 16px 0; /*Moblie*/
+  position: none; /*Moblie*/
+  margin: 16px 0 0; /*Moblie*/
+  width: 100%; /*Moblie*/
   background: #2f71e5;
   box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
   border-radius: 100px;
@@ -52,8 +50,39 @@
   font-size: 1.125rem;
   line-height: 1.33333;
   text-align: center;
-  padding: 18.14px 56px 21.86px;
 }
 .search__btn:hover {
   background: #347eff;
+}
+@media screen and (min-width: 471px) {
+  /*Tablet*/
+  .search {
+    max-width: 452px;
+  }
+
+  .search__btn {
+    padding: 16px 52px;
+    position: absolute;
+    right: 0;
+    margin: 0;
+    width: auto;
+  }
+}
+@media screen and (min-width: 901px) {
+  /*Wide Screen*/
+  .search {
+    max-width: 608px;
+  }
+  .search__heading {
+    font-size: 3.75rem;
+    line-height: 1.0666666667;
+  }
+  .search__input {
+    min-height: 64px;
+    padding: 0 0 0 24px;
+    backdrop-filter: blur(8px);
+  }
+  .search__btn {
+    padding: 20px 56px;
+  }
 }

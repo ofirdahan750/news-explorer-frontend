@@ -1,17 +1,17 @@
 .header {
+  margin: 0 0 30px; /*Mobile */
   background: rgba(196, 196, 196, 0.01);
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
   width: 100%;
   z-index: 10;
   height: 80px;
-  margin: 0 0 80px;
 }
 .header__wrapper {
+  max-width: calc(100vw - (16px * 2)); /*Moblie */
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   text-align: center;
-  max-width: calc(100vw - (104px * 2));
   margin: 0 auto;
 }
 .header__logo {
@@ -19,4 +19,22 @@
   line-height: 1.2;
   font-weight: 700;
   margin: 30px 0 26px;
+}
+@media screen and (min-width: 322px) {
+  /*Tablet*/
+  .header {
+    margin: 0 0 38px;
+  }
+  .header__wrapper {
+    max-width: calc(100vw - (42px * 2));
+  }
+}
+@media screen and (min-width: 9019px) {
+  /*Wide Screen*/
+  .header {
+    margin: 0 0 80px;
+  }
+  .header__wrapper {
+    max-width: calc(100vw - (104px * 2));
+  }
 }

@@ -30,7 +30,7 @@ const Footer = () => {
             >
               <img
                 src={require("../images/Footer/github.svg").default}
-                alt="Github Page Icon"
+                alt="Github Page Icon button"
                 className="footer__icon"
               />
             </a>

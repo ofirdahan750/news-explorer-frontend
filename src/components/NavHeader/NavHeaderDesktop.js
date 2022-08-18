@@ -7,27 +7,25 @@ const NavHeaderDesktop = ({isLoggedIn, handleLogOutclicked}) => {
   const {email} = useContext(CurrentUserContext);
   return (
     <nav className="header__nav-container header__nav-container_type_desktop">
-      {/* {!isLoggedIn && location.pathname === "/signin" && (
-        <div className="header__nav-user-loggedout link-modifier ">
-          <Link to="/signup">Sign up</Link>
-        </div>
-      )} */}
+      <button
+        className="header__nav-btn btn-link-modifier"
+        style={{
+          borderBottom: "3px solid #FFFFFF",
+          height: "100%",
+          borderTop: "3px transparent"
+        }}
+      >
+        <Link to="/">Home</Link>
+      </button>
+      {!isLoggedIn && location.pathname === "/signin" && (
+        <button className="header__nav-btn header__nav-btn_type_signin btn-link-modifier ">
+          <Link to="/signin">Sign in</Link>
+        </button>
+      )}
       {!isLoggedIn && location.pathname === "/signup" && (
-        <>
-          <button
-            className="header__nav-btn btn-link-modifier"
-            style={{
-              borderBottom: "3px solid #FFFFFF",
-              height: "100%",
-              borderTop: "3px transparent"
-            }}
-          >
-            <Link to="/">Home</Link>
-          </button>
-          <button className="header__nav-btn header__nav-btn_type_signin btn-link-modifier ">
-            <Link to="/signin">Sign in</Link>
-          </button>
-        </>
+        <button className="header__nav-btn header__nav-btn_type_signin btn-link-modifier ">
+          <Link to="/signin">Sign up</Link>
+        </button>
       )}
       {isLoggedIn && email && (
         <div className="header__nav-user-loggedin">

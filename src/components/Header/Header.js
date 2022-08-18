@@ -14,7 +14,7 @@ const Header = ({
   const location = useLocation();
   const [currPathLocation, setCurrPathLocation] = useState("/");
   const [width, setWidth] = useState(window.innerWidth);
-  const moblieBreakpoint = 1;
+  const moblieBreakpoint = 471;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
   useEffect(() => {
     //Fixing humbeger button if user toggle to bigger/smaller screen
