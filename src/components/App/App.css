@@ -30,7 +30,7 @@
   z-index: 30;
 }
 .main {
-  max-width: calc(100vw - (104px * 2)); /*Moblie */
+  max-width: calc(100vw - (24px * 2)); /*Moblie */
   margin: 0 auto;
 }
 @media screen and (min-width: 471px) {

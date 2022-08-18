@@ -5,7 +5,7 @@ const AboutAuthor = () => {
     <section className="about-author">
       <img
         src={require("../../images/About/ofir.png")}
-        alt="Image of the owner of the website on cartoon style on azure background"
+        alt="The owner of the website on cartoon style on azure background"
         className="about-author__img"
       />
       <article className="about-author__article">
