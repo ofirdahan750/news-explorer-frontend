@@ -22,7 +22,7 @@
   .header__nav-btn_type_signin {
     border: 1px solid #ffffff;
     border-radius: 100px;
-    padding: 0 49.5px;
+    padding: 6.55px 49.5px;
   }
 }
 @media screen and (min-width: 901px) {
