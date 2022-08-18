@@ -19,18 +19,18 @@
   margin: 0 auto;
 }
 .hero-cover {
+  height: 576px; /*Moblie */
   background-image: url("../../images/App/hero_img.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 576px;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   z-index: 30;
 }
 .main {
-  max-width: calc(100vw - (104px * 2));
+  max-width: calc(100vw - (104px * 2)); /*Moblie */
   margin: 0 auto;
 }
 @media screen and (min-width: 471px) {
