@@ -8,7 +8,7 @@ const Footer = () => {
         {new Date().getFullYear()} Ofir News Explorer, Powered by News API
       </div>
       <nav className="footer__nav">
-        <ul className="footer__nav-list">
+        <ul className="footer__nav-list list-modifier">
           <li className="footer__nav-item footer__nav-item_type_text">
             <Link className="btn-link-modifier" to="/">
               <span>Home</span>

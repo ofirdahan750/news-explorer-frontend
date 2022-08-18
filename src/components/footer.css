@@ -1,9 +1,9 @@
 .footer {
+  /* max-width: calc(100% - (105px * 2)); Moblie */
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  max-width: calc(100% - (105px * 2));
 }
 .footer__copyright-text {
   line-height: 1.375;
@@ -15,6 +15,8 @@
 
 .footer__nav-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
 }
 .footer__nav-item_type_text {
@@ -28,4 +30,15 @@
 .footer__icon {
   width: 20px;
   height: auto;
+}
+
+@media screen and (min-width: 471px) {
+  .footer {
+    max-width: calc(100% - (40px * 2));
+  }
+}
+@media screen and (min-width: 901px) {
+  .footer {
+    max-width: calc(100% - (105px * 2));
+  }
 }
