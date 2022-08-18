@@ -27,6 +27,7 @@ const Footer = () => {
               className="btn-link-modifier"
               href="https://github.com/ofirdahan750"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src={require("../images/Footer/github.svg").default}
@@ -40,6 +41,7 @@ const Footer = () => {
               className="btn-link-modifier"
               href="https://www.linkedin.com/in/ofir-dahan-8ba3a318a/"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src={require("../images/Footer/linkedin.svg").default}
@@ -56,6 +58,7 @@ const Footer = () => {
               className="btn-link-modifier"
               href="https://www.facebook.com/Ofir.Dahan1/"
               target="_blank"
+              rel="noreferrer"
             >
               <img
                 src={require("../images/Footer/facebook.svg").default}
