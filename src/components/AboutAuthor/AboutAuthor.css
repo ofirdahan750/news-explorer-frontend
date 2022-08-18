@@ -1,7 +1,7 @@
 .about-author {
+  gap: 0 24px; /*Moblie */
+  margin: 24px auto 20px; /*Moblie */
   display: flex;
-  gap: 0 56px;
-  margin: 80px auto;
 }
 .about-author__img {
   width: 464px;
@@ -23,4 +23,15 @@
   line-height: 1.3333333333;
   margin: 0;
   padding: 0;
+}
+@media screen and (min-width: 471px) {
+  /*Tablet*/
+}
+
+@media screen and (min-width: 901px) {
+  /*Wide Screen*/
+  .about-author {
+    gap: 0 56px;
+    margin: 80px auto;
+  }
 }

@@ -33,3 +33,22 @@
   max-width: calc(100vw - (104px * 2));
   margin: 0 auto;
 }
+@media screen and (min-width: 471px) {
+  /*Tablet*/
+  .main {
+    max-width: calc(100vw - (40px * 2));
+  }
+  .hero-cover {
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  /*Wide Screen*/
+  .main {
+    max-width: calc(100vw - (104px * 2));
+  }
+  .hero-cover {
+    height: 536px;
+  }
+}
