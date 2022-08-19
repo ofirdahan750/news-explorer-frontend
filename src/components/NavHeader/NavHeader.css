@@ -2,6 +2,7 @@
   display: none; /*Moblie */
   gap: 0 16px; /*Moblie */
   align-items: center;
+  height: 100%;
 }
 .header__nav-btn {
   font-size: 1.125rem; /*Moblie */
@@ -33,6 +34,8 @@
   .header__nav-btn {
     line-height: 1.3333333333;
     font-size: 1rem;
+  }
+  .header__nav-btn_type_signin {
     padding: 11.5px 58.5px;
   }
 }
