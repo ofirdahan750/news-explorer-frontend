@@ -1,12 +1,16 @@
 .footer {
-  /* max-width: calc(100% - (105px * 2)); Moblie */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column-reverse;
+  max-width: calc(100% - (15px * 2));
+  padding: 21px 0;
+  gap: 38px 0;
   margin: 0 auto;
+  white-space: nowrap;
 }
 .footer__copyright-text {
+  font-size: 1rem;
   line-height: 1.375;
+  font-weight: 400;
   color: #b6bcbf;
 }
 .footer__copyright-text::before {
@@ -14,31 +18,84 @@
 }
 
 .footer__nav-list {
-  list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
+  display: grid;
 }
-.footer__nav-item_type_text {
-  font-size: 18px;
-  line-height: 24px;
+.footer__nav-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "footer__nav-item-txt_content_home footer__nav-item-icon_name_github footer__nav-item-icon_name_linkedin ."
+    "footer__nav-item-txt_content_practicum footer__nav-item-icon_name_facebook . .";
 }
 
-.footer__nav-item_type_img {
-  margin: 0 28px 0 0;
+.footer__nav-item-txt_content_home {
+  grid-area: footer__nav-item-txt_content_home;
 }
-.footer__icon {
+
+.footer__nav-item-icon_name_github {
+  grid-area: footer__nav-item-icon_name_github;
+}
+
+.footer__nav-item-icon_name_linkedin {
+  grid-area: footer__nav-item-icon_name_linkedin;
+}
+
+.footer__nav-item-icon_name_facebook {
+  grid-area: footer__nav-item-icon_name_facebook;
+}
+
+.footer__nav-item-txt_content_practicum {
+  grid-area: footer__nav-item-txt_content_practicum;
+}
+
+.footer__nav-item-txt {
+  font-size: 1.125rem;
+  line-height: 1.3333333333;
+  font-weight: 400;
+}
+
+.footer__nav-item-icon {
   width: 20px;
   height: auto;
 }
 
-@media screen and (min-width: 471px) {
+@media screen and (min-width: 789px) {
   .footer {
-    max-width: calc(100% - (40px * 2));
+    gap: 0 5px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer__nav-list {
+    display: flex;
+  }
+  .footer__nav-item-txt {
+    margin: 0 20px 0 0;
+  }
+  .footer__nav-item-icon {
+    margin: 0 20px 0 0;
+  }
+  .footer__nav-item-icon_name_facebook {
+    margin: 0;
   }
 }
-@media screen and (min-width: 901px) {
+
+@media screen and (min-width: 1024px) {
   .footer {
-    max-width: calc(100% - (105px * 2));
+    max-width: calc(100% - (80px * 2));
+    padding: 30px 0 28px;
+  }
+  .footer__nav-item-txt {
+    margin: 0 41px 0 0;
+  }
+  .footer__nav-item-icon {
+    margin: 0 27px 0 0;
+  }
+  .footer__nav-item-icon_name_facebook {
+    margin: 0;
   }
 }

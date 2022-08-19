@@ -7,67 +7,55 @@ const Footer = () => {
       <div className="footer__copyright-text">
         {new Date().getFullYear()} Ofir News Explorer, Powered by News API
       </div>
-      <nav className="footer__nav">
-        <ul className="footer__nav-list list-modifier">
-          <li className="footer__nav-item footer__nav-item_type_text">
-            <Link className="btn-link-modifier" to="/">
-              <span>Home</span>
-            </Link>
-          </li>
-          <li
-            className="footer__nav-item footer__nav-item_type_text"
-            style={{margin: "0 41px"}}
-          >
-            <Link className="btn-link-modifier" to="/">
-              <span>Practicum by Yandex</span>
-            </Link>
-          </li>
-          <li className="footer__nav-item footer__nav-item_type_img">
-            <a
-              className="btn-link-modifier"
-              href="https://github.com/ofirdahan750"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src={require("../images/Footer/github.svg").default}
-                alt="Github Page Icon button"
-                className="footer__icon"
-              />
-            </a>
-          </li>
-          <li className="footer__nav-item footer__nav-item_type_img">
-            <a
-              className="btn-link-modifier"
-              href="https://www.linkedin.com/in/ofir-dahan-8ba3a318a/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src={require("../images/Footer/linkedin.svg").default}
-                alt="Linkedin page icon button"
-                className="footer__icon"
-              />
-            </a>
-          </li>
-          <li
-            className="footer__nav-item footer__nav-item_type_img"
-            style={{margin: 0}}
-          >
-            <a
-              className="btn-link-modifier"
-              href="https://www.facebook.com/Ofir.Dahan1/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src={require("../images/Footer/facebook.svg").default}
-                alt="Facebook page icon button"
-                className="footer__icon"
-              />
-            </a>
-          </li>
-        </ul>
+      <nav className="footer__nav-list">
+        <Link
+          className="footer__nav-item-txt footer__nav-item-txt_content_home btn-link-modifier"
+          to="/"
+        >
+          <span>Home</span>
+        </Link>
+        <Link
+          className="footer__nav-item-txt footer__nav-item-txt_content_practicum btn-link-modifier"
+          to="/"
+        >
+          <span>Practicum by Yandex</span>
+        </Link>
+        <a
+          className="footer__nav-item-icon footer__nav-item-icon_name_practicum btn-link-modifier"
+          href="https://github.com/ofirdahan750"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={require("../images/Footer/github.svg").default}
+            alt="Github Page Icon button"
+            className="footer__icon"
+          />
+        </a>
+        <a
+          className="footer__nav-item-icon footer__nav-item-icon_name_linkedin btn-link-modifier"
+          href="https://www.linkedin.com/in/ofir-dahan-8ba3a318a/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={require("../images/Footer/linkedin.svg").default}
+            alt="Linkedin page icon button"
+            className="footer__icon"
+          />
+        </a>
+        <a
+          className="footer__nav-item-icon footer__nav-item-icon_name_facebook btn-link-modifier"
+          href="https://www.facebook.com/Ofir.Dahan1/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={require("../images/Footer/facebook.svg").default}
+            alt="Facebook page icon button"
+            className="footer__icon"
+          />
+        </a>
       </nav>
     </footer>
   );
