@@ -18,7 +18,7 @@ const Footer = () => {
           className="footer__nav-item-txt footer__nav-item-txt_content_practicum btn-link-modifier"
           to="/"
         >
-          <span>Practicum by Yandex</span>
+          <span>Practicum</span>
         </Link>
         <a
           className="footer__nav-item-icon footer__nav-item-icon_name_practicum btn-link-modifier"
