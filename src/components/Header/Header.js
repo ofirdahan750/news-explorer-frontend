@@ -4,6 +4,8 @@ import {Link, useLocation} from "react-router-dom";
 import NavHeaderDesktop from "../NavHeader/NavHeaderDesktop.js";
 import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
 import MoblieMenuHeader from "../NavHeader/MoblieMenuHeader.js";
+import { setFormSettings } from "../../store/actions/formSettingActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = ({
   isLoggedIn = false,
@@ -12,6 +14,11 @@ const Header = ({
   }
 }) => {
   const location = useLocation();
+  const dispatch = useDispatch();
+  dispatch(setFormSettings({yes: "no"}));
+  const {form} = useSelector((state) => state.FormSettingModlue);
+  console.log('weeklyForecast:', form)
+
   const [currPathLocation, setCurrPathLocation] = useState("/");
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 471;

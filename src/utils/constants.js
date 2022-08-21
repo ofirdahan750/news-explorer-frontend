@@ -7,5 +7,5 @@ export const loadingInitState = {
     email: "test@gmail.com"
   }
 };
+
 export const loadingInitError = {};
-export const formSettingStates = {};
