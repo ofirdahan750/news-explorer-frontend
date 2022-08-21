@@ -17,16 +17,12 @@ const NavHeaderDesktop = ({isLoggedIn, handleLogOutclicked}) => {
       >
         <Link to="/">Home</Link>
       </button>
-      {!isLoggedIn && location.pathname === "/signin" && (
+      {!isLoggedIn && (
         <button className="header__nav-btn header__nav-btn_type_signin btn-link-modifier ">
           <Link to="/signin">Sign in</Link>
         </button>
       )}
-      {!isLoggedIn && location.pathname === "/signup" && (
-        <button className="header__nav-btn header__nav-btn_type_signin btn-link-modifier ">
-          <Link to="/signin">Sign up</Link>
-        </button>
-      )}
+
       {isLoggedIn && email && (
         <div className="header__nav-user-loggedin">
           <span className="header__nav-user-email">{email}</span>

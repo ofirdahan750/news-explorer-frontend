@@ -26,19 +26,22 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
         <div
-          style={{maxWidth: "100vw"}}
           className="hero-cover"
           role="img"
           aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
         >
-          <Header></Header>
-          <Search></Search>
+          <Header />
+          <Search />
         </div>
       </div>
       <main className="main">
-        <AboutAuthor></AboutAuthor>
+        <Routes>
+          <Route path="/" element={<AboutAuthor />}></Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </main>
-      <Footer></Footer>
+
+      <Footer />
     </CurrentUserContext.Provider>
   );
 };
