@@ -4,8 +4,8 @@ import {Link, useLocation} from "react-router-dom";
 import NavHeaderDesktop from "../NavHeader/NavHeaderDesktop.js";
 import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
 import MoblieMenuHeader from "../NavHeader/MoblieMenuHeader.js";
-import { setFormSettings } from "../../store/actions/formSettingActions";
-import { useDispatch, useSelector } from "react-redux";
+import {setFormSettings} from "../../store/actions/formSettingActions";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = ({
   isLoggedIn = false,
@@ -14,10 +14,9 @@ const Header = ({
   }
 }) => {
   const location = useLocation();
+  const {formSetting} = useSelector((state) => state.fromSettingModule);
+  console.log("formSetting:", formSetting);
   const dispatch = useDispatch();
-  dispatch(setFormSettings({yes: "no"}));
-  const {form} = useSelector((state) => state.FormSettingModlue);
-  console.log('weeklyForecast:', form)
 
   const [currPathLocation, setCurrPathLocation] = useState("/");
   const [width, setWidth] = useState(window.innerWidth);
@@ -27,6 +26,17 @@ const Header = ({
     //Fixing humbeger button if user toggle to bigger/smaller screen
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
+    dispatch(
+      setFormSettings({
+        title: "asfasf...",
+        formInput: {
+          firstInput: {title: "asf...", placeholder: "Loading..."},
+          secInput: {title: "asf...", placeholder: "Loading..."}
+        },
+        btnSetting: {isDisable: false, Txt: "Loading..."}
+      })
+    );
+
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
     };

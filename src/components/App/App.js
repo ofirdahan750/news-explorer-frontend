@@ -24,24 +24,24 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   return (
     <CurrentUserContext.Provider value={currentUser}>
-        <div className="page__content">
-          <div
-            className="hero-cover"
-            role="img"
-            aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
-          >
-            <Header />
-            <Search />
-          </div>
+      <div className="page__content">
+        <div
+          className="hero-cover"
+          role="img"
+          aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
+        >
+          <Header />
+          <Search />
         </div>
-        <main className="main">
-          <Routes>
-            <Route path="/" element={<AboutAuthor />}></Route>
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </main>
+      </div>
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<AboutAuthor />}></Route>
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
 
-        <Footer />
+      <Footer />
     </CurrentUserContext.Provider>
   );
 };
