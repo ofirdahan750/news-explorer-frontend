@@ -2,7 +2,7 @@ import React from "react";
 const PopupWithForm = ({
   children,
   handleSubmit,
-  formSetting: {type, btnSetting, heading},
+  formSetting: {type, btnSetting, title},
   handlePopupMouseDown,
   isOpen,
   isValidInput,
@@ -10,8 +10,7 @@ const PopupWithForm = ({
 }) => {
   return (
     <div
-      className={`popup popup_type_${isOpen ? type : ""} ${
-        isOpen ? "popup_visible" : ""
+      className={`popup popup_type_${isOpen ? `${type} popup_visible` : ""}
       }`}
       onMouseDown={handlePopupMouseDown}
       onContextMenu={(e) => e.preventDefault()}
@@ -23,7 +22,7 @@ const PopupWithForm = ({
           onClick={closeAllPopup}
         ></button>
         <div className="popup__wrapper">
-          <h2 className="popup__heading">{heading}</h2>
+          <h2 className="popup__heading">{title}</h2>
           <form className="popup__form" noValidate onSubmit={handleSubmit}>
             <fieldset className="popup__fieldset">
               {children}

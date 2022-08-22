@@ -19,7 +19,7 @@ const NavHeaderDesktop = ({isLoggedIn, handleLogOutclicked}) => {
       </button>
       {!isLoggedIn && (
         <button className="header__nav-btn header__nav-btn_type_signin btn-link-modifier ">
-          <Link to="/signin">Sign in</Link>
+          Sign in
         </button>
       )}
 

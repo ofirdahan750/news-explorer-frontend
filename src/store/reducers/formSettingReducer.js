@@ -1,5 +1,6 @@
 const initialState = {
   formSetting: {
+    type: "init",
     title: "Loading...",
     formInput: {
       firstInput: {title: "Loading...", placeholder: "Loading..."},
