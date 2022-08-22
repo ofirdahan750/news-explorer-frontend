@@ -4,8 +4,8 @@ import {Link, useLocation} from "react-router-dom";
 import NavHeaderDesktop from "../NavHeader/NavHeaderDesktop.js";
 import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
 import MoblieMenuHeader from "../NavHeader/MoblieMenuHeader.js";
-import {setFormSettings} from "../../store/actions/formSettingActions";
 import {useDispatch, useSelector} from "react-redux";
+import {setFormSettings} from "../../store/actions/formSettingActions";
 
 const Header = ({
   isLoggedIn = false,
@@ -15,7 +15,6 @@ const Header = ({
 }) => {
   const location = useLocation();
   const {formSetting} = useSelector((state) => state.fromSettingModule);
-  console.log("formSetting:", formSetting);
   const dispatch = useDispatch();
 
   const [currPathLocation, setCurrPathLocation] = useState("/");

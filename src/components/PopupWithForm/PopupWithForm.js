@@ -5,12 +5,15 @@ const PopupWithForm = ({
   formSetting: {type, btnSetting, title},
   handlePopupMouseDown,
   isOpen,
+  currType,
   isValidInput,
   closeAllPopup
 }) => {
   return (
     <div
-      className={`popup popup_type_${isOpen ? `${type} popup_visible` : ""}
+      className={`popup popup_type_${
+        isOpen && currType === type ? `${currType} popup_visible` : ""
+      }
       }`}
       onMouseDown={handlePopupMouseDown}
       onContextMenu={(e) => e.preventDefault()}

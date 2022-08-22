@@ -20,8 +20,11 @@ import Search from "../Search/Search.js";
 import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
 import Footer from "../Footer.js";
 
+// import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
+
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
@@ -36,12 +39,13 @@ const App = () => {
       </div>
       <main className="main">
         <Routes>
-          <Route path="/" element={<AboutAuthor />}></Route>
+          <Route path="/"></Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <AboutAuthor />
       </main>
-
       <Footer />
+      {/* <LoginPopupup /> */}
     </CurrentUserContext.Provider>
   );
 };
