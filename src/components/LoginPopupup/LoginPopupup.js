@@ -1,62 +1,68 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React, {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
-import {setFormSetting} from "../../store/actions/formSettingActions";
+import {useDispatch, useSelector} from "react-redux";
+import {setFormInput} from "../../store/actions/formSettingActions";
 
-const LoginPopupup = ({
-  onSetVaildMsg,
-  isOpen,
-  handlePopupMouseDown,
-  isValidInput,
-  closeAllPopup,
-  validMsg,
-  handleSubmitAddItem,
-  handleMsgVaild
-}) => {
-  const {formSetting} = useSelector((state) => state.fromSettingModule);
-  const [inputs, setInputs] = useState({email: "", password: ""});
-  const onChangeInput = (e, key) => {
-    e.preventDefault();
-    setInputs((prevState) => ({
-      ...prevState,
-      [key]: e.target.value
-    }));
-  };
-
+const LoginPopupup = (
+  {
+    // onSetVaildMsg,
+    // isOpen,
+    // handlePopupMouseDown,
+    // isValidInput,
+    // closeAllPopup,
+    // validMsg,
+    // handleSubmitAddItem,
+    // handleMsgVaild,
+    // onChangeInput
+  }
+) => {
+  const formSetting = useSelector((state) => state.fromSettingModule);
+  console.log("formSetting:", formSetting);
+  const dispatch = useDispatch();
   return (
     <PopupWithForm
-      isOpen={isOpen}
+      isOpen={true}
       formSetting={formSetting}
-      handlePopupMouseDown={handlePopupMouseDown}
-      isValidInput={isValidInput}
-      closeAllPopup={closeAllPopup}
-      handleSubmit={handleSubmit}
+      handlePopupMouseDown={() => {
+        console.log("wow");
+      }}
+      isValidInput={true}
+      closeAllPopup={() => {
+        console.log("wow");
+      }}
+      handleSubmit={() => {
+        console.log("wow");
+      }}
     >
       <label className="popup__label"></label>
       <input
         className="popup__input popup__input_order_first-input"
         onChange={(e) => {
-          onChangeInput(e, "email");
+          e.preventDefault();
+          dispatch(setFormInput({inputKey: "email", inputVal: e.target.value}));
         }}
         type="email"
         placeholder="Enter email"
         name="email_address"
-        value={inputs.email || ""}
+        value={formSetting.inputs.email || ""}
         required
       />
-      <span className="popup__input-error">{validMsg.titleInput || ""}</span>
+      {/* <span className="popup__input-error">{validMsg.titleInput || ""}</span> */}
       <input
         className="popup__input popup__input_order_second-input"
         type="password"
-        value={inputs.password || ""}
+        value={formSetting.inputs.password || ""}
         name="users_password"
         onChange={(e) => {
-          onChangeInput(e, "password");
+          e.preventDefault();
+          dispatch(
+            setFormInput({inputKey: "password", inputVal: e.target.value})
+          );
         }}
         placeholder="Image link"
         required
       />
-      <span className="popup__input-error">{validMsg.urlInput || ""}</span>
+      {/* <span className="popup__input-error">{validMsg.urlInput || ""}</span> */}
     </PopupWithForm>
   );
 };

@@ -20,7 +20,7 @@ import Search from "../Search/Search.js";
 import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
 import Footer from "../Footer.js";
 
-// import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
+import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
 import {useDispatch, useSelector} from "react-redux";
 
 const App = () => {
@@ -47,7 +47,7 @@ const App = () => {
         <AboutAuthor />
       </main>
       <Footer />
-      {/* <LoginPopupup /> */}
+      <LoginPopupup />
     </CurrentUserContext.Provider>
   );
 };

@@ -2,10 +2,10 @@ import React from "react";
 const PopupWithForm = ({
   children,
   handleSubmit,
-  formSetting: {type, btnSetting, title},
+  formSetting: {btnSetting, title, type = true},
   handlePopupMouseDown,
   isOpen,
-  currType,
+  currType = true,
   isValidInput,
   closeAllPopup
 }) => {
