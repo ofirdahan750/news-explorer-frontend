@@ -1,6 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {setFormSetting} from "../../store/actions/formSettingActions";
 
 const LoginPopupup = ({
@@ -14,11 +14,15 @@ const LoginPopupup = ({
   handleMsgVaild
 }) => {
   const {formSetting} = useSelector((state) => state.fromSettingModule);
-  const dispatch = useDispatch();
+  const [inputs, setInputs] = useState({email: "", password: ""});
   const onChangeInput = (e, key) => {
     e.preventDefault();
-    dispatch(setFormSetting(e.target.value, key));
+    setInputs((prevState) => ({
+      ...prevState,
+      [key]: e.target.value
+    }));
   };
+
   return (
     <PopupWithForm
       isOpen={isOpen}
@@ -32,22 +36,22 @@ const LoginPopupup = ({
       <input
         className="popup__input popup__input_order_first-input"
         onChange={(e) => {
-          onChangeInput(e, "formInput.firstInput");
+          onChangeInput(e, "email");
         }}
         type="email"
         placeholder="Enter email"
         name="email_address"
-        value={formSetting.formInput.firstInput || ""}
+        value={inputs.email || ""}
         required
       />
       <span className="popup__input-error">{validMsg.titleInput || ""}</span>
       <input
         className="popup__input popup__input_order_second-input"
-        type="url"
-        value={imgSrc || ""}
-        name="img_url"
+        type="password"
+        value={inputs.password || ""}
+        name="users_password"
         onChange={(e) => {
-          onChangeInput(e, "formInput.secInput");
+          onChangeInput(e, "password");
         }}
         placeholder="Image link"
         required

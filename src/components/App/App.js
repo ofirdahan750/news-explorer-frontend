@@ -21,9 +21,11 @@ import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
 import Footer from "../Footer.js";
 
 // import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
+import {useDispatch, useSelector} from "react-redux";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
+  const formSetting = useSelector((state) => state.fromSettingModule);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

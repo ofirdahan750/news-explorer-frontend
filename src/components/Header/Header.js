@@ -5,7 +5,10 @@ import NavHeaderDesktop from "../NavHeader/NavHeaderDesktop.js";
 import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
 import MoblieMenuHeader from "../NavHeader/MoblieMenuHeader.js";
 import {useDispatch, useSelector} from "react-redux";
-import {setFormSettings} from "../../store/actions/formSettingActions";
+import {
+  setFormSettings,
+  setFormSetting
+} from "../../store/actions/formSettingActions";
 
 const Header = ({
   isLoggedIn = false,
@@ -25,21 +28,24 @@ const Header = ({
     //Fixing humbeger button if user toggle to bigger/smaller screen
     const handleResizeWindow = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
-    dispatch(
-      setFormSettings({
-        title: "asfasf...",
-        formInput: {
-          firstInput: {title: "asf...", placeholder: "Loading..."},
-          secInput: {title: "asf...", placeholder: "Loading..."}
-        },
-        btnSetting: {isDisable: false, Txt: "Loading..."}
-      })
-    );
+    //**Test if dispatch works:**
+
+    // dispatch(
+    //   setFormSettings({
+    //     type: "test",
+    //     title: "asfasf...",
+    //     btnSetting: {isDisable: false, Txt: "dsgdsgds..."}
+    //   })
+    // );
+    // dispatch(
+    //   setFormSettings({settingKey:'btnSetting',settingData:{btnTxt:'works',isDisable:false}})
+    // );
 
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
+
   useEffect(() => {
     //Logging out-closing the menu
     if (!isLoggedIn) {
