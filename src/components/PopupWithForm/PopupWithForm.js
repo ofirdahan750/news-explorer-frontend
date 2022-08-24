@@ -1,4 +1,5 @@
 import React from "react";
+import "./PopupWithForm.css";
 const PopupWithForm = ({
   children,
   handleSubmit,
@@ -11,7 +12,7 @@ const PopupWithForm = ({
 }) => {
   return (
     <div
-      className={`popup popup_type_${
+      className={`popup popup_type_ popup_visible${
         isOpen && currType === type ? `${currType} popup_visible` : ""
       }
       }`}
@@ -21,7 +22,7 @@ const PopupWithForm = ({
       <div className="popup__container">
         <button
           type="button"
-          className="popup__close-button button-modifier animation-modifier_type_opacity-hover"
+          className="popup__close-button btn-link-modifier animation-modifier_type_opacity-hover"
           onClick={closeAllPopup}
         ></button>
         <div className="popup__wrapper">
@@ -34,7 +35,9 @@ const PopupWithForm = ({
                   type === "confirm"
                     ? "popup__submit-button_type_delete-confirm"
                     : ""
-                } ${!isValidInput ? "popup__submit-button_inactive" : ""}`}
+                } ${
+                  !isValidInput === false ? "popup__submit-button_inactive" : ""
+                }`}
                 type="submit"
                 disabled={btnSetting.isDisable || !isValidInput}
               >
@@ -42,6 +45,9 @@ const PopupWithForm = ({
               </button>
             </fieldset>
           </form>
+          <span className="popup__bottom-link link-modifier animation-modifier_type_opacity-hover">
+            loading...
+          </span>
         </div>
       </div>
     </div>
