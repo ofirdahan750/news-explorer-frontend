@@ -17,7 +17,7 @@ const PopupWithForm = ({
       }
       }`}
       onMouseDown={handlePopupMouseDown}
-      onContextMenu={(e) => e.preventDefault()}
+      // onContextMenu={(e) => e.preventDefault()}
     >
       <div className="popup__container">
         <button
@@ -31,7 +31,7 @@ const PopupWithForm = ({
             <fieldset className="popup__fieldset">
               {children}
               <button
-                className={`popup__submit-button button-modifier animation-modifier_type_opacity-hover${
+                className={`popup__submit-button btn-link-modifier animation-modifier_type_opacity-hover${
                   type === "confirm"
                     ? "popup__submit-button_type_delete-confirm"
                     : ""
