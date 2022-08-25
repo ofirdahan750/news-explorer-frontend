@@ -44,10 +44,10 @@ const PopupWithForm = ({
                 {btnSetting.txt || "Loading..."}
               </button>
             </fieldset>
+            <div className="popup__bottom-link link-modifier animation-modifier_type_opacity-hover">
+              or <span className="popup__bottom-link_txt_link">Sign Up</span>
+            </div>
           </form>
-          <span className="popup__bottom-link link-modifier animation-modifier_type_opacity-hover">
-            loading...
-          </span>
         </div>
       </div>
     </div>

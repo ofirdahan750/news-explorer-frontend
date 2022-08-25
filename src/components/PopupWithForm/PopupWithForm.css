@@ -24,6 +24,7 @@
   background-color: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
+  width: 100%;
   max-width: 430px;
   color: #000000;
 }
@@ -32,20 +33,21 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  top: -6%;
-  right: -6%;
-  transform: translate(50%, -50%);
+  right: -46px;
+  top: -46px;
   background-image: url("../../images/PopupWithForms/close-icon.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-blend-mode: overlay;
 }
 .popup__wrapper {
-  max-width: 358px;
-  margin: 34px 36px 36.51px;
+  width: 100%;
+  /* margin: 34px 36px 36.51px; */
+  padding: 34px 35px 28px;
 }
 .popup__heading {
-  margin: 0;
+  margin: 0 0 22px;
   font-weight: 900;
   font-size: 1.5rem;
   line-height: 1.1666666667;
@@ -85,7 +87,7 @@
   font-weight: 400;
   line-height: 1.25;
   margin: 3px 0 0;
-  /* min-height: 30px; */
+  min-height: 28px;
 }
 .popup__submit-button {
   background: #2f71e5;
@@ -97,7 +99,8 @@
   text-align: center;
   color: #ffffff;
   padding: 20px 124px;
-  margin: 48px 0 0;
+  /* margin: 48px 0 0; */
+  cursor: not-allowed;
 }
 .popup__submit-button_inactive {
   /* opacity: 0.2; */
@@ -114,4 +117,10 @@
   line-height: 17px;
   text-align: center;
   color: #000000;
+  margin: 22px 0 0;
+}
+
+.popup__bottom-link_txt_link {
+  color: #2f71e5;
+  cursor: pointer;
 }

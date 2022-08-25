@@ -38,6 +38,7 @@ const LoginPopupup = () =>
           <label className="popup__label">Email</label>
           <input
             className="popup__input popup__input_order_first-input"
+            autoFocus
             onChange={(e) => {
               e.preventDefault();
               dispatch(
@@ -50,7 +51,7 @@ const LoginPopupup = () =>
             value={formSetting.inputs.email || ""}
             required
           />
-          {/* <span className="popup__input-error">{validMsg.titleInput || ""}</span> */}
+          <span className="popup__input-error">{"bla"}</span>
           <label className="popup__label">Password</label>
           <input
             className="popup__input popup__input_order_second-input"
@@ -66,7 +67,7 @@ const LoginPopupup = () =>
             placeholder="Enter password"
             required
           />
-          {/* <span className="popup__input-error">{validMsg.urlInput || ""}</span> */}
+          <span className="popup__input-error">fdsfdsfsdf</span>
         </PopupWithForm>
       </>
     );
