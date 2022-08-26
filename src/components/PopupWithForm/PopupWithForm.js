@@ -4,15 +4,17 @@ const PopupWithForm = ({
   children,
   handleSubmit,
   handlePopupMouseDown,
-  currType = true,
+  settingPopupWithForm: {type, isOpen, title, isFormVaild, btnSetting},
   closeAllPopup,
-  settingPopupWithForm: {type, isOpen, title, isFormVaild, btnSetting}
+  currType
 }) => {
+  console.log("currType:", currType);
+  console.log("type:", type);
+  console.log("isOpen:", isOpen);
   return (
     <div
-      className={`popup popup_type_ popup_visible${
+      className={`popup popup_type_${
         isOpen && currType === type ? `${currType} popup_visible` : ""
-      }
       }`}
       onMouseDown={handlePopupMouseDown}
       // onContextMenu={(e) => e.preventDefault()} //After done need will return

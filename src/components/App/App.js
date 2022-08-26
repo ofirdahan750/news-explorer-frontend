@@ -30,7 +30,9 @@ import {
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
-  const {inputs, isFormVaild} = useSelector((state) => state.fromSettingModule);
+  const {inputs, isFormVaild, isOpen} = useSelector(
+    (state) => state.fromSettingModule
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,6 +46,9 @@ const App = () => {
       onSetFromSetting("isFormVaild", formVaild);
     }
   }, [inputs]);
+  useEffect(() => {
+    console.log(" isOpen:", isOpen);
+  }, [isOpen]);
 
   const onSetFromSetting = (key, val) => {
     dispatch(setFormSetting({settingKey: key, settingData: val}));
@@ -80,7 +85,7 @@ const App = () => {
           role="img"
           aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
         >
-          <Header />
+          <Header onSetFromSetting={onSetFromSetting} />
           <Search />
         </div>
       </div>
@@ -88,7 +93,10 @@ const App = () => {
         <AboutAuthor />
       </main>
       <Footer />
-      {/* <LoginPopupup onChangeInput={onChangeInput} handlePopupMouseDown={handlePopupMouseDown} /> */}
+      <LoginPopupup
+        onChangeInput={onChangeInput}
+        handlePopupMouseDown={handlePopupMouseDown}
+      />
       <RegisterPopupup
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}

@@ -1,6 +1,6 @@
 const initialState = {
   isOpen: false,
-  type: "init",
+  type: "register",
   title: "Loading...",
   inputs: {
     emailAddress: {inputVal: "", inputMsgVaild: ""},

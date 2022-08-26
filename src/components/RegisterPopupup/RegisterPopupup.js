@@ -29,6 +29,7 @@ const RegisterPopupup = ({onChangeInput, handlePopupMouseDown}) => {
         console.log("wow");
       }}
       settingPopupWithForm={settingPopupWithForm}
+      currType={"register"}
     >
       <label className="popup__label">Email</label>
       <input
