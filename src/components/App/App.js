@@ -21,6 +21,7 @@ import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
 import Footer from "../Footer.js";
 
 import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
+import RegisterPopupup from "../RegisterPopupup/RegisterPopupup.js";
 import {useDispatch, useSelector} from "react-redux";
 
 const App = () => {
@@ -47,7 +48,8 @@ const App = () => {
         <AboutAuthor />
       </main>
       <Footer />
-      <LoginPopupup />
+      {/* <LoginPopupup /> */}
+      <RegisterPopupup />
     </CurrentUserContext.Provider>
   );
 };

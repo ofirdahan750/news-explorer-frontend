@@ -2,7 +2,7 @@ const initialState = {
   isOpen: false,
   type: "init",
   title: "Loading...",
-  inputs: {email: "", password: ""},
+  inputs: {email: "", password: "", name: ""},
   btnSetting: {isDisable: true, Txt: "Loading..."},
   isValidInput: false
 };

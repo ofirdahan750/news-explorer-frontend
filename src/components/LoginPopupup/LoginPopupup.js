@@ -20,7 +20,6 @@ const LoginPopupup = () =>
     const formSetting = useSelector((state) => state.fromSettingModule);
     const dispatch = useDispatch();
     return (
-      <>
         <PopupWithForm
           isOpen={true}
           formSetting={formSetting}
@@ -57,7 +56,7 @@ const LoginPopupup = () =>
             className="popup__input popup__input_order_second-input"
             type="password"
             value={formSetting.inputs.password || ""}
-            name="users_password"
+            name="user_password"
             onChange={(e) => {
               e.preventDefault();
               dispatch(
@@ -67,9 +66,8 @@ const LoginPopupup = () =>
             placeholder="Enter password"
             required
           />
-          <span className="popup__input-error">fdsfdsfsdf</span>
+
         </PopupWithForm>
-      </>
     );
   };
 export default LoginPopupup;
