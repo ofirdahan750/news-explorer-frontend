@@ -2,7 +2,11 @@ const initialState = {
   isOpen: false,
   type: "init",
   title: "Loading...",
-  inputs: {email: "", password: "", name: ""},
+  inputs: {
+    emailAddress: {inputVal: "", inputMsgVaild: ""},
+    userPassword: {inputVal: "", inputMsgVaild: ""},
+    userName: {inputVal: "", inputMsgVaild: ""}
+  },
   btnSetting: {isDisable: true, Txt: "Loading..."},
   isValidInput: false
 };
@@ -16,7 +20,13 @@ export function formSettingReducer(state = initialState, action) {
     case "SET_INPUT":
       return {
         ...state,
-        inputs: {...state.inputs, [payLoad.inputKey]: payLoad.inputVal}
+        inputs: {
+          ...state.inputs,
+          [payLoad.inputKey]: {
+            inputVal: payLoad.inputVal,
+            inputMsgVaild: payLoad.inputMsgVaild
+          }
+        }
       };
     default:
       return state;

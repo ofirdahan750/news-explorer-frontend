@@ -23,11 +23,26 @@ import Footer from "../Footer.js";
 import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
 import RegisterPopupup from "../RegisterPopupup/RegisterPopupup.js";
 import {useDispatch, useSelector} from "react-redux";
+import {setFormInput} from "../../store/actions/formSettingActions";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   const formSetting = useSelector((state) => state.fromSettingModule);
+  const dispatch = useDispatch();
 
+  const onChangeInput = (e) => {
+    e.preventDefault();
+    const {
+      target: {name, validationMessage, value}
+    } = e;
+    dispatch(
+      setFormInput({
+        inputKey: name,
+        inputVal: value,
+        inputMsgVaild: validationMessage
+      })
+    );
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
@@ -48,8 +63,8 @@ const App = () => {
         <AboutAuthor />
       </main>
       <Footer />
-      {/* <LoginPopupup /> */}
-      <RegisterPopupup />
+      {/* <LoginPopupup onChangeInput={onChangeInput} /> */}
+      <RegisterPopupup onChangeInput={onChangeInput} />
     </CurrentUserContext.Provider>
   );
 };

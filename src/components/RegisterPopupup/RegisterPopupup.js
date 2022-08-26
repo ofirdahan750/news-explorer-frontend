@@ -1,88 +1,75 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React from "react";
+import {useSelector} from "react-redux";
 import {setFormInput} from "../../store/actions/formSettingActions";
 import "../PopupWithForm/PopupWithForm.css";
 
-const RegisterPopupup = () =>
-  // {
-  // onSetVaildMsg,
-  // isOpen,
-  // handlePopupMouseDown,
-  // isValidInput,
-  // closeAllPopup,
-  // validMsg,
-  // handleSubmitAddItem,
-  // handleMsgVaild,
-  // onChangeInput
-  // }
-  {
-    const formSetting = useSelector((state) => state.fromSettingModule);
-    const dispatch = useDispatch();
-    return (
-      <PopupWithForm
-        isOpen={true}
-        formSetting={formSetting}
-        handlePopupMouseDown={() => {
-          console.log("wow");
+const RegisterPopupup = ({onChangeInput}) => {
+  const formSetting = useSelector((state) => state.fromSettingModule);
+  return (
+    <PopupWithForm
+      isOpen={true}
+      formSetting={formSetting}
+      handlePopupMouseDown={() => {
+        console.log("wow");
+      }}
+      isValidInput={true}
+      closeAllPopup={() => {
+        console.log("wow");
+      }}
+      handleSubmit={() => {
+        console.log("wow");
+      }}
+    >
+      <label className="popup__label">Email</label>
+      <input
+        className="popup__input popup__input_order_first-input"
+        autoFocus
+        onChange={(e) => {
+          onChangeInput(e);
         }}
-        isValidInput={true}
-        closeAllPopup={() => {
-          console.log("wow");
+        type="email"
+        placeholder="Enter email"
+        name="email_address"
+        value={formSetting.inputs.emailAddress.inputVal || ""}
+        required
+      />
+      <span className="popup__input-error">
+        {formSetting.inputs.emailAddress.inputMsgVaild || ""}
+      </span>
+      <label className="popup__label">Password</label>
+      <input
+        className="popup__input popup__input_order_second-input"
+        type="password"
+        value={formSetting.inputs.userPassword.inputVal || ""}
+        name="userPassword"
+        minLength="6"
+        onChange={(e) => {
+          onChangeInput(e);
         }}
-        handleSubmit={() => {
-          console.log("wow");
+        placeholder="Enter password"
+        required
+      />
+      <span className="popup__input-error">
+        {formSetting.inputs.userPassword.inputMsgVaild}
+      </span>
+      <label className="popup__label">Name</label>
+      <input
+        className="popup__input popup__input_order_third-input"
+        type="text"
+        value={formSetting.inputs.userName.inputVal || ""}
+        name="userName"
+        minLength="2"
+        onChange={(e) => {
+          onChangeInput(e);
         }}
-      >
-        <label className="popup__label">Email</label>
-        <input
-          className="popup__input popup__input_order_first-input"
-          autoFocus
-          onChange={(e) => {
-            e.preventDefault();
-            dispatch(
-              setFormInput({inputKey: "email", inputVal: e.target.value})
-            );
-          }}
-          type="email"
-          placeholder="Enter email"
-          name="email_address"
-          value={formSetting.inputs.email || ""}
-          required
-        />
-        <span className="popup__input-error">{"bla"}</span>
-        <label className="popup__label">Password</label>
-        <input
-          className="popup__input popup__input_order_second-input"
-          type="password"
-          value={formSetting.inputs.password || ""}
-          name="user_password"
-          onChange={(e) => {
-            e.preventDefault();
-            dispatch(
-              setFormInput({inputKey: "password", inputVal: e.target.value})
-            );
-          }}
-          placeholder="Enter password"
-          required
-        />
-        <span className="popup__input-error">fdsfdsfsdf</span>
-        <input
-            className="popup__input popup__input_order_third-input"
-            type="text"
-            value={formSetting.inputs.name || ""}
-            name="user_name"
-            onChange={(e) => {
-              e.preventDefault();
-              dispatch(
-                setFormInput({inputKey: "name", inputVal: e.target.value})
-              );
-            }}
-            placeholder="Enter your username"
-            required
-          />
-          <span className="popup__input-error">fdsfdsfsdf</span>
-      </PopupWithForm>
-    );
-  };
+        placeholder="Enter your username"
+        required
+      />
+      <span className="popup__input-error">
+        {formSetting.inputs.userName.inputMsgVaild}
+      </span>{" "}
+    </PopupWithForm>
+  );
+};
 export default RegisterPopupup;

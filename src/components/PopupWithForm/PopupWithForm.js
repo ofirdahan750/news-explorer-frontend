@@ -27,7 +27,12 @@ const PopupWithForm = ({
         ></button>
         <div className="popup__wrapper">
           <h2 className="popup__heading">{title}</h2>
-          <form className="popup__form" noValidate onSubmit={handleSubmit}>
+          <form
+            className="popup__form"
+            noValidate
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
             <fieldset className="popup__fieldset">
               {children}
               <button
