@@ -3,12 +3,10 @@ import "./PopupWithForm.css";
 const PopupWithForm = ({
   children,
   handleSubmit,
-  formSetting: {btnSetting, title, type = true},
   handlePopupMouseDown,
-  isOpen,
   currType = true,
-  isValidInput,
-  closeAllPopup
+  closeAllPopup,
+  settingPopupWithForm: {type, isOpen, title, isFormVaild, btnSetting}
 }) => {
   return (
     <div
@@ -36,13 +34,12 @@ const PopupWithForm = ({
             <fieldset className="popup__fieldset">
               {children}
               <button
-                className={`popup__submit-button btn-link-modifier animation-modifier_type_opacity-hover${
-                  type === "confirm"
-                    ? "popup__submit-button_type_delete-confirm"
-                    : ""
-                } ${!isValidInput ? "popup__submit-button_inactive" : ""}`}
+                className={`popup__submit-button ${
+                  !isFormVaild && "popup__submit-button_inactive"
+                }
+                btn-link-modifier animation-modifier_type_opacity-hover$ `}
                 type="submit"
-                // disabled={btnSetting.isDisable || !isValidInput}
+                disabled={!isFormVaild}
               >
                 {btnSetting.txt || "Loading..."}
               </button>

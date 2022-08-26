@@ -2,7 +2,6 @@
   "name": "news-explorer-ofir",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -25,7 +24,7 @@
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules && npm i",
     "cleandev": "npm run clean && npm start",
-    "push": "git add . && git commit -m \"RegisterPopupup fixing \" && git push",
+    "push": "git add . && git commit -m \"Finished the form vaild + button submit toggle + formSettingReducer state destructuring \" && git push",
     "deploy": "rm -rf build && npm run build && scp -r ./build/* ofirdahan1003@news-explorer-ofir.students.nomoredomainssbs.ru:/home/ofirdahan1003/news-explorer-frontend",
     "fullpush": "npm run push && npm run deploy",
     "fullpushstart": "npm run push && npm run deploy && npm start",

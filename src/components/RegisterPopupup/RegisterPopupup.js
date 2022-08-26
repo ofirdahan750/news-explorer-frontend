@@ -1,23 +1,34 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
 import {useSelector} from "react-redux";
-import {setFormInput} from "../../store/actions/formSettingActions";
 import "../PopupWithForm/PopupWithForm.css";
 
 const RegisterPopupup = ({onChangeInput, handlePopupMouseDown}) => {
-  const formSetting = useSelector((state) => state.fromSettingModule);
+  const {
+    inputs: {emailAddress, userPassword, userName},
+    type,
+    isOpen,
+    title,
+    isFormVaild,
+    btnSetting
+  } = useSelector((state) => state.fromSettingModule);
+  const settingPopupWithForm = {
+    type,
+    isOpen,
+    title,
+    isFormVaild,
+    btnSetting
+  };
   return (
     <PopupWithForm
-      isOpen={true}
-      formSetting={formSetting}
       handlePopupMouseDown={handlePopupMouseDown}
-      isValidInput={true}
       closeAllPopup={() => {
         console.log("wow");
       }}
       handleSubmit={() => {
         console.log("wow");
       }}
+      settingPopupWithForm={settingPopupWithForm}
     >
       <label className="popup__label">Email</label>
       <input
@@ -29,17 +40,17 @@ const RegisterPopupup = ({onChangeInput, handlePopupMouseDown}) => {
         type="email"
         placeholder="Enter email"
         name="emailAddress"
-        value={formSetting.inputs.emailAddress.inputVal || ""}
+        value={emailAddress.inputVal || ""}
         required
       />
       <span className="popup__input-error">
-        {formSetting.inputs.emailAddress.inputMsgVaild || ""}
+        {emailAddress.inputMsgVaild || ""}
       </span>
       <label className="popup__label">Password</label>
       <input
         className="popup__input popup__input_order_second-input"
         type="password"
-        value={formSetting.inputs.userPassword.inputVal || ""}
+        value={userPassword.inputVal || ""}
         name="userPassword"
         minLength="6"
         onChange={(e) => {
@@ -48,14 +59,12 @@ const RegisterPopupup = ({onChangeInput, handlePopupMouseDown}) => {
         placeholder="Enter password"
         required
       />
-      <span className="popup__input-error">
-        {formSetting.inputs.userPassword.inputMsgVaild}
-      </span>
+      <span className="popup__input-error">{userPassword.inputMsgVaild}</span>
       <label className="popup__label">Name</label>
       <input
         className="popup__input popup__input_order_third-input"
         type="text"
-        value={formSetting.inputs.userName.inputVal || ""}
+        value={userName.inputVal || ""}
         name="userName"
         minLength="2"
         onChange={(e) => {
@@ -64,9 +73,7 @@ const RegisterPopupup = ({onChangeInput, handlePopupMouseDown}) => {
         placeholder="Enter your username"
         required
       />
-      <span className="popup__input-error">
-        {formSetting.inputs.userName.inputMsgVaild}
-      </span>{" "}
+      <span className="popup__input-error">{userName.inputMsgVaild}</span>{" "}
     </PopupWithForm>
   );
 };

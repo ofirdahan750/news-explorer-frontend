@@ -7,9 +7,3 @@ export const setFormSetting = ({settingKey, settingData}) => {
 export const setFormInput = ({inputKey, inputVal, inputMsgVaild}) => {
   return {type: "SET_INPUT", payLoad: {inputKey, inputVal, inputMsgVaild}};
 };
-// export const onSetVaildMsg = (e) => {
-//   const {
-//     target: {name, validationMessage}
-//   } = e;
-//   return {type: "SET_VAILD_MSG", payLoad: {name, validationMessage}};
-// };

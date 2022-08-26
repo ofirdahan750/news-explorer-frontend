@@ -23,13 +23,31 @@ import Footer from "../Footer.js";
 import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
 import RegisterPopupup from "../RegisterPopupup/RegisterPopupup.js";
 import {useDispatch, useSelector} from "react-redux";
-import {setFormInput} from "../../store/actions/formSettingActions";
+import {
+  setFormInput,
+  setFormSetting
+} from "../../store/actions/formSettingActions";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
-  const formSetting = useSelector((state) => state.fromSettingModule);
+  const {inputs, isFormVaild} = useSelector((state) => state.fromSettingModule);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    //Set the isFormVaild key on the  formSettingReducer
+    const isAllInputsFilled = Object.values(inputs).every((v) => v.inputVal);
+    const isVaildMsgActive = !Object.values(inputs).some((val) =>
+      Boolean(val.inputMsgVaild)
+    );
+    const formVaild = isAllInputsFilled && isVaildMsgActive;
+    if (formVaild !== isFormVaild) {
+      onSetFromSetting("isFormVaild", formVaild);
+    }
+  }, [inputs]);
+
+  const onSetFromSetting = (key, val) => {
+    dispatch(setFormSetting({settingKey: key, settingData: val}));
+  };
   const onChangeInput = (e) => {
     e.preventDefault();
     const {
@@ -67,10 +85,6 @@ const App = () => {
         </div>
       </div>
       <main className="main">
-        <Routes>
-          <Route path="/"></Route>
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
         <AboutAuthor />
       </main>
       <Footer />

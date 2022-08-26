@@ -1,29 +1,34 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
 import {useSelector} from "react-redux";
-import {
-  onSetVaildMsg,
-  setFormInput,
-  setFormVaild
-} from "../../store/actions/formSettingActions";
 import "../PopupWithForm/PopupWithForm.css";
 
-const LoginPopupup = ({onChangeInput}) => {
-  const formSetting = useSelector((state) => state.fromSettingModule);
+const LoginPopupup = ({onChangeInput, handlePopupMouseDown}) => {
+  const {
+    inputs: {emailAddress, userPassword},
+    type,
+    isOpen,
+    title,
+    isFormVaild,
+    btnSetting
+  } = useSelector((state) => state.fromSettingModule);
+  const settingPopupWithForm = {
+    type,
+    isOpen,
+    title,
+    isFormVaild,
+    btnSetting
+  };
   return (
     <PopupWithForm
-      isOpen={true}
-      formSetting={formSetting}
-      handlePopupMouseDown={() => {
-        console.log("wow");
-      }}
-      isValidInput={true}
+      handlePopupMouseDown={handlePopupMouseDown}
       closeAllPopup={() => {
         console.log("wow");
       }}
       handleSubmit={() => {
         console.log("wow");
       }}
+      settingPopupWithForm={settingPopupWithForm}
     >
       <label className="popup__label">Email</label>
       <input
@@ -35,17 +40,17 @@ const LoginPopupup = ({onChangeInput}) => {
         type="email"
         placeholder="Enter email"
         name="emailAddress"
-        value={formSetting.inputs.emailAddress.inputVal || ""}
+        value={emailAddress.inputVal || ""}
         required
       />
       <span className="popup__input-error">
-        {formSetting.inputs.emailAddress.inputMsgVaild || ""}
+        {emailAddress.inputMsgVaild || ""}
       </span>
       <label className="popup__label">Password</label>
       <input
         className="popup__input popup__input_order_second-input"
         type="password"
-        value={formSetting.inputs.userPassword.inputVal || ""}
+        value={userPassword.inputVal || ""}
         name="userPassword"
         minLength="6"
         onChange={(e) => {
@@ -54,9 +59,7 @@ const LoginPopupup = ({onChangeInput}) => {
         placeholder="Enter password"
         required
       />
-      <span className="popup__input-error">
-        {formSetting.inputs.userPassword.inputMsgVaild}
-      </span>
+      <span className="popup__input-error">{userPassword.inputMsgVaild}</span>
     </PopupWithForm>
   );
 };

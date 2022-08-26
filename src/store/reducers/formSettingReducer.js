@@ -8,7 +8,7 @@ const initialState = {
     userName: {inputVal: "", inputMsgVaild: ""}
   },
   btnSetting: {isDisable: true, Txt: "Loading..."},
-  isValidInput: false
+  isFormVaild: false
 };
 export function formSettingReducer(state = initialState, action) {
   const {payLoad, type} = action;
@@ -16,7 +16,7 @@ export function formSettingReducer(state = initialState, action) {
     case "SET_SETTINGS":
       return {...payLoad};
     case "SET_SETTING":
-      return {...state, [state[payLoad.settingKey]]: payLoad.settingData};
+      return {...state, [payLoad.settingKey]: payLoad.settingData};
     case "SET_INPUT":
       return {
         ...state,

@@ -17,7 +17,7 @@ const Header = ({
   }
 }) => {
   const location = useLocation();
-  // const {formSetting} = useSelector((state) => state.fromSettingModule);
+  // const {formSettings} = useSelector((state) => state.fromSettingModule);
   const dispatch = useDispatch();
 
   const [currPathLocation, setCurrPathLocation] = useState("/");
