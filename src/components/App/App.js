@@ -43,6 +43,17 @@ const App = () => {
       })
     );
   };
+  const handlePopupMouseDown = (e) => {
+    const contextMenu = 2;
+    if (e.button === contextMenu) return;
+    if (
+      e.target.classList.contains("popup_visible") ||
+      e.target.classList.contains("popup__close-button")
+    ) {
+      // closeAllPopup();
+      console.log("works");
+    }
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
@@ -63,8 +74,11 @@ const App = () => {
         <AboutAuthor />
       </main>
       <Footer />
-      {/* <LoginPopupup onChangeInput={onChangeInput} /> */}
-      <RegisterPopupup onChangeInput={onChangeInput} />
+      {/* <LoginPopupup onChangeInput={onChangeInput} handlePopupMouseDown={handlePopupMouseDown} /> */}
+      <RegisterPopupup
+        onChangeInput={onChangeInput}
+        handlePopupMouseDown={handlePopupMouseDown}
+      />
     </CurrentUserContext.Provider>
   );
 };

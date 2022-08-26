@@ -4,15 +4,13 @@ import {useSelector} from "react-redux";
 import {setFormInput} from "../../store/actions/formSettingActions";
 import "../PopupWithForm/PopupWithForm.css";
 
-const RegisterPopupup = ({onChangeInput}) => {
+const RegisterPopupup = ({onChangeInput, handlePopupMouseDown}) => {
   const formSetting = useSelector((state) => state.fromSettingModule);
   return (
     <PopupWithForm
       isOpen={true}
       formSetting={formSetting}
-      handlePopupMouseDown={() => {
-        console.log("wow");
-      }}
+      handlePopupMouseDown={handlePopupMouseDown}
       isValidInput={true}
       closeAllPopup={() => {
         console.log("wow");
@@ -30,7 +28,7 @@ const RegisterPopupup = ({onChangeInput}) => {
         }}
         type="email"
         placeholder="Enter email"
-        name="email_address"
+        name="emailAddress"
         value={formSetting.inputs.emailAddress.inputVal || ""}
         required
       />

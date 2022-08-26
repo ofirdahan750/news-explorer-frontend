@@ -17,7 +17,7 @@ const PopupWithForm = ({
       }
       }`}
       onMouseDown={handlePopupMouseDown}
-      // onContextMenu={(e) => e.preventDefault()}
+      // onContextMenu={(e) => e.preventDefault()} //After done need will return
     >
       <div className="popup__container">
         <button
@@ -40,11 +40,9 @@ const PopupWithForm = ({
                   type === "confirm"
                     ? "popup__submit-button_type_delete-confirm"
                     : ""
-                } ${
-                  !isValidInput === false ? "popup__submit-button_inactive" : ""
-                }`}
+                } ${!isValidInput ? "popup__submit-button_inactive" : ""}`}
                 type="submit"
-                disabled={btnSetting.isDisable || !isValidInput}
+                // disabled={btnSetting.isDisable || !isValidInput}
               >
                 {btnSetting.txt || "Loading..."}
               </button>
