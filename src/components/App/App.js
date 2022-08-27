@@ -1,5 +1,5 @@
 import "./App.css";
-import React, {useCallback, useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   Routes,
   Route,
@@ -8,12 +8,7 @@ import {
   useLocation
 } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import {
-  loadingInitState,
-  loadingInitError,
-  txtErr,
-  errImg
-} from "../../utils/constants";
+import {loadingInitState} from "../../utils/constants";
 
 import Header from "../Header/Header.js";
 import Search from "../Search/Search.js";
@@ -25,12 +20,13 @@ import RegisterPopupup from "../RegisterPopupup/RegisterPopupup.js";
 import {useDispatch, useSelector} from "react-redux";
 import {
   setFormInput,
-  setFormSetting
+  setFormSetting,
+  setFormSettings
 } from "../../store/actions/formSettingActions";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
-  const {inputs, isFormVaild, isOpen} = useSelector(
+  const {inputs, isFormVaild, isOpen, type} = useSelector(
     (state) => state.fromSettingModule
   );
   const dispatch = useDispatch();
@@ -46,9 +42,6 @@ const App = () => {
       onSetFromSetting("isFormVaild", formVaild);
     }
   }, [inputs]);
-  useEffect(() => {
-    console.log(" isOpen:", isOpen);
-  }, [isOpen]);
 
   const onSetFromSetting = (key, val) => {
     dispatch(setFormSetting({settingKey: key, settingData: val}));
@@ -73,10 +66,13 @@ const App = () => {
       e.target.classList.contains("popup_visible") ||
       e.target.classList.contains("popup__close-button")
     ) {
-      // closeAllPopup();
-      console.log("works");
+      handlePopupToggleView();
     }
   };
+  const handlePopupToggleView = (stateKey = "close") => {
+    dispatch(setFormSettings(stateKey));
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
@@ -85,7 +81,7 @@ const App = () => {
           role="img"
           aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
         >
-          <Header onSetFromSetting={onSetFromSetting} />
+          <Header handlePopupToggleView={handlePopupToggleView} />
           <Search />
         </div>
       </div>
@@ -96,10 +92,12 @@ const App = () => {
       <LoginPopupup
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}
+        handlePopupToggleView={handlePopupToggleView}
       />
       <RegisterPopupup
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}
+        handlePopupToggleView={handlePopupToggleView}
       />
     </CurrentUserContext.Provider>
   );

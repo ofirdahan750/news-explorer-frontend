@@ -6,13 +6,12 @@ import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
 import MoblieMenuHeader from "../NavHeader/MoblieMenuHeader.js";
 import {useSelector} from "react-redux";
 
-const Header = ({isLoggedIn = false, onSetFromSetting}) => {
+const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   const location = useLocation();
   const [currPathLocation, setCurrPathLocation] = useState("/");
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 471;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
-  // const dispatch = useDispatch();
   const {isOpen} = useSelector((state) => state.fromSettingModule);
 
   useEffect(() => {
@@ -42,10 +41,6 @@ const Header = ({isLoggedIn = false, onSetFromSetting}) => {
       return "#FFFFFF";
     }
   };
-  const handlPopupToggle = () => {
-    const newState = !isOpen;
-    onSetFromSetting("isOpen", newState);
-  };
   return (
     <>
       {width < moblieBreakpoint && isMoblieMenuOpen && isLoggedIn && (
@@ -59,7 +54,7 @@ const Header = ({isLoggedIn = false, onSetFromSetting}) => {
           {width > moblieBreakpoint ? (
             <NavHeaderDesktop
               isLoggedIn={isLoggedIn}
-              handlPopupToggle={handlPopupToggle}
+              handlePopupToggleView={handlePopupToggleView}
             />
           ) : (
             <NavHeaderMoblie

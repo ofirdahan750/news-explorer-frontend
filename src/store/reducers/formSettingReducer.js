@@ -1,20 +1,11 @@
-const initialState = {
-  isOpen: false,
-  type: "register",
-  title: "Loading...",
-  inputs: {
-    emailAddress: {inputVal: "", inputMsgVaild: ""},
-    userPassword: {inputVal: "", inputMsgVaild: ""},
-    userName: {inputVal: "", inputMsgVaild: ""}
-  },
-  btnSetting: {isDisable: true, Txt: "Loading..."},
-  isFormVaild: false
-};
+import {formState} from "../../utils/constants.js";
+const initialState = formState.init;
+
 export function formSettingReducer(state = initialState, action) {
   const {payLoad, type} = action;
   switch (type) {
     case "SET_SETTINGS":
-      return {...payLoad};
+      return {...formState[payLoad]};
     case "SET_SETTING":
       return {...state, [payLoad.settingKey]: payLoad.settingData};
     case "SET_INPUT":

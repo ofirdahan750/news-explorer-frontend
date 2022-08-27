@@ -5,7 +5,7 @@ import "./NavHeader.css";
 const NavHeaderDesktop = ({
   isLoggedIn,
   handleLogOutclicked,
-  handlPopupToggle
+  handlePopupToggleView
 }) => {
   const location = useLocation();
   const {email} = useContext(CurrentUserContext);
@@ -23,7 +23,9 @@ const NavHeaderDesktop = ({
       </button>
       {!isLoggedIn && (
         <button
-          onClick={handlPopupToggle}
+          onClick={() => {
+            handlePopupToggleView("login");
+          }}
           className="header__nav-btn header__nav-btn_type_signin btn-link-modifier "
         >
           Sign in
