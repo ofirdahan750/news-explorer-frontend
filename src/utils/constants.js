@@ -15,19 +15,22 @@ export const formState = {
     inputs: {},
     btnSetting: {isDisable: true, txt: "Loading..."},
     isFormVaild: false,
-    bottomLink: {txt: "Loading...", linkType: "close"}
+    bottomLink: {
+      txt: {beforeSpan: "", afterSpan: ""},
+      linkType: "init"
+    }
   },
   close: {
     isOpen: false,
     type: "close",
     title: "Closing...",
     btnSetting: {isDisable: true, txt: "Closing..."},
-    inputs: {
-      emailAddress: {inputVal: "", inputMsgVaild: ""},
-      userPassword: {inputVal: "", inputMsgVaild: ""},
-      userName: {inputVal: "", inputMsgVaild: ""}
+    inputs: {},
+    bottomLink: {
+      txt: {beforeSpan: "Closing", afterSpan: "..."},
+      linkType: "close"
     },
-    bottomLink: {txt: "Close...", linkType: "close"},
+
     isFormVaild: false
   },
   register: {
@@ -40,7 +43,10 @@ export const formState = {
       userName: {inputVal: "", inputMsgVaild: ""}
     },
     btnSetting: {isDisable: false, txt: "Sign up"},
-    bottomLink: {txt: "Sign in", linkType: "login"},
+    bottomLink: {
+      txt: {beforeSpan: "or", afterSpan: "Sign in"},
+      linkType: "login"
+    },
 
     isFormVaild: false
   },
@@ -48,13 +54,16 @@ export const formState = {
     isOpen: true,
     type: "login",
     title: "Sign in",
-    btnSetting: {isDisable: false, txt: "Sign in"},
+    btnSetting: {isDisable: true, txt: "Sign in"},
     inputs: {
       emailAddress: {inputVal: "", inputMsgVaild: ""},
       userPassword: {inputVal: "", inputMsgVaild: ""}
     },
     isFormVaild: false,
-    bottomLink: {txt: "Sign up", linkType: "register"}
+    bottomLink: {
+      txt: {beforeSpan: "or", afterSpan: "Sign in"},
+      linkType: "register"
+    }
   }
 };
 

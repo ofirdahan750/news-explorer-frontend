@@ -6,13 +6,11 @@ import "../PopupWithForm/PopupWithForm.css";
 const RegisterPopupup = ({
   onChangeInput,
   handlePopupMouseDown,
-  handlePopupToggleView
+  handlePopupToggleView,
+  isInputHaveKey
 }) => {
-  const {inputs, type, isOpen, title, isFormVaild, btnSetting,bottomLink} = useSelector(
-    (state) => state.fromSettingModule
-  );
-  // if (!inputs.emailAddress || !inputs.userPassword || !inputs.userName) return;
-
+  const {inputs, type, isOpen, title, isFormVaild, btnSetting, bottomLink} =
+    useSelector((state) => state.fromSettingModule);
   const settingPopupWithForm = {
     type,
     isOpen,
@@ -36,66 +34,53 @@ const RegisterPopupup = ({
       handlePopupToggleView={handlePopupToggleView}
     >
       <label className="popup__label">Email</label>
-      {inputs.hasOwnProperty('emailAddress') && (
-        <>
-          <input
-            className="popup__input popup__input_order_first-input"
-            autoFocus
-            onChange={(e) => {
-              onChangeInput(e);
-            }}
-            type="email"
-            placeholder="Enter email"
-            name="emailAddress"
-            value={inputs.emailAddress.inputVal || ""}
-            required
-          />
-          <span className="popup__input-error">
-            {inputs?.emailAddress.inputMsgVaild || ""}
-          </span>
-        </>
-      )}
+      <input
+        className="popup__input popup__input_order_first-input"
+        autoFocus
+        onChange={(e) => {
+          onChangeInput(e);
+        }}
+        type="email"
+        placeholder="Enter email"
+        name="emailAddress"
+        value={isInputHaveKey({key: "emailAddress", subKey: "inputVal"})}
+        required
+      />
+      <span className="popup__input-error">
+        {isInputHaveKey({key: "emailAddress", subKey: "inputMsgVaild"})}
+      </span>
       <label className="popup__label">Password</label>
-      <label className="popup__label">Email</label>
-      {inputs.hasOwnProperty('userPassword') && (
-        <>
-          <input
-            className="popup__input popup__input_order_second-input"
-            type="password"
-            value={inputs.userPassword.inputVal || ""}
-            name="userPassword"
-            minLength="6"
-            onChange={(e) => {
-              onChangeInput(e);
-            }}
-            placeholder="Enter password"
-            required
-          />
-          <span className="popup__input-error">
-            {inputs?.userPassword.inputMsgVaild}
-          </span>
-        </>
-      )}
+      <input
+        className="popup__input popup__input_order_second-input"
+        type="password"
+        value={isInputHaveKey({key: "userPassword", subKey: "inputVal"})}
+        name="userPassword"
+        minLength="6"
+        onChange={(e) => {
+          onChangeInput(e);
+        }}
+        placeholder="Enter password"
+        required
+      />
+      <span className="popup__input-error">
+        {isInputHaveKey({key: "userPassword", subKey: "inputMsgVaild"})}
+      </span>
       <label className="popup__label">Name</label>
-      {inputs.hasOwnProperty('userName') && (
-        <>
-          <input
-            className="popup__input popup__input_order_third-input"
-            type="text"
-            value={inputs.userName.inputVal || ""}
-            name="userName"
-            minLength="2"
-            onChange={(e) => {
-              onChangeInput(e);
-            }}
-            placeholder="Enter your username"
-            required
-          />
-          <span className="popup__input-error">
-            {inputs.userName.inputMsgVaild}
-          </span>
-        </>
-      )}
+      <input
+        className="popup__input popup__input_order_third-input"
+        type="text"
+        value={isInputHaveKey({key: "userName", subKey: "inputVal"})}
+        name="userName"
+        minLength="2"
+        onChange={(e) => {
+          onChangeInput(e);
+        }}
+        placeholder="Enter your username"
+        required
+      />
+      <span className="popup__input-error">
+        {isInputHaveKey({key: "userName", subKey: "inputMsgVaild"})}
+      </span>
     </PopupWithForm>
   );
 };

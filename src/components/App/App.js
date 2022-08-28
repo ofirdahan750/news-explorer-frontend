@@ -41,6 +41,7 @@ const App = () => {
     if (formVaild !== isFormVaild) {
       onSetFromSetting("isFormVaild", formVaild);
     }
+    console.log(inputs)
   }, [inputs]);
 
   const onSetFromSetting = (key, val) => {
@@ -72,6 +73,9 @@ const App = () => {
   const handlePopupToggleView = (stateKey = "close") => {
     dispatch(setFormSettings(stateKey));
   };
+  const isInputHaveKey = ({key, subKey}) => {
+    return (inputs.hasOwnProperty(key) && inputs[key][subKey]) || "";
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -93,11 +97,14 @@ const App = () => {
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
+        isInputHaveKey={isInputHaveKey}
       />
       <RegisterPopupup
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
+        isInputHaveKey={isInputHaveKey}
+
       />
     </CurrentUserContext.Provider>
   );

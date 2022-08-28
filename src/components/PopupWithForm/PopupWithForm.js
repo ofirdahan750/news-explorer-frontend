@@ -43,8 +43,9 @@ const PopupWithForm = ({
               {children}
               <button
                 className={`popup__submit-button ${
-                  !isFormVaild ||
-                  (btnSetting.isDisable && "popup__submit-button_inactive")
+                  !isFormVaild || btnSetting.isDisable
+                    ? "popup__submit-button_inactive"
+                    : ""
                 }
                 btn-link-modifier animation-modifier_type_opacity-hover$ `}
                 type="submit"
@@ -54,14 +55,14 @@ const PopupWithForm = ({
               </button>
             </fieldset>
             <div className="popup__bottom-link link-modifier animation-modifier_type_opacity-hover">
-              or{" "}
+              {bottomLink.txt.beforeSpan} {""}
               <span
                 onClick={() => {
                   handlePopupToggleView(bottomLink.linkType);
                 }}
                 className="popup__bottom-link_txt_link"
               >
-                {bottomLink.txt}
+                {bottomLink.txt.afterSpan}
               </span>
             </div>
           </form>

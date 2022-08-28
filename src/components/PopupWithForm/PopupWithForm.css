@@ -11,13 +11,13 @@
   background-color: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.15s, opacity 600ms;
+  transition: visibility 0s linear 0.15s, opacity 300ms;
   z-index: 10000;
 }
 .popup_visible {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s linear 0s, opacity 600ms;
+  transition: visibility 0s linear 0s, opacity 300ms;
 }
 .popup__container {
   position: relative;
