@@ -2,8 +2,7 @@ import {useContext} from "react";
 import {Link, useLocation} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NavHeader.css";
-import "./NavHeaderMoblie.css";
-const NavHeaderMoblie = ({
+const NavHeader = ({
   isLoggedIn,
   handleLogOutclicked,
   handlePopupToggleView
@@ -11,10 +10,10 @@ const NavHeaderMoblie = ({
   const location = useLocation();
   const {email} = useContext(CurrentUserContext);
   return (
-    <nav className="header__nav-container">
+    <nav className="nav-header__container">
       <button
         type="button"
-        className="header__nav-btn btn-link-modifier"
+        className="nav-header__btn btn-link-modifier"
         // style={{
         //   borderBottom: "3px solid #FFFFFF",
         //   height: "100%",
@@ -29,7 +28,7 @@ const NavHeaderMoblie = ({
           onClick={() => {
             handlePopupToggleView("login");
           }}
-          className="header__nav-btn header__nav-btn_type_signin btn-link-modifier "
+          className="nav-header__btn nav-header__btn_type_signin btn-link-modifier "
         >
           Sign in
         </button>
@@ -46,4 +45,4 @@ const NavHeaderMoblie = ({
     </nav>
   );
 };
-export default NavHeaderMoblie;
+export default NavHeader;

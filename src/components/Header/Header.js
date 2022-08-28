@@ -1,9 +1,9 @@
 import "./Header.css";
 import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import NavHeaderDesktop from "../NavHeader/NavHeaderDesktop.js";
-import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
 import {useSelector} from "react-redux";
+
+import NavHeader from "../NavHeader/NavHeader.js";
 
 const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   const location = useLocation();
@@ -11,7 +11,7 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 470;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
-  const {isOpen} = useSelector((state) => state.fromSettingModule);
+  // const {btnSetting} = useSelector((state) => state.fromSettingModule); //After submit Form login will close the menu
 
   useEffect(() => {
     //Fixing humbeger button if user toggle to bigger/smaller screen
@@ -46,7 +46,7 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
             <Link to="/">NewsExplorer</Link>
           </div>
           {width > moblieBreakpoint ? (
-            <NavHeaderDesktop
+            <NavHeader
               isLoggedIn={isLoggedIn}
               handlePopupToggleView={handlePopupToggleView}
             />
@@ -73,7 +73,7 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
           )}
         </div>
         {width < moblieBreakpoint && isMoblieMenuOpen && (
-          <NavHeaderMoblie
+          <NavHeader
             isLoggedIn={isLoggedIn}
             handlePopupToggleView={handlePopupToggleView}
           />
