@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
 import NavHeaderDesktop from "../NavHeader/NavHeaderDesktop.js";
 import NavHeaderMoblie from "../NavHeader/NavHeaderMoblie.js";
-import MoblieMenuHeader from "../NavHeader/MoblieMenuHeader.js";
 import {useSelector} from "react-redux";
 
 const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
@@ -23,16 +22,11 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
-
   useEffect(() => {
-    //Logging out-closing the menu
-    if (!isLoggedIn) {
-      setIsMoblieMenuOpen(false);
-    }
-    return () => {
-      setIsMoblieMenuOpen(false);
-    };
-  }, [isLoggedIn]);
+    //Make sure the moblie will disappear
+    if (width > moblieBreakpoint) setIsMoblieMenuOpen(false);
+  }, [window.innerWidth]);
+
   useEffect(() => {
     setCurrPathLocation(location.pathname);
   }, [location.pathname]);
@@ -43,9 +37,6 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   };
   return (
     <>
-      {width < moblieBreakpoint && isMoblieMenuOpen && isLoggedIn && (
-        <MoblieMenuHeader />
-      )}
       <header
         className="header"
         style={{backgroundColor: isMoblieMenuOpen && "rgba(26, 27, 34, 1)"}}
@@ -60,13 +51,33 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
               handlePopupToggleView={handlePopupToggleView}
             />
           ) : (
-            <NavHeaderMoblie
-              isLoggedIn={isLoggedIn}
-              setIsMoblieMenuOpen={setIsMoblieMenuOpen}
-              isMoblieMenuOpen={isMoblieMenuOpen}
-            />
+            <button
+              type="button"
+              className="header__moblie-menu-btn btn-link-modifier"
+              onClick={() => {
+                setIsMoblieMenuOpen(!isMoblieMenuOpen);
+              }}
+            >
+              <img
+                className="header__moblie-menu-img"
+                src={
+                  isMoblieMenuOpen
+                    ? require(`../../images/Header/close.svg`).default
+                    : require(`../../images/Header/menu.svg`).default
+                }
+                alt={`A button to ${
+                  isMoblieMenuOpen ? "close" : "open"
+                } the moblie menu`}
+              />
+            </button>
           )}
         </div>
+        {width < moblieBreakpoint && isMoblieMenuOpen && (
+          <NavHeaderMoblie
+            isLoggedIn={isLoggedIn}
+            handlePopupToggleView={handlePopupToggleView}
+          />
+        )}
       </header>
     </>
   );

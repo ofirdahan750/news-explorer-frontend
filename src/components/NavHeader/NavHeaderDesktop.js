@@ -2,6 +2,7 @@ import {useContext} from "react";
 import {Link, useLocation} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NavHeader.css";
+import "./NavHeaderDesktop.css";
 const NavHeaderDesktop = ({
   isLoggedIn,
   handleLogOutclicked,
@@ -10,8 +11,9 @@ const NavHeaderDesktop = ({
   const location = useLocation();
   const {email} = useContext(CurrentUserContext);
   return (
-    <nav className="header__nav-container header__nav-container_type_desktop">
+    <nav className="header__nav-container">
       <button
+        type="button"
         className="header__nav-btn btn-link-modifier"
         style={{
           borderBottom: "3px solid #FFFFFF",
@@ -23,10 +25,11 @@ const NavHeaderDesktop = ({
       </button>
       {!isLoggedIn && (
         <button
+          type="button"
           onClick={() => {
             handlePopupToggleView("login");
           }}
-          className="header__nav-btn header__nav-btn_type_signin btn-link-modifier "
+          className="header__nav-btn  header__nav-btn_type_signin btn-link-modifier "
         >
           Sign in
         </button>

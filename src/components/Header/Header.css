@@ -4,6 +4,7 @@
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
   width: 100%;
   z-index: 10;
+  position: relative;
 }
 .header__wrapper {
   max-width: calc(100vw - (16px * 2)); /*Moblie */
@@ -12,7 +13,6 @@
   align-items: center;
   height: 100%;
   margin: 0 auto;
-
   text-align: center;
 }
 .header__logo {
@@ -20,10 +20,18 @@
   line-height: 1.2;
   font-weight: 700;
 }
+.header__moblie-menu-btn {
+  max-width: 24px;
+  max-height: 24px;
+}
+.header__moblie-menu-img {
+  object-fit: cover;
+}
 @media screen and (min-width: 471px) {
   /*Tablet*/
   .header {
     height: 66px;
+    position: static;
   }
   .header__wrapper {
     max-width: calc(100vw - (42px * 2));

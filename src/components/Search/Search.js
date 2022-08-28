@@ -9,7 +9,9 @@ const Search = () => {
       </h2>
       <form className="search__form">
         <input className="search__input" placeholder="Enter topic" />
-        <button className="search__btn btn-link-modifier">Search</button>
+        <button type="button" className="search__btn btn-link-modifier">
+          Search
+        </button>
       </form>
     </section>
   );
