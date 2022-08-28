@@ -41,7 +41,7 @@ const App = () => {
     if (formVaild !== isFormVaild) {
       onSetFromSetting("isFormVaild", formVaild);
     }
-    console.log(inputs)
+    console.log(inputs);
   }, [inputs]);
 
   const onSetFromSetting = (key, val) => {
@@ -104,7 +104,6 @@ const App = () => {
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
         isInputHaveKey={isInputHaveKey}
-
       />
     </CurrentUserContext.Provider>
   );
