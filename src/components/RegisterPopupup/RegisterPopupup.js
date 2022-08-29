@@ -1,7 +1,9 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
+import {setFormSetting} from "../../store/actions/formSettingActions.js";
+import {register} from "../../utils/auth.js";
 
 const RegisterPopupup = ({
   onChangeInput,
@@ -16,7 +18,8 @@ const RegisterPopupup = ({
     isFormVaild,
     btnSetting,
     bottomLink,
-    serverError
+    serverError,
+    inputs
   } = useSelector((state) => state.fromSettingModule);
   const settingPopupWithForm = {
     type,
@@ -24,18 +27,38 @@ const RegisterPopupup = ({
     title,
     isFormVaild,
     btnSetting,
+    inputs,
     bottomLink
   };
   const currType = "register";
+  const dispatch = useDispatch();
+
+  const handleNewUserSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      setFormSetting({
+        settingKey: "btnSetting",
+        settingData: {txt: "Loading...", isDisable: true}
+      })
+    );
+    register({
+      email: inputs.emailAddress.inputVal,
+      password: inputs.userPassword.inputVal,
+      name: inputs.userName.inputVal
+    })
+      .then(() => {
+        handlePopupToggleView("signup_success");
+      })
+      .catch((err) => {
+        console.log("err:", err);
+        // handleAlertPopupOpen(false);
+        // onHandleBtnText("Sign up", true, err);
+      });
+  };
   return (
     <PopupWithForm
       handlePopupMouseDown={handlePopupMouseDown}
-      closeAllPopup={() => {
-        console.log("wow");
-      }}
-      handleSubmit={() => {
-        console.log("wow");
-      }}
+      handleSubmit={handleNewUserSubmit}
       settingPopupWithForm={settingPopupWithForm}
       currType={currType}
       handlePopupToggleView={handlePopupToggleView}
@@ -79,6 +102,7 @@ const RegisterPopupup = ({
         value={isInputHaveKey({key: "userName", subKey: "inputVal"})}
         name="userName"
         minLength="2"
+        maxLength="30"
         onChange={(e) => {
           onChangeInput(e);
         }}
@@ -87,7 +111,7 @@ const RegisterPopupup = ({
       />
       <span
         className="popup__input-error"
-        style={{minHeight: serverError && "17px"}} //Fixing the height when servererror is activef
+        style={{minHeight: serverError && "17px"}} //Fixing the height when servererror is active
       >
         {isInputHaveKey({key: "userName", subKey: "inputMsgVaild"})}
       </span>

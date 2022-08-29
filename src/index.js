@@ -16,6 +16,9 @@ root.render(
   <StrictMode>
     <Router>
       <Provider store={store}>
+        {/* <div className="preloader"> //Pre loader 
+          <i className="circle-preloader"></i>
+        </div> */}
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="*" element={<Navigate to="/" />} />

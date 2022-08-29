@@ -1,4 +1,5 @@
 import React from "react";
+import {register} from "../../utils/auth";
 import "./PopupWithForm.css";
 const PopupWithForm = ({
   children,
@@ -10,7 +11,8 @@ const PopupWithForm = ({
     title,
     isFormVaild,
     btnSetting,
-    bottomLink
+    bottomLink,
+    inputs
   },
   currType,
   handlePopupToggleView
@@ -32,35 +34,42 @@ const PopupWithForm = ({
           }}
         ></button>
         <div className="popup__wrapper">
-          <h2 className="popup__heading">{title}</h2>
+          <h2 className={`popup__heading popup__heading_type_${type}`}>
+            {title}
+          </h2>
           <form
-            className="popup__form"
+            className={`popup__form popup__form_type_${type}`}
             noValidate
             onSubmit={handleSubmit}
             autoComplete="off"
           >
             <fieldset className="popup__fieldset">
               {children}
-              <button
-                className={`popup__submit-button ${
-                  !isFormVaild || btnSetting.isDisable
-                    ? "popup__submit-button_inactive"
-                    : ""
-                }
-                btn-link-modifier animation-modifier_type_opacity-hover$ `}
-                type="submit"
-                disabled={!isFormVaild || btnSetting.isDisable}
-              >
-                {btnSetting.txt || "Loading..."}
-              </button>
+              {type !== "signup_success" && (
+                <button
+                  className={`popup__submit-button ${
+                    !isFormVaild || btnSetting.isDisable
+                      ? "popup__submit-button_inactive"
+                      : ""
+                  }
+                btn-link-modifier animation-modifier_type_opacity-hover$`}
+                  type="submit"
+                  disabled={!isFormVaild || btnSetting.isDisable}
+                >
+                  {btnSetting.txt || "Loading..."}
+                </button>
+              )}
             </fieldset>
-            <div className="popup__bottom-link link-modifier animation-modifier_type_opacity-hover">
+
+            <div
+              className={`popup__bottom-link popup__bottom-link_type_${type} link-modifier animation-modifier_type_opacity-hover`}
+            >
               {bottomLink.txt.beforeSpan} {""}
               <span
                 onClick={() => {
                   handlePopupToggleView(bottomLink.linkType);
                 }}
-                className="popup__bottom-link_txt_link"
+                className="popup__bottom-link_txt_link popup__bottom-link_type_signup_success"
               >
                 {bottomLink.txt.afterSpan}
               </span>

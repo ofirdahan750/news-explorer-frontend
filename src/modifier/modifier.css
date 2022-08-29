@@ -1,4 +1,4 @@
-l.btn-link-modifier,
+.btn-link-modifier,
 .btn-link-modifier > * {
   all: unset;
   cursor: pointer;

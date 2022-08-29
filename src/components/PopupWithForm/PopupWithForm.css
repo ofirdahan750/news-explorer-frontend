@@ -11,13 +11,13 @@
   background-color: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s linear 0.15s, opacity 300ms;
+  transition: visibility 0s linear 0.15s, opacity 777ms;
   z-index: 10000;
 }
 .popup_visible {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s linear 0s, opacity 300ms;
+  transition: visibility 0s linear 0s, opacity 777ms;
 }
 .popup__container {
   position: relative;
@@ -53,10 +53,19 @@
   line-height: 1.1666666667;
   color: #1a1b22;
 }
+.popup__heading_type_signup_success {
+  margin: 0;
+}
 .popup__form {
   display: flex;
   flex-direction: column;
   margin: 22px 0 0;
+}
+.popup__form_type_close {
+  display: none;
+}
+.popup__form_type_signup_success {
+  margin: 0;
 }
 .popup__fieldset {
   all: unset;
@@ -124,12 +133,16 @@
   color: #000000;
   margin: 22px 0 0;
 }
+.popup__bottom-link_type_signup_success {
+  margin: 14px 0 0;
+  text-align: left;
+}
 
 .popup__bottom-link_txt_link {
   color: #2f71e5;
   cursor: pointer;
 }
-@media screen and (min-width: 548px) {
+@media screen and (min-width: 470px) {
   /*Tablet*/
   .popup__wrapper {
     padding: 34px 36px 28px;
@@ -138,11 +151,14 @@
     max-width: 430px;
   }
   .popup__close-button {
-    right: -46px;
-    top: -46px;
+    right: -20px;
+    top: -40px;
   }
   .popup__heading {
     margin: 0 0 22px;
+  }
+  .popup__heading_type_signup_success {
+    margin: 0;
   }
   .popup__label {
     margin: 0 0 9px;

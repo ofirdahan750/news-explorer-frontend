@@ -14,11 +14,11 @@ const NavHeader = ({
       <button
         type="button"
         className="nav-header__btn btn-link-modifier"
-        // style={{
-        //   borderBottom: "3px solid #FFFFFF",
-        //   height: "100%",
-        //   borderTop: "3px transparent"
-        // }}
+        style={{
+          borderBottom: "3px solid #FFFFFF",
+          height: "100%",
+          borderTop: "3px transparent"
+        }}
       >
         <Link to="/">Home</Link>
       </button>

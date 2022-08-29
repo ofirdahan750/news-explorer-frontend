@@ -1,13 +1,17 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
+import {authenticate, validateToken} from "../../utils/auth.js";
+import api from "../../utils/api.js";
+import {setFormSetting} from "../../store/actions/formSettingActions.js";
 
 const LoginPopupup = ({
   onChangeInput,
   handlePopupMouseDown,
   handlePopupToggleView,
-  isInputHaveKey
+  isInputHaveKey,
+  setCurrentUser
 }) => {
   const {
     type,
@@ -16,7 +20,8 @@ const LoginPopupup = ({
     isFormVaild,
     btnSetting,
     bottomLink,
-    serverError
+    serverError,
+    inputs
   } = useSelector((state) => state.fromSettingModule);
 
   const settingPopupWithForm = {
@@ -25,15 +30,36 @@ const LoginPopupup = ({
     title,
     isFormVaild,
     btnSetting,
-    bottomLink
+    bottomLink,
+    inputs
   };
   const currType = "login";
-
+  const dispatch = useDispatch();
   return (
     <PopupWithForm
       handlePopupMouseDown={handlePopupMouseDown}
-      handleSubmit={() => {
-        console.log("wow");
+      handleSubmit={(e) => {
+        e.preventDefault();
+        dispatch(
+          setFormSetting({
+            settingKey: "btnSetting",
+            settingData: {txt: "Loading...", isDisable: true}
+          })
+        );
+        authenticate({
+          email: inputs.emailAddress.inputVal,
+          password: inputs.userPassword.inputVal
+        })
+          .then((user) => {
+            localStorage.setItem("jwt", user.token);
+            api.setTokenHeader(user.token);
+            const userInfo = validateToken(user.token);
+            setCurrentUser(userInfo);
+            handlePopupToggleView("close");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }}
       settingPopupWithForm={settingPopupWithForm}
       currType={currType}

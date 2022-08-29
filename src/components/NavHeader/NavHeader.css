@@ -10,10 +10,10 @@
   justify-content: space-around; /*Moblie */
 }
 .nav-header__btn {
+  width: fit-content; /*Moblie */
   font-size: 1.125rem; /*Moblie */
   line-height: 3.1111111111; /*Moblie */
   font-weight: 500;
-  width: fit-content;
   height: 100%;
 }
 .nav-header__btn_type_signin {
@@ -23,7 +23,9 @@
   border-radius: 100px;
   text-align: center;
 }
-
+.nav-header__container {
+  height: unset;
+}
 @media screen and (min-width: 471px) {
   /*Tablet*/
   .nav-header__container {
@@ -35,6 +37,7 @@
     width: auto;
     background-color: transparent;
     padding: 0;
+    height: 100%;
   }
   .nav-header__btn {
     font-size: 1rem;

@@ -53,15 +53,28 @@ export const formState = {
     isOpen: true,
     type: "login",
     title: "Sign in",
-    btnSetting: {isDisable: true, txt: "Sign in"},
+    btnSetting: {isDisable: false, txt: "Sign in"},
     inputs: {
       emailAddress: {inputVal: "", inputMsgVaild: ""},
       userPassword: {inputVal: "", inputMsgVaild: ""}
     },
     isFormVaild: false,
     bottomLink: {
-      txt: {beforeSpan: "or", afterSpan: "Sign in"},
+      txt: {beforeSpan: "or", afterSpan: "Sign up"},
       linkType: "register"
+    },
+    serverError: ""
+  },
+  signup_success: {
+    isOpen: true,
+    type: "signup_success",
+    title: "Registration successfully completed!",
+    btnSetting: {isDisable: false, txt: ""},
+    inputs: {},
+    isFormVaild: false,
+    bottomLink: {
+      txt: {beforeSpan: "", afterSpan: "Sign in"},
+      linkType: "login"
     },
     serverError: ""
   }

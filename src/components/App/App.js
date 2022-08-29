@@ -1,5 +1,5 @@
 import "./App.css";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import {
   Routes,
   Route,
@@ -17,6 +17,7 @@ import Footer from "../Footer.js";
 
 import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
 import RegisterPopupup from "../RegisterPopupup/RegisterPopupup.js";
+import SuccessPopupup from "../SuccessPopupup/SuccessPopupup.js";
 import {useDispatch, useSelector} from "react-redux";
 import {
   setFormInput,
@@ -26,7 +27,9 @@ import {
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
-  const {inputs, isFormVaild} = useSelector((state) => state.fromSettingModule);
+  const {inputs, isFormVaild, isOpen} = useSelector(
+    (state) => state.fromSettingModule
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,14 +40,31 @@ const App = () => {
     );
     const formVaild = isAllInputsFilled && isVaildMsgActive;
     if (formVaild !== isFormVaild) {
-      onSetFromSetting("isFormVaild", formVaild);
+      dispatch(
+        setFormSetting({settingKey: "isFormVaild", settingData: formVaild})
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputs]);
+  useEffect(
+    //Set and Remove Popups event esc button
+    () => {
+      if (isOpen) {
+        document.addEventListener("keydown", handleEscClose);
+      } else {
+        document.removeEventListener("keydown", handleEscClose);
+      }
+    },
+    // eslint-disable-next-line
+    [isOpen]
+  );
+  const handleEscClose = useCallback((e) => {
+    if (e.key === "Escape") {
+      handlePopupToggleView();
+    }
+    // eslint-disable-next-line
+  }, []);
 
-  const onSetFromSetting = (key, val) => {
-    dispatch(setFormSetting({settingKey: key, settingData: val}));
-  };
   const onChangeInput = (e) => {
     e.preventDefault();
     const {
@@ -96,12 +116,17 @@ const App = () => {
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
         isInputHaveKey={isInputHaveKey}
+        setCurrentUser={setCurrentUser}
       />
       <RegisterPopupup
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
         isInputHaveKey={isInputHaveKey}
+      />
+      <SuccessPopupup
+        handlePopupMouseDown={handlePopupMouseDown}
+        handlePopupToggleView={handlePopupToggleView}
       />
     </CurrentUserContext.Provider>
   );
