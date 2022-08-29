@@ -30,7 +30,6 @@ export const formState = {
       txt: {beforeSpan: "Closing", afterSpan: "..."},
       linkType: "close"
     },
-
     isFormVaild: false
   },
   register: {
@@ -47,7 +46,7 @@ export const formState = {
       txt: {beforeSpan: "or", afterSpan: "Sign in"},
       linkType: "login"
     },
-
+    serverError: "",
     isFormVaild: false
   },
   login: {
@@ -63,7 +62,8 @@ export const formState = {
     bottomLink: {
       txt: {beforeSpan: "or", afterSpan: "Sign in"},
       linkType: "register"
-    }
+    },
+    serverError: ""
   }
 };
 

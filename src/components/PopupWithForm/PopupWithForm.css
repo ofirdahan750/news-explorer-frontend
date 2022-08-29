@@ -89,6 +89,11 @@
   margin: 3px 0 0;
   min-height: 30px;
 }
+.popup__input-error_type_server-error {
+  text-align: center;
+  min-height: 8px;
+  margin: 0;
+}
 .popup__submit-button {
   padding: 0; /*Mobile*/
   min-height: 64px;
@@ -111,6 +116,7 @@
   pointer-events: none;
   border-radius: 100px;
 }
+
 .popup__bottom-link {
   font-size: 0.875rem;
   line-height: 1.21428571429;

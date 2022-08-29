@@ -9,8 +9,15 @@ const LoginPopupup = ({
   handlePopupToggleView,
   isInputHaveKey
 }) => {
-  const {inputs, type, isOpen, title, isFormVaild, btnSetting, bottomLink} =
-    useSelector((state) => state.fromSettingModule);
+  const {
+    type,
+    isOpen,
+    title,
+    isFormVaild,
+    btnSetting,
+    bottomLink,
+    serverError
+  } = useSelector((state) => state.fromSettingModule);
 
   const settingPopupWithForm = {
     type,
@@ -62,8 +69,14 @@ const LoginPopupup = ({
         placeholder="Enter password"
         required
       />
-      <span className="popup__input-error">
+      <span
+        className="popup__input-error"
+        style={{minHeight: serverError && "17px"}}
+      >
         {isInputHaveKey({key: "userPassword", subKey: "inputMsgVaild"})}
+      </span>
+      <span className="popup__input-error popup__input-error_type_server-error">
+        {serverError}
       </span>
     </PopupWithForm>
   );

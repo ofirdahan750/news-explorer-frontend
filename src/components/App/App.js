@@ -26,13 +26,11 @@ import {
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
-  const {inputs, isFormVaild, isOpen, type} = useSelector(
-    (state) => state.fromSettingModule
-  );
+  const {inputs, isFormVaild} = useSelector((state) => state.fromSettingModule);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //Set the isFormVaild key on the  formSettingReducer
+    //Set the isFormVaild key on the formSettingReducer
     const isAllInputsFilled = Object.values(inputs).every((v) => v.inputVal);
     const isVaildMsgActive = !Object.values(inputs).some((val) =>
       Boolean(val.inputMsgVaild)
@@ -41,7 +39,7 @@ const App = () => {
     if (formVaild !== isFormVaild) {
       onSetFromSetting("isFormVaild", formVaild);
     }
-    console.log(inputs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputs]);
 
   const onSetFromSetting = (key, val) => {
