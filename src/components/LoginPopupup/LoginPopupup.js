@@ -52,7 +52,7 @@ const LoginPopupup = ({
               .then((userInfo) => {
                 onFormSubmitted(
                   true,
-                  `Welcome ${userInfo.name} You have successfully logged out, Please wait...`
+                  `Welcome ${userInfo.name} You have successfully logged in, Please wait...`
                 );
                 setCurrentUser(userInfo);
                 setIsLoggedIn(true)

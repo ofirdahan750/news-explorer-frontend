@@ -1,10 +1,10 @@
 import "./Header.css";
 import React, {useEffect, useState} from "react";
-import {Link, useLocation} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import NavHeader from "../NavHeader/NavHeader.js";
 
-const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
+const Header = ({isLoggedIn, handlePopupToggleView,handleLogOutclicked}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 522;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
@@ -20,7 +20,7 @@ const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
   }, []);
   useEffect(() => {
     //Make sure the moblie will disappear
-    if (width >= moblieBreakpoint + 10) setIsMoblieMenuOpen(false);
+    if (width <= moblieBreakpoint+10) setIsMoblieMenuOpen(false);
   }, [width]);
 
   return (

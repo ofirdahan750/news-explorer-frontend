@@ -36,20 +36,14 @@
   text-align: center;
   display: flex;
   align-items: center;
+  gap: 0 10px;
   justify-content: center;
 }
-.nav-header__logout-icon {
-  padding: 0 10px 0 0;
-}
+
 .nav-header__container {
   height: unset;
 }
-.nav-header__logout-text {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 10px 15px;
-}
+
 @media screen and (min-width: 520px) {
   /*Tablet*/
   .nav-header__container {
@@ -76,9 +70,10 @@
     width: 152px;
     height: 40px;
   }
-
 }
-
+.nav-header__logout-icon {
+  padding: 0 10px 0 0;
+}
 @media screen and (min-width: 901px) {
   /*Wide Screen*/
   .nav-header__container {
