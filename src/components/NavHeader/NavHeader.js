@@ -8,21 +8,18 @@ const NavHeader = ({
   handlePopupToggleView
 }) => {
   const location = useLocation();
-  const {email} = useContext(CurrentUserContext);
+  const {name} = useContext(CurrentUserContext);
   return (
     <nav className="nav-header__container">
       <button
         type="button"
-        className="nav-header__btn pulsate-bck btn-link-modifier"
-        style={{
-          borderBottom: "3px solid #FFFFFF",
-          height: "100%",
-          borderTop: "3px transparent"
-        }}
+        className={`nav-header__btn ${
+          location.pathname === "/" && "nav-header__btn_active"
+        } pulsate-bck btn-link-modifier`}
       >
         <Link to="/">Home</Link>
       </button>
-      {!isLoggedIn && (
+      {isLoggedIn ? (
         <button
           type="button"
           onClick={() => {
@@ -32,16 +29,26 @@ const NavHeader = ({
         >
           Sign in
         </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => {
+            handlePopupToggleView("login");
+          }}
+          className="nav-header__btn pulsate-bck nav-header__btn_type_signin btn-link-modifier "
+        >
+          {name}
+        </button>
       )}
 
-      {isLoggedIn && email && (
+      {/* {isLoggedIn && name && (
         <div className="header__nav-user-loggedin">
-          <span className="header__nav-user-email">{email}</span>
+          <span className="header__nav-user-email">{name}</span>
           <span className="header__logout-btn" onClick={handleLogOutclicked}>
             Log out
           </span>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };

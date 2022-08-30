@@ -47,27 +47,19 @@ const LoginPopupup = ({
           password: inputs.userPassword.inputVal
         })
           .then((user) => {
-            dispatch(
-              setFormSetting({
-                settingKey: "btnSetting",
-                settingData: {
-                  txt: "You have successfully logged out, Please wait...",
-                  isDisable: true
-                }
-              })
-            );
-            onFormSubmitted(
-              true,
-              "You have successfully logged out, Please wait..."
-            );
-
             localStorage.setItem("jwt", user.token);
             api.setTokenHeader(user.token);
-            const userInfo = validateToken(user.token);
-            setCurrentUser(userInfo);
-            setTimeout(() => {
-              handlePopupToggleView("close");
-            }, 2000);
+            console.log("user.token:", user.token);
+            validateToken(user.token).then((userInfo) => {
+              onFormSubmitted(
+                true,
+                `Welcome ${userInfo.name} You have successfully logged out, Please wait...`
+              );
+              setCurrentUser(userInfo);
+              setTimeout(() => {
+                handlePopupToggleView("close");
+              }, 2000);
+            });
           })
           .catch((err) => {
             console.log(err);

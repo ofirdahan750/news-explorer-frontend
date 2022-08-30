@@ -14,7 +14,11 @@
   font-size: 1.125rem; /*Moblie */
   line-height: 3.1111111111; /*Moblie */
   font-weight: 500;
+}
+.nav-header__btn_active {
+  border-bottom: 3px solid #ffffff;
   height: 100%;
+  border-top: 3px transparent;
 }
 .nav-header__btn_type_signin {
   height: 56px; /*Moblie */
@@ -26,7 +30,7 @@
 .nav-header__container {
   height: unset;
 }
-@media screen and (min-width: 471px) {
+@media screen and (min-width: 520px) {
   /*Tablet*/
   .nav-header__container {
     align-items: center;

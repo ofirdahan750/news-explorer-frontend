@@ -27,7 +27,7 @@
 .header__moblie-menu-img {
   object-fit: cover;
 }
-@media screen and (min-width: 471px) {
+@media screen and (min-width: 523px) {
   /*Tablet*/
   .header {
     height: 66px;

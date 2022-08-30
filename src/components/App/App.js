@@ -33,7 +33,6 @@ const App = () => {
   );
   const dispatch = useDispatch();
   const {isLoading} = useSelector((state) => state.loadingModule);
-  console.log("isloading:", isLoading);
 
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
@@ -111,7 +110,7 @@ const App = () => {
       dispatch(
         setFormSetting({
           settingKey: "btnSetting",
-          settingData: {txt: btnTxt, isDisable: true}
+          settingData: {txt: btnTxt, isDisable: false}
         })
       );
       dispatch(setLoading(false));

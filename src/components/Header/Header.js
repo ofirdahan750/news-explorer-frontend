@@ -9,7 +9,7 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   const location = useLocation();
   const [currPathLocation, setCurrPathLocation] = useState("/");
   const [width, setWidth] = useState(window.innerWidth);
-  const moblieBreakpoint = 470;
+  const moblieBreakpoint = 522;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
   // const {btnSetting} = useSelector((state) => state.fromSettingModule); //After submit Form login will close the menu
 
@@ -24,8 +24,8 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   }, []);
   useEffect(() => {
     //Make sure the moblie will disappear
-    if (width > moblieBreakpoint) setIsMoblieMenuOpen(false);
-  }, [window.innerWidth]);
+    if (width <= moblieBreakpoint) setIsMoblieMenuOpen(false);
+  }, [width]);
 
   useEffect(() => {
     setCurrPathLocation(location.pathname);
