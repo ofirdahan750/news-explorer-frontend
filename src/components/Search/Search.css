@@ -45,7 +45,7 @@
   position: none; /*Moblie*/
   margin: 16px 0 0; /*Moblie*/
   width: 100%; /*Moblie*/
-  background: #2f71e5;
+  background-color: #2f71e5;
   box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
   border-radius: 100px;
   font-weight: 500;
@@ -54,7 +54,10 @@
   text-align: center;
 }
 .search__btn:hover {
-  background: #347eff;
+  background-color: #347eff;
+}
+.search__btn:active {
+  background-color: #2a65cc;
 }
 @media screen and (min-width: 471px) {
   /*Tablet*/

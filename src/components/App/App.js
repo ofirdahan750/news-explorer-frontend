@@ -80,12 +80,13 @@ const App = () => {
   };
   const handlePopupMouseDown = (e) => {
     const contextMenu = 2;
-    if (e.button === contextMenu) return;
     if (
-      e.target.classList.contains("popup_visible") ||
-      e.target.classList.contains("popup__close-button")
+      e.button !== contextMenu &&
+      e.target.classList.contains("popup_visible")
     ) {
       handlePopupToggleView();
+    } else {
+      return;
     }
   };
   const handlePopupToggleView = (stateKey = "close") => {

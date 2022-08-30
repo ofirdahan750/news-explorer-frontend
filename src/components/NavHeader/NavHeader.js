@@ -13,7 +13,7 @@ const NavHeader = ({
     <nav className="nav-header__container">
       <button
         type="button"
-        className="nav-header__btn btn-link-modifier"
+        className="nav-header__btn pulsate-bck btn-link-modifier"
         style={{
           borderBottom: "3px solid #FFFFFF",
           height: "100%",
@@ -28,7 +28,7 @@ const NavHeader = ({
           onClick={() => {
             handlePopupToggleView("login");
           }}
-          className="nav-header__btn nav-header__btn_type_signin btn-link-modifier "
+          className="nav-header__btn pulsate-bck nav-header__btn_type_signin btn-link-modifier "
         >
           Sign in
         </button>

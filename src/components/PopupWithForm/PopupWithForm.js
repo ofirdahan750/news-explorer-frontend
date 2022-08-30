@@ -28,7 +28,7 @@ const PopupWithForm = ({
       <div className="popup__container">
         <button
           type="button"
-          className="popup__close-button btn-link-modifier animation-modifier_type_opacity-hover"
+          className="popup__close-button opacity-transition btn-link-modifier"
           onClick={() => {
             handlePopupToggleView();
           }}

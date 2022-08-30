@@ -42,6 +42,12 @@
   background-size: cover;
   background-blend-mode: overlay;
 }
+.popup__close-button:hover {
+  opacity: 0.62;
+}
+.popup__close-button:active {
+  opacity: 0.81;
+}
 .popup__wrapper {
   padding: 16px; /*Moblie*/
   width: 100%;

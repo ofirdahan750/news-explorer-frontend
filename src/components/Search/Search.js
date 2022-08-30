@@ -9,7 +9,10 @@ const Search = () => {
       </h2>
       <form className="search__form">
         <input className="search__input" placeholder="Enter topic" />
-        <button type="button" className="search__btn btn-link-modifier">
+        <button
+          type="button"
+          className="search__btn background-color-transition btn-link-modifier "
+        >
           Search
         </button>
       </form>

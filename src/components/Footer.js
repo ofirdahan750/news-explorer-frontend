@@ -21,7 +21,7 @@ const Footer = () => {
           <span>Practicum</span>
         </Link>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_practicum btn-link-modifier"
+          className="footer__nav-item-icon footer__nav-item-icon_name_practicum shake-horizontal btn-link-modifier"
           href="https://github.com/ofirdahan750"
           target="_blank"
           rel="noreferrer"
@@ -33,7 +33,7 @@ const Footer = () => {
           />
         </a>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_linkedin btn-link-modifier"
+          className="footer__nav-item-icon footer__nav-item-icon_name_linkedin shake-horizontal btn-link-modifier"
           href="https://www.linkedin.com/in/ofir-dahan-8ba3a318a/"
           target="_blank"
           rel="noreferrer"
@@ -45,7 +45,7 @@ const Footer = () => {
           />
         </a>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_facebook btn-link-modifier"
+          className="footer__nav-item-icon footer__nav-item-icon_name_facebook shake-horizontal btn-link-modifier"
           href="https://www.facebook.com/Ofir.Dahan1/"
           target="_blank"
           rel="noreferrer"

@@ -4,8 +4,14 @@
 /* Font Rule */
 @import url("./fonts/inter/inter.css");
 
+/* Modifier */
+@import url("./modifier/modifier.css");
+
 /* Keyframe */
 @import url("./keyframe/keyframe.css");
 
-/* Modifier */
-@import url("./modifier/modifier.css");
+/* Animation */
+@import url("./animation/animation.css");
+
+/* Transition */
+@import url("./transition/transition.css");
