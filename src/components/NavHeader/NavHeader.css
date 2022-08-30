@@ -8,6 +8,7 @@
   width: 100%; /*Moblie */
   padding: 16px 16px 24px; /*Moblie */
   justify-content: space-around; /*Moblie */
+  height: unset;
 }
 .nav-header__btn {
   width: fit-content; /*Moblie */
@@ -40,11 +41,14 @@
   overflow: hidden;
 }
 
-.nav-header__container {
-  height: unset;
+.nav-header__logout-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
 }
 
-@media screen and (min-width: 520px) {
+@media screen and (min-width: 676px) {
   /*Tablet*/
   .nav-header__container {
     align-items: center;
@@ -65,16 +69,19 @@
   .nav-header__btn_type_signout {
     min-height: 48px;
     min-width: auto;
-
   }
   .nav-header__btn_type_signin {
     width: 152px;
     height: 40px;
   }
+  .nav-header__logout-icon {
+    padding: 0 10px 0 0;
+  }
+  .nav-header__logout-text {
+    padding: 12px 5px 15px 19px;
+  }
 }
-.nav-header__logout-icon {
-  padding: 0 10px 0 0;
-}
+
 @media screen and (min-width: 901px) {
   /*Wide Screen*/
   .nav-header__container {
@@ -89,9 +96,7 @@
     width: 176px;
     height: 48px;
   }
-  .nav-header__logout-text {
-    padding: 12px 19px;
-  }
+
   .nav-header__logout-icon {
     padding: 0 19px 0 0;
   }
