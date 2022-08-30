@@ -14,7 +14,6 @@
   font-size: 1.125rem; /*Moblie */
   line-height: 3.1111111111; /*Moblie */
   font-weight: 500;
-  overflow: hidden;
 }
 
 .nav-header__btn_active {
@@ -38,6 +37,7 @@
   align-items: center;
   gap: 0 10px;
   justify-content: center;
+  overflow: hidden;
 }
 
 .nav-header__container {
@@ -64,7 +64,8 @@
   }
   .nav-header__btn_type_signout {
     min-height: 48px;
-    max-width: 240px;
+    min-width: auto;
+
   }
   .nav-header__btn_type_signin {
     width: 152px;
@@ -78,6 +79,7 @@
   /*Wide Screen*/
   .nav-header__container {
     gap: 0 42px;
+    max-width: unset;
   }
   .nav-header__btn {
     font-size: 1.125rem;
