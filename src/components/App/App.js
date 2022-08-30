@@ -24,6 +24,7 @@ import {
   setFormSetting,
   setFormSettings
 } from "../../store/actions/formSettingActions";
+import {setLoading} from "../../store/actions/loadingAction";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -31,6 +32,8 @@ const App = () => {
     (state) => state.fromSettingModule
   );
   const dispatch = useDispatch();
+  const {isLoading} = useSelector((state) => state.loadingModule);
+  console.log("isloading:", isLoading);
 
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
@@ -95,9 +98,30 @@ const App = () => {
   const isInputHaveKey = ({key, subKey}) => {
     return (inputs.hasOwnProperty(key) && inputs[key][subKey]) || "";
   };
-
+  const onFormSubmitted = (isDone, btnTxt = "") => {
+    if (!isDone) {
+      dispatch(
+        setFormSetting({
+          settingKey: "btnSetting",
+          settingData: {txt: "Loading...", isDisable: true}
+        })
+      );
+      dispatch(setLoading(true));
+    } else {
+      dispatch(
+        setFormSetting({
+          settingKey: "btnSetting",
+          settingData: {txt: btnTxt, isDisable: true}
+        })
+      );
+      dispatch(setLoading(false));
+    }
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <div className={`preloader ${isLoading && "preloader_visible"}`}>
+        <i className="preloader__circle"></i>
+      </div>
       <div className="page__content">
         <div
           className="hero-cover"
@@ -117,12 +141,14 @@ const App = () => {
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
         isInputHaveKey={isInputHaveKey}
+        onFormSubmitted={onFormSubmitted}
         setCurrentUser={setCurrentUser}
       />
       <RegisterPopupup
         onChangeInput={onChangeInput}
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
+        onFormSubmitted={onFormSubmitted}
         isInputHaveKey={isInputHaveKey}
       />
       <SuccessPopupup

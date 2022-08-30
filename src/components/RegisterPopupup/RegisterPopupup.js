@@ -9,7 +9,8 @@ const RegisterPopupup = ({
   onChangeInput,
   handlePopupMouseDown,
   handlePopupToggleView,
-  isInputHaveKey
+  isInputHaveKey,
+  onFormSubmitted
 }) => {
   const {
     type,
@@ -35,18 +36,14 @@ const RegisterPopupup = ({
 
   const handleNewUserSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      setFormSetting({
-        settingKey: "btnSetting",
-        settingData: {txt: "Loading...", isDisable: true}
-      })
-    );
+    onFormSubmitted(false);
     register({
       email: inputs.emailAddress.inputVal,
       password: inputs.userPassword.inputVal,
       name: inputs.userName.inputVal
     })
       .then(() => {
+        onFormSubmitted(true);
         handlePopupToggleView("signup_success");
       })
       .catch((err) => {

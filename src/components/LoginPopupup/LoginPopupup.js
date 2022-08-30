@@ -11,7 +11,8 @@ const LoginPopupup = ({
   handlePopupMouseDown,
   handlePopupToggleView,
   isInputHaveKey,
-  setCurrentUser
+  setCurrentUser,
+  onFormSubmitted
 }) => {
   const {
     type,
@@ -40,22 +41,33 @@ const LoginPopupup = ({
       handlePopupMouseDown={handlePopupMouseDown}
       handleSubmit={(e) => {
         e.preventDefault();
-        dispatch(
-          setFormSetting({
-            settingKey: "btnSetting",
-            settingData: {txt: "Loading...", isDisable: true}
-          })
-        );
+        onFormSubmitted(false);
         authenticate({
           email: inputs.emailAddress.inputVal,
           password: inputs.userPassword.inputVal
         })
           .then((user) => {
+            dispatch(
+              setFormSetting({
+                settingKey: "btnSetting",
+                settingData: {
+                  txt: "You have successfully logged out, Please wait...",
+                  isDisable: true
+                }
+              })
+            );
+            onFormSubmitted(
+              true,
+              "You have successfully logged out, Please wait..."
+            );
+
             localStorage.setItem("jwt", user.token);
             api.setTokenHeader(user.token);
             const userInfo = validateToken(user.token);
             setCurrentUser(userInfo);
-            handlePopupToggleView("close");
+            setTimeout(() => {
+              handlePopupToggleView("close");
+            }, 2000);
           })
           .catch((err) => {
             console.log(err);
