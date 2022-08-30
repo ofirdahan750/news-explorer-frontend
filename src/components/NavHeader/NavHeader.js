@@ -5,7 +5,8 @@ import "./NavHeader.css";
 const NavHeader = ({
   isLoggedIn,
   handleLogOutclicked,
-  handlePopupToggleView
+  handlePopupToggleView,
+  isMoblieMenuOpen
 }) => {
   const location = useLocation();
   const {name} = useContext(CurrentUserContext);
@@ -19,7 +20,7 @@ const NavHeader = ({
       >
         <Link to="/">Home</Link>
       </button>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <button
           type="button"
           onClick={() => {
@@ -32,23 +33,20 @@ const NavHeader = ({
       ) : (
         <button
           type="button"
-          onClick={() => {
-            handlePopupToggleView("login");
-          }}
-          className="nav-header__btn pulsate-bck nav-header__btn_type_signin btn-link-modifier "
+          onClick={handleLogOutclicked}
+          className="nav-header__btn pulsate-bck nav-header__btn_type_signout btn-link-modifier "
         >
-          {name}
+          <span className="nav-header__logout-text">{name}</span>
+          <img
+            className="nav-header__logout-icon "
+            src={
+              !isMoblieMenuOpen || location.pathname === "/saved-news"
+                ? require(`../../images/Header/logout_black_theme.svg`).default
+                : require(`../../images/Header/logout_white_theme.svg`).default
+            }
+          />
         </button>
       )}
-
-      {/* {isLoggedIn && name && (
-        <div className="header__nav-user-loggedin">
-          <span className="header__nav-user-email">{name}</span>
-          <span className="header__logout-btn" onClick={handleLogOutclicked}>
-            Log out
-          </span>
-        </div>
-      )} */}
     </nav>
   );
 };

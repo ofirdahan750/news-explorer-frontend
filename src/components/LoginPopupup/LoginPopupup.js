@@ -1,10 +1,9 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
 import {authenticate, validateToken} from "../../utils/auth.js";
 import api from "../../utils/api.js";
-import {setFormSetting} from "../../store/actions/formSettingActions.js";
 
 const LoginPopupup = ({
   onChangeInput,
@@ -12,7 +11,8 @@ const LoginPopupup = ({
   handlePopupToggleView,
   isInputHaveKey,
   setCurrentUser,
-  onFormSubmitted
+  onFormSubmitted,
+  setIsLoggedIn
 }) => {
   const {
     type,
@@ -35,7 +35,6 @@ const LoginPopupup = ({
     inputs
   };
   const currType = "login";
-  const dispatch = useDispatch();
   return (
     <PopupWithForm
       handlePopupMouseDown={handlePopupMouseDown}
@@ -49,17 +48,21 @@ const LoginPopupup = ({
           .then((user) => {
             localStorage.setItem("jwt", user.token);
             api.setTokenHeader(user.token);
-            console.log("user.token:", user.token);
-            validateToken(user.token).then((userInfo) => {
-              onFormSubmitted(
-                true,
-                `Welcome ${userInfo.name} You have successfully logged out, Please wait...`
-              );
-              setCurrentUser(userInfo);
-              setTimeout(() => {
-                handlePopupToggleView("close");
-              }, 2000);
-            });
+            validateToken(user.token)
+              .then((userInfo) => {
+                onFormSubmitted(
+                  true,
+                  `Welcome ${userInfo.name} You have successfully logged out, Please wait...`
+                );
+                setCurrentUser(userInfo);
+                setIsLoggedIn(true)
+                setTimeout(() => {
+                  handlePopupToggleView("close");
+                }, 2000);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           })
           .catch((err) => {
             console.log(err);

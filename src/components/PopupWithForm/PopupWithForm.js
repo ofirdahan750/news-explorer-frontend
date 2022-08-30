@@ -1,5 +1,4 @@
 import React from "react";
-import {register} from "../../utils/auth";
 import "./PopupWithForm.css";
 const PopupWithForm = ({
   children,

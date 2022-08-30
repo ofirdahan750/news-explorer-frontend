@@ -1,8 +1,7 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
-import {setFormSetting} from "../../store/actions/formSettingActions.js";
 import {register} from "../../utils/auth.js";
 
 const RegisterPopupup = ({
@@ -32,7 +31,6 @@ const RegisterPopupup = ({
     bottomLink
   };
   const currType = "register";
-  const dispatch = useDispatch();
 
   const handleNewUserSubmit = (e) => {
     e.preventDefault();

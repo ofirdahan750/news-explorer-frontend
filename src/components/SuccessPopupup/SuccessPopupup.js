@@ -1,9 +1,7 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
-import {setFormSetting} from "../../store/actions/formSettingActions.js";
-import {register} from "../../utils/auth.js";
 
 const SuccessPopupup = ({handlePopupMouseDown, handlePopupToggleView}) => {
   const {

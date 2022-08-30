@@ -1,17 +1,13 @@
 import "./Header.css";
 import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
-import {useSelector} from "react-redux";
 
 import NavHeader from "../NavHeader/NavHeader.js";
 
-const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
-  const location = useLocation();
-  const [currPathLocation, setCurrPathLocation] = useState("/");
+const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 522;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
-  // const {btnSetting} = useSelector((state) => state.fromSettingModule); //After submit Form login will close the menu
 
   useEffect(() => {
     //Fixing humbeger button if user toggle to bigger/smaller screen
@@ -24,17 +20,9 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
   }, []);
   useEffect(() => {
     //Make sure the moblie will disappear
-    if (width <= moblieBreakpoint) setIsMoblieMenuOpen(false);
+    if (width >= moblieBreakpoint + 10) setIsMoblieMenuOpen(false);
   }, [width]);
 
-  useEffect(() => {
-    setCurrPathLocation(location.pathname);
-  }, [location.pathname]);
-  const setStyleBtn = (elmPathName) => {
-    if (location.pathname === elmPathName) {
-      return "#FFFFFF";
-    }
-  };
   return (
     <>
       <header
@@ -49,6 +37,8 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
             <NavHeader
               isLoggedIn={isLoggedIn}
               handlePopupToggleView={handlePopupToggleView}
+              handleLogOutclicked={handleLogOutclicked}
+              isMoblieMenuOpen={isMoblieMenuOpen}
             />
           ) : (
             <button
@@ -76,6 +66,8 @@ const Header = ({isLoggedIn = false, handlePopupToggleView}) => {
           <NavHeader
             isLoggedIn={isLoggedIn}
             handlePopupToggleView={handlePopupToggleView}
+            handleLogOutclicked={handleLogOutclicked}
+            isMoblieMenuOpen={isMoblieMenuOpen}
           />
         )}
       </header>

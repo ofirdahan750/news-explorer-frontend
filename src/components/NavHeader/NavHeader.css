@@ -14,7 +14,9 @@
   font-size: 1.125rem; /*Moblie */
   line-height: 3.1111111111; /*Moblie */
   font-weight: 500;
+  overflow: hidden;
 }
+
 .nav-header__btn_active {
   border-bottom: 3px solid #ffffff;
   height: 100%;
@@ -27,8 +29,26 @@
   border-radius: 100px;
   text-align: center;
 }
+.nav-header__btn_type_signout {
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  min-width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-header__logout-icon {
+  padding: 0 10px 0 0;
+}
 .nav-header__container {
   height: unset;
+}
+.nav-header__logout-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 10px 15px;
 }
 @media screen and (min-width: 520px) {
   /*Tablet*/
@@ -48,11 +68,17 @@
     line-height: 1.5;
     width: unset;
   }
+  .nav-header__btn_type_signout {
+    min-height: 48px;
+    max-width: 240px;
+  }
   .nav-header__btn_type_signin {
     width: 152px;
     height: 40px;
   }
+
 }
+
 @media screen and (min-width: 901px) {
   /*Wide Screen*/
   .nav-header__container {
@@ -63,8 +89,13 @@
     line-height: 1.333333333;
   }
   .nav-header__btn_type_signin {
-    /* padding: 11.5px 58.5px; */
     width: 176px;
     height: 48px;
+  }
+  .nav-header__logout-text {
+    padding: 12px 19px;
+  }
+  .nav-header__logout-icon {
+    padding: 0 19px 0 0;
   }
 }

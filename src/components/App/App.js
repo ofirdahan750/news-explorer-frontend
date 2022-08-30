@@ -28,12 +28,15 @@ import {setLoading} from "../../store/actions/loadingAction";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const {inputs, isFormVaild, isOpen} = useSelector(
     (state) => state.fromSettingModule
   );
-  const dispatch = useDispatch();
   const {isLoading} = useSelector((state) => state.loadingModule);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
     const isAllInputsFilled = Object.values(inputs).every((v) => v.inputVal);
@@ -116,6 +119,12 @@ const App = () => {
       dispatch(setLoading(false));
     }
   };
+  const handleLogOutclicked = () => {
+    setIsLoggedIn(false);
+    setCurrentUser(loadingInitState.userInfo);
+    localStorage.removeItem("jwt");
+    navigate("/");
+  };
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className={`preloader ${isLoading && "preloader_visible"}`}>
@@ -127,7 +136,11 @@ const App = () => {
           role="img"
           aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
         >
-          <Header handlePopupToggleView={handlePopupToggleView} />
+          <Header
+            handlePopupToggleView={handlePopupToggleView}
+            isLoggedIn={isLoggedIn}
+            handleLogOutclicked={handleLogOutclicked}
+          />
           <Search />
         </div>
       </div>
@@ -142,6 +155,7 @@ const App = () => {
         isInputHaveKey={isInputHaveKey}
         onFormSubmitted={onFormSubmitted}
         setCurrentUser={setCurrentUser}
+        setIsLoggedIn={setIsLoggedIn}
       />
       <RegisterPopupup
         onChangeInput={onChangeInput}
