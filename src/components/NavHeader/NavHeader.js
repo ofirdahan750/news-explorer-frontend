@@ -1,6 +1,7 @@
 import {useContext} from "react";
 import {Link, useLocation} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import {capitalizeFirstLetter} from "../../utils/utils";
 import "./NavHeader.css";
 const NavHeader = ({
   isLoggedIn,
@@ -45,7 +46,9 @@ const NavHeader = ({
             onClick={handleLogOutclicked}
             className="nav-header__btn pulsate-bck nav-header__btn_type_signout btn-link-modifier "
           >
-            <span className="nav-header__logout-text">{name}</span>
+            <span className="nav-header__logout-text">
+              {capitalizeFirstLetter(name)}
+            </span>
             <img
               className="nav-header__logout-icon "
               src={

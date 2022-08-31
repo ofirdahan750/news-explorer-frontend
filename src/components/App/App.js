@@ -8,7 +8,7 @@ import {
   useLocation
 } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import {loadingInitState} from "../../utils/constants";
+import {loadingInitState, txtErr} from "../../utils/constants";
 
 import Header from "../Header/Header.js";
 import Search from "../Search/Search.js";
@@ -108,7 +108,10 @@ const App = () => {
       setFormInput({
         inputKey: name,
         inputVal: value,
-        inputMsgVaild: validationMessage
+        inputMsgVaild:
+          validationMessage === "Please match the requested format."
+            ? "Invalid email address, Please enter a valid email"
+            : validationMessage
       })
     );
   };
@@ -130,7 +133,7 @@ const App = () => {
   const isInputHaveKey = ({key, subKey}) => {
     return (inputs.hasOwnProperty(key) && inputs[key][subKey]) || "";
   };
-  const onFormSubmitted = (isDone, btnTxt = "") => {
+  const onFormSubmitted = ({isDone, btnTxt, err}) => {
     if (!isDone) {
       dispatch(
         setFormSetting({
@@ -140,6 +143,14 @@ const App = () => {
       );
       dispatch(setLoading(true));
     } else {
+      if (err) {
+        dispatch(
+          setFormSetting({
+            settingKey: "serverError",
+            settingData: err === "Failed to fetch" ? txtErr : err
+          })
+        );
+      }
       dispatch(
         setFormSetting({
           settingKey: "btnSetting",

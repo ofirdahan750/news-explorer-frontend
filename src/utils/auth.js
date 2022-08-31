@@ -1,15 +1,15 @@
 const BASE_URL = "https://api.news-explorer-ofir.students.nomoredomainssbs.ru";
 
-const handleResponse = (res) => {
-  console.log("res:", res);
+const handleResponse = async (res) => {
   if (res.ok) {
     return res.json();
   } else {
-    return Promise.reject(`Error: ${res.status}`);
+    return Promise.reject(await res.json());
   }
 };
 
 const register = async ({email, password, name}) => {
+  debugger;
   const res = await fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},

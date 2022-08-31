@@ -4,6 +4,8 @@ import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
 import {authenticate, validateToken} from "../../utils/auth.js";
 import api from "../../utils/api.js";
+import {inputPattern, txtErr} from "../../utils/constants.js";
+import {capitalizeFirstLetter} from "../../utils/utils.js";
 
 const LoginPopupup = ({
   onChangeInput,
@@ -35,14 +37,15 @@ const LoginPopupup = ({
     inputs
   };
   const currType = "login";
+
   return (
     <PopupWithForm
       handlePopupMouseDown={handlePopupMouseDown}
       handleSubmit={(e) => {
         e.preventDefault();
-        onFormSubmitted(false);
+        onFormSubmitted({isDone: false});
         authenticate({
-          email: inputs.emailAddress.inputVal,
+          email: inputs.emailAddress.inputVal.toLowerCase(),
           password: inputs.userPassword.inputVal
         })
           .then((user) => {
@@ -50,10 +53,13 @@ const LoginPopupup = ({
             api.setTokenHeader(user.token);
             validateToken(user.token)
               .then((userInfo) => {
-                onFormSubmitted(
-                  true,
-                  `Welcome ${userInfo.name} You have successfully logged in, Please wait...`
-                );
+                onFormSubmitted({
+                  isDone: true,
+                  btnTxt: `Welcome ${capitalizeFirstLetter(
+                    userInfo.name
+                  )} You have successfully logged in, Please wait...`
+                });
+
                 setCurrentUser(userInfo);
                 setIsLoggedIn(true);
                 setTimeout(() => {
@@ -61,11 +67,19 @@ const LoginPopupup = ({
                 }, 2000);
               })
               .catch((err) => {
-                console.log(err);
+                onFormSubmitted({
+                  isDone: true,
+                  btnTxt: "Sign in",
+                  err: err.message || txtErr
+                });
               });
           })
           .catch((err) => {
-            console.log(err);
+            onFormSubmitted({
+              isDone: true,
+              btnTxt: "Sign in",
+              err: err.message || txtErr
+            });
           });
       }}
       settingPopupWithForm={settingPopupWithForm}
@@ -82,6 +96,8 @@ const LoginPopupup = ({
         type="email"
         placeholder="Enter email"
         name="emailAddress"
+        pattern={inputPattern.email}
+        title="Invalid email address"
         value={isInputHaveKey({key: "emailAddress", subKey: "inputVal"})}
         required
       />

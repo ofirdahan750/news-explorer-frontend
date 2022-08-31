@@ -3,6 +3,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
 import {register} from "../../utils/auth.js";
+import {inputPattern, txtErr} from "../../utils/constants.js";
 
 const RegisterPopupup = ({
   onChangeInput,
@@ -34,20 +35,24 @@ const RegisterPopupup = ({
 
   const handleNewUserSubmit = (e) => {
     e.preventDefault();
-    onFormSubmitted(false);
+    onFormSubmitted({isDone: false});
     register({
-      email: inputs.emailAddress.inputVal,
+      email: inputs.emailAddress.inputVal.toLowerCase(),
       password: inputs.userPassword.inputVal,
       name: inputs.userName.inputVal
     })
       .then(() => {
-        onFormSubmitted(true);
+        onFormSubmitted({
+          isDone: true
+        });
         handlePopupToggleView("signup_success");
       })
       .catch((err) => {
-        console.log("err:", err);
-        // handleAlertPopupOpen(false);
-        // onHandleBtnText("Sign up", true, err);
+        onFormSubmitted({
+          isDone: true,
+          btnTxt: "Sign up",
+          err: err.message || txtErr
+        });
       });
   };
   return (
@@ -68,6 +73,8 @@ const RegisterPopupup = ({
         type="email"
         placeholder="Enter email"
         name="emailAddress"
+        title="Invalid email address"
+        pattern={inputPattern.email}
         value={isInputHaveKey({key: "emailAddress", subKey: "inputVal"})}
         required
       />
