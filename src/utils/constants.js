@@ -1,6 +1,5 @@
 export const txtErr = "Something went wrong, please try again later ";
 
-
 export const loadingInitState = {
   userInfo: {
     name: "Loading...",

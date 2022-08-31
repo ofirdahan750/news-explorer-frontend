@@ -4,7 +4,8 @@ import {
   Routes,
   Route,
   Navigate,
-  useSearchParams
+  useSearchParams,
+  useLocation
 } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
@@ -36,14 +37,14 @@ const App = () => {
 
   const [params] = useSearchParams();
   const dispatch = useDispatch();
-
+  const location = useLocation();
   useEffect(() => {
     onInit(); //When app init set username
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     const searchParmas = params.get("searchParmas"); //Will dispatch the cards if quury in url
-    if (searchParmas) {
+    if (searchParmas && location.pathname === "/") {
       setArticle(searchParmas);
     }
   }, [params]);
