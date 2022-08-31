@@ -37,7 +37,7 @@ const RegisterPopupup = ({
     e.preventDefault();
     onFormSubmitted({isDone: false});
     register({
-      email: inputs.emailAddress.inputVal.toLowerCase(),
+      email: inputs.emailAddress.inputVal.toLowerCase().toString(),
       password: inputs.userPassword.inputVal,
       name: inputs.userName.inputVal
     })

@@ -45,7 +45,7 @@ const LoginPopupup = ({
         e.preventDefault();
         onFormSubmitted({isDone: false});
         authenticate({
-          email: inputs.emailAddress.inputVal.toLowerCase(),
+          email: inputs.emailAddress.inputVal.toLowerCase().toString(),
           password: inputs.userPassword.inputVal
         })
           .then((user) => {

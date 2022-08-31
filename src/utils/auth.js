@@ -9,7 +9,6 @@ const handleResponse = async (res) => {
 };
 
 const register = async ({email, password, name}) => {
-  debugger;
   const res = await fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
