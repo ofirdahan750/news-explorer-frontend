@@ -1,7 +1,6 @@
 import React from "react";
 import {StrictMode} from "react";
 import "./index.css";
-import {Routes, Route, Navigate} from "react-router-dom";
 import App from "./components/App/App";
 import reportWebVitals from "./reportWebVitals";
 import {createRoot} from "react-dom/client";

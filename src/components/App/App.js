@@ -4,8 +4,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useNavigate,
-  useLocation,
   useSearchParams
 } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
@@ -38,17 +36,17 @@ const App = () => {
 
   const [params] = useSearchParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     onInit(); //When app init set username
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     const searchParmas = params.get("searchParmas"); //Will dispatch the cards if quury in url
     if (searchParmas) {
       setArticle(searchParmas);
     }
-  }, []);
+  }, [params]);
 
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
@@ -184,7 +182,6 @@ const App = () => {
     setIsLoggedIn(false);
     setCurrentUser(loadingInitState.userInfo);
     localStorage.removeItem("jwt");
-    // navigate("/");
   };
   return (
     <CurrentUserContext.Provider value={currentUser}>

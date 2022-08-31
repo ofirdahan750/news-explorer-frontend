@@ -58,6 +58,7 @@ const NavHeader = ({
                   : require(`../../images/Header/logout_white_theme.svg`)
                       .default
               }
+              alt={`Log out button icon`}
             />
           </button>
         </>
