@@ -35,7 +35,7 @@ const NavHeader = ({
           <button
             type="button"
             className={`nav-header__btn ${
-              location.pathname === "/" && "nav-header__btn_active"
+              location.pathname === "/saved-news" && "nav-header__btn_active"
             } pulsate-bck btn-link-modifier`}
           >
             <Link to="/">Saved articles</Link>

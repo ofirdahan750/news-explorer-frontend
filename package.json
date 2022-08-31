@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules && npm i",
     "cleandev": "npm run clean && npm start",
-    "push": "git add . && git commit -m \"fixing the button the logout  \" && git push",
+    "push": "git add . && git commit -m \"Fixing the body overflow when loading + Saved articles style path style  \" && git push",
     "deploy": "rm -rf build && npm run build && scp -r ./build/* ofirdahan1003@news-explorer-ofir.students.nomoredomainssbs.ru:/home/ofirdahan1003/news-explorer-frontend",
     "fullpush": "npm run push && npm run deploy",
     "fullpushstart": "npm run push && npm run deploy && npm start",

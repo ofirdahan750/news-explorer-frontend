@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 import NavHeader from "../NavHeader/NavHeader.js";
 
-const Header = ({isLoggedIn, handlePopupToggleView,handleLogOutclicked}) => {
+const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 676;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);

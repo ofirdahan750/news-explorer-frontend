@@ -55,7 +55,7 @@ const LoginPopupup = ({
                   `Welcome ${userInfo.name} You have successfully logged in, Please wait...`
                 );
                 setCurrentUser(userInfo);
-                setIsLoggedIn(true)
+                setIsLoggedIn(true);
                 setTimeout(() => {
                   handlePopupToggleView("close");
                 }, 2000);

@@ -25,6 +25,7 @@ import {
   setFormSettings
 } from "../../store/actions/formSettingActions";
 import {setLoading} from "../../store/actions/loadingAction";
+import {validateToken} from "../../utils/auth";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -37,6 +38,10 @@ const App = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  useEffect(() => {
+    onInit();
+  }, []);
+
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
     const isAllInputsFilled = Object.values(inputs).every((v) => v.inputVal);
@@ -63,6 +68,30 @@ const App = () => {
     // eslint-disable-next-line
     [isOpen]
   );
+
+  const onInit = () => {
+    dispatch(setLoading(true));
+    const jwt = localStorage.getItem("jwt") || false;
+    if (jwt) {
+      validateToken(jwt)
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          handleLogOutclicked();
+        })
+        .finally(() => {
+          dispatch(setLoading(false));
+        });
+    } else {
+      handleLogOutclicked();
+      dispatch(setLoading(false));
+    }
+
+    // }
+  };
   const handleEscClose = useCallback((e) => {
     if (e.key === "Escape") {
       handlePopupToggleView();
@@ -97,6 +126,7 @@ const App = () => {
   const handlePopupToggleView = (stateKey = "close") => {
     dispatch(setFormSettings(stateKey));
   };
+
   const isInputHaveKey = ({key, subKey}) => {
     return (inputs.hasOwnProperty(key) && inputs[key][subKey]) || "";
   };
