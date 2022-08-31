@@ -5,7 +5,8 @@ import {
   Route,
   Navigate,
   useNavigate,
-  useLocation
+  useLocation,
+  useSearchParams
 } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
@@ -26,7 +27,6 @@ import {
 } from "../../store/actions/formSettingActions";
 import {setLoading} from "../../store/actions/loadingAction";
 import {validateToken} from "../../utils/auth";
-
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,10 +36,18 @@ const App = () => {
   );
   const {isLoading} = useSelector((state) => state.loadingModule);
 
+  const [params] = useSearchParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
-    onInit();
+    onInit(); //When app init set username
+  }, []);
+  useEffect(() => {
+    const searchParmas = params.get("searchParmas"); //Will dispatch the cards if quury in url
+    if (searchParmas) {
+      setArticle(searchParmas);
+    }
   }, []);
 
   useEffect(() => {
@@ -89,9 +97,11 @@ const App = () => {
       handleLogOutclicked();
       dispatch(setLoading(false));
     }
-
-    // }
   };
+  const setArticle = (searchParmas) => {
+    console.log("searchParmas:", searchParmas);
+  };
+
   const handleEscClose = useCallback((e) => {
     if (e.key === "Escape") {
       handlePopupToggleView();
@@ -150,6 +160,16 @@ const App = () => {
             settingData: err === "Failed to fetch" ? txtErr : err
           })
         );
+
+        setTimeout(() => {
+          //Make error go away after 2 sec
+          dispatch(
+            setFormSetting({
+              settingKey: "serverError",
+              settingData: ""
+            })
+          );
+        }, 2000);
       }
       dispatch(
         setFormSetting({
@@ -164,27 +184,50 @@ const App = () => {
     setIsLoggedIn(false);
     setCurrentUser(loadingInitState.userInfo);
     localStorage.removeItem("jwt");
-    navigate("/");
+    // navigate("/");
   };
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className={`preloader ${isLoading && "preloader_visible"}`}>
-        <i className="preloader__circle"></i>
-      </div>
-      <div className="page__content">
-        <div
-          className="hero-cover"
-          role="img"
-          aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
-        >
-          <Header
-            handlePopupToggleView={handlePopupToggleView}
-            isLoggedIn={isLoggedIn}
-            handleLogOutclicked={handleLogOutclicked}
-          />
-          <Search />
-        </div>
-      </div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <div className={`preloader ${isLoading && "preloader_visible"}`}>
+                <i className="preloader__circle"></i>
+              </div>
+              <div className="page__content">
+                <div
+                  className="hero-cover"
+                  role="img"
+                  aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
+                >
+                  <Header
+                    handlePopupToggleView={handlePopupToggleView}
+                    isLoggedIn={isLoggedIn}
+                    handleLogOutclicked={handleLogOutclicked}
+                  />
+                  <Search />
+                </div>
+              </div>
+            </>
+          }
+        />
+        <Route
+          path="/saved-news"
+          element={
+            <>
+              <Header
+                handlePopupToggleView={handlePopupToggleView}
+                isLoggedIn={isLoggedIn}
+                handleLogOutclicked={handleLogOutclicked}
+              />
+              <AboutAuthor />
+            </>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
       <main className="main">
         <AboutAuthor />
       </main>

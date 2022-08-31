@@ -1,6 +1,5 @@
 export const txtErr = "Something went wrong, please try again later ";
 
-export const inputPattern = {email: "[^@ \t\r\n]+@[^@ \t\r\n]+.[^@ \t\r\n]+"};
 
 export const loadingInitState = {
   userInfo: {

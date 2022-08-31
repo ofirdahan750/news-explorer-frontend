@@ -15,10 +15,7 @@ root.render(
   <StrictMode>
     <Router>
       <Provider store={store}>
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <App />
       </Provider>
     </Router>
   </StrictMode>

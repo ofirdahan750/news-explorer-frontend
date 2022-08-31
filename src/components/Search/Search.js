@@ -11,7 +11,7 @@ const Search = () => {
         <input className="search__input" placeholder="Enter topic" />
         <button
           type="button"
-          className="search__btn background-color-transition btn-link-modifier "
+          className="search__btn background-color-transition btn-link-modifier"
         >
           Search
         </button>

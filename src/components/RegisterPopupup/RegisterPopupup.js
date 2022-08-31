@@ -3,7 +3,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
 import {register} from "../../utils/auth.js";
-import {inputPattern, txtErr} from "../../utils/constants.js";
+import {txtErr} from "../../utils/constants.js";
 
 const RegisterPopupup = ({
   onChangeInput,
@@ -74,7 +74,7 @@ const RegisterPopupup = ({
         placeholder="Enter email"
         name="emailAddress"
         title="Invalid email address"
-        pattern={inputPattern.email}
+        pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
         value={isInputHaveKey({key: "emailAddress", subKey: "inputVal"})}
         required
       />

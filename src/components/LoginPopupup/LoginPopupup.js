@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
 import {authenticate, validateToken} from "../../utils/auth.js";
 import api from "../../utils/api.js";
-import {inputPattern, txtErr} from "../../utils/constants.js";
+import {txtErr} from "../../utils/constants.js";
 import {capitalizeFirstLetter} from "../../utils/utils.js";
 
 const LoginPopupup = ({
@@ -45,7 +45,7 @@ const LoginPopupup = ({
         e.preventDefault();
         onFormSubmitted({isDone: false});
         authenticate({
-          email: inputs.emailAddress.inputVal.toLowerCase().toString(),
+          email: inputs.emailAddress.inputVal.toString().toLowerCase(),
           password: inputs.userPassword.inputVal
         })
           .then((user) => {
@@ -96,7 +96,7 @@ const LoginPopupup = ({
         type="email"
         placeholder="Enter email"
         name="emailAddress"
-        pattern={inputPattern.email}
+        pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"
         title="Invalid email address"
         value={isInputHaveKey({key: "emailAddress", subKey: "inputVal"})}
         required

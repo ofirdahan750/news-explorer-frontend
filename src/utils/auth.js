@@ -14,7 +14,6 @@ const register = async ({email, password, name}) => {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({email, password, name})
   });
-
   return handleResponse(res);
 };
 
