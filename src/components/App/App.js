@@ -13,6 +13,7 @@ import {loadingInitState, txtErr} from "../../utils/constants";
 import Header from "../Header/Header.js";
 import Search from "../Search/Search.js";
 import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
+import SearchArticles from "../SearchArticles/SearchArticles.js";
 import Footer from "../Footer.js";
 
 import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
@@ -26,6 +27,10 @@ import {
 } from "../../store/actions/formSettingActions";
 import {setLoading} from "../../store/actions/loadingAction";
 import {validateToken} from "../../utils/auth";
+import {
+  setArticles,
+  setIsArticlesLoading
+} from "../../store/actions/articlesAction";
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,7 +50,9 @@ const App = () => {
   useEffect(() => {
     const searchParmas = params.get("searchParmas"); //Will dispatch the cards if quury in url
     if (searchParmas && location.pathname === "/") {
-      setArticle(searchParmas);
+      dispatch(setIsArticlesLoading(true));
+      dispatch(setArticles(searchParmas));
+      dispatch(setIsArticlesLoading(false));
     }
   }, [params]);
 
@@ -96,9 +103,6 @@ const App = () => {
       handleLogOutclicked();
       dispatch(setLoading(false));
     }
-  };
-  const setArticle = (searchParmas) => {
-    console.log("searchParmas:", searchParmas);
   };
 
   const handleEscClose = useCallback((e) => {
@@ -220,13 +224,13 @@ const App = () => {
                 isLoggedIn={isLoggedIn}
                 handleLogOutclicked={handleLogOutclicked}
               />
-              <AboutAuthor />
             </>
           }
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <main className="main">
+        <SearchArticles />
         <AboutAuthor />
       </main>
       <Footer />

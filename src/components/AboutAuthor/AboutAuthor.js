@@ -1,5 +1,4 @@
 import "./AboutAuthor.css";
-// import staffImg from "../../images/staff-image.jpg";
 const AboutAuthor = () => {
   return (
     <section className="about-author">

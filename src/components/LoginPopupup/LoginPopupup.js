@@ -3,7 +3,6 @@ import React from "react";
 import {useSelector} from "react-redux";
 import "../PopupWithForm/PopupWithForm.css";
 import {authenticate, validateToken} from "../../utils/auth.js";
-import api from "../../utils/api.js";
 import {txtErr} from "../../utils/constants.js";
 import {capitalizeFirstLetter} from "../../utils/utils.js";
 
@@ -50,7 +49,6 @@ const LoginPopupup = ({
         })
           .then((user) => {
             localStorage.setItem("jwt", user.token);
-            api.setTokenHeader(user.token);
             validateToken(user.token)
               .then((userInfo) => {
                 onFormSubmitted({
