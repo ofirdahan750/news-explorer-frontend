@@ -6,5 +6,5 @@ import {articlesReducer} from "./articlesReducer.js";
 export const rootReducer = combineReducers({
   fromSettingModule: formSettingReducer,
   loadingModule: loadingReducer,
-  articlesModule:articlesReducer
+  articlesModule: articlesReducer
 });

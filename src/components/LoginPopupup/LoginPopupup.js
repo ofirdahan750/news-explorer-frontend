@@ -53,11 +53,13 @@ const LoginPopupup = ({
               .then((userInfo) => {
                 onFormSubmitted({
                   isDone: true,
-                  btnTxt: `Welcome ${capitalizeFirstLetter(
-                    userInfo.name
-                  )} You have successfully logged in, Please wait...`
+                  btnSetting: {
+                    txt: `Welcome ${capitalizeFirstLetter(
+                      userInfo.name
+                    )} You have successfully logged in, Please wait...`,
+                    isDisable: true
+                  }
                 });
-
                 setCurrentUser(userInfo);
                 setIsLoggedIn(true);
                 setTimeout(() => {
@@ -67,7 +69,7 @@ const LoginPopupup = ({
               .catch((err) => {
                 onFormSubmitted({
                   isDone: true,
-                  btnTxt: "Sign in",
+                  btnSetting: {txt: "Sign in", isDisable: false},
                   err: err.message || txtErr
                 });
               });
@@ -75,7 +77,7 @@ const LoginPopupup = ({
           .catch((err) => {
             onFormSubmitted({
               isDone: true,
-              btnTxt: "Sign in",
+              btnSetting: {txt: "Sign in", isDisable: false},
               err: err.message || txtErr
             });
           });

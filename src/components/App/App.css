@@ -34,12 +34,6 @@
   z-index: 1;
 }
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .hero-cover {
   height: 576px; /*Moblie */
   background-image: url("../../images/App/hero_img.png");

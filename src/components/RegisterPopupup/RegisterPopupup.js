@@ -43,14 +43,15 @@ const RegisterPopupup = ({
     })
       .then(() => {
         onFormSubmitted({
-          isDone: true
+          isDone: true,
+          btnSetting: {txt: "Loading...", isDisable: true}
         });
         handlePopupToggleView("signup_success");
       })
       .catch((err) => {
         onFormSubmitted({
           isDone: true,
-          btnTxt: "Sign up",
+          btnSetting: {txt: "Sign up", isDisable: false},
           err: err.message || txtErr
         });
       });

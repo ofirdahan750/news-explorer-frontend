@@ -40,21 +40,11 @@ const App = () => {
   );
   const {isLoading} = useSelector((state) => state.loadingModule);
 
-  const [params] = useSearchParams();
   const dispatch = useDispatch();
-  const location = useLocation();
   useEffect(() => {
     onInit(); //When app init set username
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    const searchParmas = params.get("searchParmas"); //Will dispatch the cards if quury in url
-    if (searchParmas && location.pathname === "/") {
-      dispatch(setIsArticlesLoading(true));
-      dispatch(setArticles(searchParmas));
-      dispatch(setIsArticlesLoading(false));
-    }
-  }, [params]);
 
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
@@ -146,7 +136,7 @@ const App = () => {
   const isInputHaveKey = ({key, subKey}) => {
     return (inputs.hasOwnProperty(key) && inputs[key][subKey]) || "";
   };
-  const onFormSubmitted = ({isDone, btnTxt, err}) => {
+  const onFormSubmitted = ({isDone, btnSetting, err}) => {
     if (!isDone) {
       dispatch(
         setFormSetting({
@@ -177,7 +167,7 @@ const App = () => {
       dispatch(
         setFormSetting({
           settingKey: "btnSetting",
-          settingData: {txt: btnTxt, isDisable: false}
+          settingData: btnSetting
         })
       );
       dispatch(setLoading(false));
@@ -229,8 +219,8 @@ const App = () => {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      <SearchArticles />
       <main className="main">
-        <SearchArticles />
         <AboutAuthor />
       </main>
       <Footer />
