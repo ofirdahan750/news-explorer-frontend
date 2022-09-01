@@ -1,7 +1,8 @@
 import data from "../../DemoData.json";
+console.log("data:", data);
 export const setArticles = (queryParmas) => {
   const articlesArray = data.articles.map((article) => {
-    const {source, title, publishedAt, description, urlToImage} = article;
+    const {source, title, publishedAt, description, urlToImage, url} = article;
     const formattedDate = new Date(publishedAt);
 
     return {
@@ -13,6 +14,7 @@ export const setArticles = (queryParmas) => {
         day: "numeric"
       }),
       description: description,
+      url: url,
       imgUrl: urlToImage
     };
   });

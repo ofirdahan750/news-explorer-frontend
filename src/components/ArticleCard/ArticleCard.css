@@ -11,14 +11,36 @@
   background-position: center;
   cursor: pointer;
   border-radius: 10px;
+  z-index: 30;
+  position: relative;
+}
+.articles-card__img-link {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+.articles-card__saved-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 10;
+  height: 40px;
+  width: 40px;
+  background: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.articles-card__saved-btn-icon {
+  z-index: 1;
 }
 
 .articles-card__txt-container {
   padding: 0 16px;
   min-height: 304px;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-around; */
 }
 .articles-card__published-date {
   color: #b6bcbf;

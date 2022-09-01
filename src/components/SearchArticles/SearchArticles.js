@@ -57,7 +57,7 @@ const SearchArticles = () => {
   if (!listSetting.isArticlesSectionActive) return;
 
   return (
-    <section className="articles">
+    <section className="articles fade-in">
       <div className="articles__wrapper">
         <h3 className="articles__title">Search results</h3>
         <ul className="articles__list list-modifier">
@@ -66,6 +66,7 @@ const SearchArticles = () => {
           ))}
         </ul>
         <button
+          type="button"
           onClick={onShowMoreClick}
           className="articles__button background-color-transition btn-link-modifier"
         >

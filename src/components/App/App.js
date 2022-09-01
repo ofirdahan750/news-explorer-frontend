@@ -1,12 +1,6 @@
 import "./App.css";
 import React, {useEffect, useState, useCallback} from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useSearchParams,
-  useLocation
-} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
 
@@ -188,7 +182,7 @@ const App = () => {
               <div className={`preloader ${isLoading && "preloader_visible"}`}>
                 <i className="preloader__circle"></i>
               </div>
-              <div className="page__content">
+              <div className="page__content fade-in">
                 <div
                   className="hero-cover"
                   role="img"
@@ -208,13 +202,11 @@ const App = () => {
         <Route
           path="/saved-news"
           element={
-            <>
-              <Header
-                handlePopupToggleView={handlePopupToggleView}
-                isLoggedIn={isLoggedIn}
-                handleLogOutclicked={handleLogOutclicked}
-              />
-            </>
+            <Header
+              handlePopupToggleView={handlePopupToggleView}
+              isLoggedIn={isLoggedIn}
+              handleLogOutclicked={handleLogOutclicked}
+            />
           }
         />
         <Route path="*" element={<Navigate to="/" />} />
