@@ -40,7 +40,7 @@
 .articles__button:hover {
   background: #e8e8e8;
 }
-@media screen and (min-width: 566px) {
+@media screen and (min-width: 663px) {
   /*Tablet*/
   .articles__wrapper {
     max-width: calc(100vw - (42px * 2));
@@ -54,7 +54,7 @@
     max-width: 288px;
   }
 }
-@media screen and (min-width: 901px) {
+@media screen and (min-width: 1024px) {
   /*Wide Screen*/
   .header__wrapper {
     max-width: calc(100vw - (104px * 2));
