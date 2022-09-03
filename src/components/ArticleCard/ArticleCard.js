@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import "./ArticleCard.css";
 const ArticleCard = ({
-  article: {source, title, publishedAt, description, imgUrl, url}
+  article: {source, title, publishedAt, description, imgUrl, url},
+  isLoggedIn
 }) => {
   const [isButtonHover, setIsButtonHover] = useState(false);
+
   return (
     <li className="article-card fade-in scale-hover">
       <article className="article-card_wrapper">
@@ -18,28 +20,36 @@ const ArticleCard = ({
             window.open(url, "_blank");
           }}
         >
-          <button
-            className="article-card__saved-btn btn-link-modifier"
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            onMouseOver={() => setIsButtonHover(true)}
-            onMouseOut={() => setIsButtonHover(false)}
-          >
-            <img
-              src={
-                isButtonHover
-                  ? require("../../images/Article/bookmark_icons/bookmark-notsaved-black.svg")
-                      .default
-                  : require("../../images/Article/bookmark_icons/bookmark-notsaved-gray.svg")
-                      .default
-              }
-              alt="Add/Remove to saved article "
-              className="article-card__saved-btn-icon "
-            />
-          </button>
-          <div></div>
+          <div className="article-card__saved-wrapper">
+            <button
+              className="article-card__saved-btn btn-link-modifier"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              onMouseOver={() => setIsButtonHover(true)}
+              onMouseOut={() => setIsButtonHover(false)}
+            >
+              <img
+                src={
+                  isButtonHover
+                    ? require("../../images/Article/bookmark_icons/bookmark-notsaved-black.svg")
+                        .default
+                    : require("../../images/Article/bookmark_icons/bookmark-notsaved-gray.svg")
+                        .default
+                }
+                alt="Add/Remove to saved article "
+                className="article-card__saved-btn-icon "
+              />
+            </button>
+            <span
+              className={`article-card__saved-message ${
+                isButtonHover && !isLoggedIn && "slide-in-right message_visible"
+              }`}
+            >
+              Sign in to save articles
+            </span>
+          </div>
         </div>
         <div className="article-card__txt-container">
           <h3 className="article-card__published-date">{publishedAt}</h3>

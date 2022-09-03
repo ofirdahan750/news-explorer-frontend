@@ -8,7 +8,7 @@ import {
   setArticleListSettings
 } from "../../store/actions/articlesAction";
 import "./SearchArticles.css";
-const SearchArticles = () => {
+const SearchArticles = ({isLoggedIn}) => {
   const {articles, listSetting} = useSelector((state) => state.articlesModule);
 
   const [params] = useSearchParams();
@@ -62,7 +62,7 @@ const SearchArticles = () => {
         <h3 className="articles__title">Search results</h3>
         <ul className="articles__list list-modifier">
           {articles.slice(0, listSetting.openCardsAmount).map((article, i) => (
-            <ArticleCard key={i} article={article} />
+            <ArticleCard key={i} article={article} isLoggedIn={isLoggedIn} />
           ))}
         </ul>
         <button

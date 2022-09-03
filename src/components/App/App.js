@@ -211,7 +211,7 @@ const App = () => {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <SearchArticles />
+      <SearchArticles isLoggedIn={isLoggedIn} />
       <main className="main">
         <AboutAuthor />
       </main>
