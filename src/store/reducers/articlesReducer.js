@@ -1,16 +1,11 @@
 import {articlesState} from "../../utils/constants.js";
-const initialState = {
-  listSetting: {
-    isArticlesLoading: false,
-    isArticlesSectionActive: false,
-    openCardsAmount: 3
-  },
-  articles: [articlesState.init]
-};
+const initialState = articlesState.init;
 
 export function articlesReducer(state = initialState, action) {
   const {payLoad, type} = action;
-
+  if (type === "SET_ARTICLES") {
+    console.log("payLoad", payLoad);
+  }
   switch (type) {
     case "SET_ARTICLES":
       return {...state, articles: payLoad};

@@ -1,4 +1,4 @@
-.preloader {
+.preloader-container {
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -11,27 +11,11 @@
   transition: visibility 0s linear 0.15s, opacity 477ms;
   z-index: 1000000;
 }
-.preloader_visible {
+.preloader-container_visible {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0s, opacity 477ms;
   cursor: progress;
-}
-.preloader__circle {
-  display: block;
-  width: 50px;
-  height: 50px;
-  border: 14px solid #444;
-  border-bottom-color: #888;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  animation: spin 0.75s infinite linear;
-  z-index: 1;
 }
 
 .hero-cover {

@@ -1,14 +1,33 @@
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
+import {checkStringLength} from "../../utils/utils";
 import "./Search.css";
 const Search = () => {
   const navigate = useNavigate();
-  const [inputValue, setiInputValue] = useState("");
+  const [params] = useSearchParams();
+  const location = useLocation();
+  const [inputValue, setIsInputValue] = useState("");
+
   const onSubmitSearch = (e) => {
     e.preventDefault();
-    if (!inputValue.length) return;
+    if (inputValue.length < 2) return;
     navigate(`/?searchParmas=${inputValue}`);
   };
+  useEffect(() => {
+    const searchParmas = params.get("searchParmas");
+    if (searchParmas && location.pathname === "/") {
+      if (checkStringLength(searchParmas) < 2) {
+        navigate("/");
+        return;
+      } else {
+        setIsInputValue(searchParmas);
+      }
+    }
+    return () => {
+      setIsInputValue("");
+    };
+  }, [params, location.pathname]);
+
   return (
     <section className="search">
       <h1 className="search__heading">What's going on in the world?</h1>
@@ -20,10 +39,13 @@ const Search = () => {
         <input
           className="search__input"
           value={inputValue}
+          minLength="2"
           onChange={(e) => {
-            setiInputValue(e.target.value);
+            setIsInputValue(e.target.value);
           }}
           placeholder="Enter topic"
+          autoFocus
+          required
         />
         <button
           type="submit"

@@ -1,4 +1,3 @@
-import spinnerArticle from "../images/Article/spinner_svg.svg";
 export const txtErr = "Something went wrong, please try again later ";
 
 export const loadingInitState = {
@@ -83,10 +82,19 @@ export const formState = {
 
 export const articlesState = {
   init: {
-    source: "Loading...",
-    title: "Loading...",
-    publishedAt: "january 1 0000",
-    description: "Loading...",
-    imgUrl: {spinnerArticle}
+    listSetting: {
+      isArticlesLoading: false,
+      isArticlesSectionActive: false,
+      openCardsAmount: 3
+    },
+    articles: [
+      {
+        source: "Loading...",
+        title: "Loading...",
+        publishedAt: "january 1 0000",
+        description: "Loading...",
+        imgUrl: ""
+      }
+    ]
   }
 };

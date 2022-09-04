@@ -4,6 +4,7 @@ import {Routes, Route, Navigate} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
 
+import PreLoader from "../PreLoader/PreLoader.js";
 import Header from "../Header/Header.js";
 import Search from "../Search/Search.js";
 import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
@@ -179,8 +180,12 @@ const App = () => {
           path="/"
           element={
             <>
-              <div className={`preloader ${isLoading && "preloader_visible"}`}>
-                <i className="preloader__circle"></i>
+              <div
+                className={`preloader-container ${
+                  isLoading && "preloader-container_visible"
+                }`}
+              >
+                <PreLoader modifier={"preloader_app"} />
               </div>
               <div className="page__content fade-in">
                 <div
