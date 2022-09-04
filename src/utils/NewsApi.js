@@ -1,3 +1,4 @@
+import demoData from "../DemoData/DemoData.json";
 class NewsApi {
   constructor({baseUrl, from, to, pageSize}) {
     this._baseUrl = baseUrl;
@@ -18,6 +19,10 @@ class NewsApi {
     return await this._onHttpRequest(
       `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
     );
+    //for Working on the server
+    // demoData.totalResults = 0 /
+    // return demoData;
+    // return Promise.reject()
   };
 }
 const newsApi = new NewsApi({

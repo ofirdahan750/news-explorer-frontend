@@ -1,12 +1,10 @@
 import setSortedArticles from "../utils/actionUtils.js";
 export const setArticles = ({articles, isSearchHaveResults}) => {
-  let sortedArticles;
-  if (isSearchHaveResults) {
-    sortedArticles = setSortedArticles(articles);
-  } else {
-    sortedArticles = [];
-  }
-  return {type: "SET_ARTICLES", payLoad: sortedArticles};
+  console.log("isSearchHaveResults:", isSearchHaveResults);
+  return {
+    type: "SET_ARTICLES",
+    payLoad: isSearchHaveResults ? setSortedArticles(articles) : []
+  };
 };
 
 export const setArticleListSettings = (settingData) => {
