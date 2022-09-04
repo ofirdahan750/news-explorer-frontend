@@ -39,37 +39,40 @@ const ArticlesList = ({articles, isLoggedIn, isDemoData, headline}) => {
   }
 
   return (
-    <>
-      {headline}
-      {isDemoData && (
-        <h3 className="articles__title articles__title_text_err-msg ">
-          * Sorry, something went wrong during the request. There may be a
-          connection issue or the server may be down. This is a{" "}
-          <span style={{fontWeight: "600", textDecoration: "underline"}}>
-            demo data ONLY!
-          </span>
-        </h3>
-      )}
-      <ul className="articles__list list-modifier">
-        {articles.slice(0, openCardsAmount).map((article, i) => (
-          <ArticleCard
-            key={i}
-            article={article}
-            isLoggedIn={isLoggedIn}
-            isDemoData={isDemoData}
-          />
-        ))}
-      </ul>
-      {articles.length >= openCardsAmount && (
-        <button
-          type="button"
-          onClick={(e) => setOpenCardsAmount((prevState) => (prevState += 3))}
-          className="articles__button background-color-transition btn-link-modifier"
-        >
-          Show more
-        </button>
-      )}
-    </>
+    <section className="articles fade-in">
+      <div className="articles__wrapper">
+        {headline}
+
+        {isDemoData && (
+          <h3 className="articles__title articles__title_text_err-msg ">
+            * Sorry, something went wrong during the request. There may be a
+            connection issue or the server may be down. This is a{" "}
+            <span style={{fontWeight: "600", textDecoration: "underline"}}>
+              demo data ONLY!
+            </span>
+          </h3>
+        )}
+        <ul className="articles__list list-modifier">
+          {articles.slice(0, openCardsAmount).map((article, i) => (
+            <ArticleCard
+              key={i}
+              article={article}
+              isLoggedIn={isLoggedIn}
+              isDemoData={isDemoData}
+            />
+          ))}
+        </ul>
+        {articles.length >= openCardsAmount && (
+          <button
+            type="button"
+            onClick={(e) => setOpenCardsAmount((prevState) => (prevState += 3))}
+            className="articles__button background-color-transition btn-link-modifier"
+          >
+            Show more
+          </button>
+        )}
+      </div>
+    </section>
   );
 };
 export default ArticlesList;

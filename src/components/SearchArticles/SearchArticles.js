@@ -23,8 +23,9 @@ const SearchArticles = ({isLoggedIn}) => {
   useEffect(() => {
     const searchParmas = params.get("searchParmas");
 
-    if (searchParmas) {
+    if (searchParmas && location.pathname === "/") {
       if (checkStringLength(searchParmas) < 2) {
+        debugger;
         navigate("/");
         return;
       }

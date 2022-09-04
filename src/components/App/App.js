@@ -28,7 +28,7 @@ import {validateToken} from "../../utils/auth";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const {inputs, isFormVaild, isOpen} = useSelector(
     (state) => state.fromSettingModule
@@ -75,7 +75,6 @@ const App = () => {
       validateToken(jwt)
         .then((user) => {
           setCurrentUser(user);
-          setIsLoggedIn(true);
         })
         .catch((err) => {
           console.log(err);
@@ -177,6 +176,19 @@ const App = () => {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route
+          path="/saved-news"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
+              <Header
+                handlePopupToggleView={handlePopupToggleView}
+                isLoggedIn={isLoggedIn}
+                handleLogOutclicked={handleLogOutclicked}
+              />
+              <SavedArticles isLoggedIn={isLoggedIn} />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/"
           element={
             <>
@@ -204,19 +216,7 @@ const App = () => {
             </>
           }
         />
-        <Route
-          path="/saved-news"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
-              <Header
-                handlePopupToggleView={handlePopupToggleView}
-                isLoggedIn={isLoggedIn}
-                handleLogOutclicked={handleLogOutclicked}
-              />
-              <SavedArticles isLoggedIn={isLoggedIn} />
-            </ProtectedRoute>
-          }
-        />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       <SearchArticles isLoggedIn={isLoggedIn} />

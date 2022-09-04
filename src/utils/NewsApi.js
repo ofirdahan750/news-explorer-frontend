@@ -22,7 +22,7 @@ class NewsApi {
     //for Working on the server
     // demoData.totalResults = 0;
     // return demoData;
-    return Promise.resolve(demoData);
+    return Promise.reject(demoData);
   };
 }
 const newsApi = new NewsApi({

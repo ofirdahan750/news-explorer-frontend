@@ -23,9 +23,9 @@ const Search = () => {
         setIsInputValue(searchParmas);
       }
     }
-    return () => {
-      setIsInputValue("");
-    };
+    // return () => {
+    //   setIsInputValue("");
+    // };
   }, [params, location.pathname]);
 
   return (
