@@ -1,38 +1,161 @@
 import ArticlesList from "../ArticlesList/ArticlesList";
-import "../SearchArticles/SearchArticles.css";
+
+import "./SavedArticles/SavedArticles.css";
 const SavedArticles = ({isLoggedIn}) => {
+  const demo = [
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "https://robohash.org/dsf",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    },
+    {
+      source: "source.name",
+      title: "title",
+      publishedAt: "sdfdsf",
+      description: "description",
+      url: "url",
+      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
+    }
+  ];
   return (
-    <section>
-      <h3>Saved articles</h3>
-      <h2>Elise, you have 5 saved articles</h2>
-      <h4>By keywords: Nature, Yellowstone, and 2 other</h4>
-      <ArticlesList
-        articles={[
-          {
-            source: "source.name",
-            title: "title",
-            publishedAt: "sdfdsf",
-            description: "description",
-            url: "https://robohash.org/dsf",
-            imgUrl: `https://robohash.org/${Math.floor(
-              Math.random() * 234324234234
-            )}`
-          },
-          {
-            source: "source.name",
-            title: "title",
-            publishedAt: "sdfdsf",
-            description: "description",
-            url: "url",
-            imgUrl: `https://robohash.org/${Math.floor(
-              Math.random() * 234324234234
-            )}`
-          }
-        ]}
-        isLoggedIn={isLoggedIn}
-        isDemoData={true}
-      />
-    </section>
+    <ArticlesList articles={demo} isLoggedIn={isLoggedIn} isDemoData={true}>
+      <>
+        <h3 className="ar">Saved articles</h3>
+        <h2>Elise, you have 5 saved articles</h2>
+        <h4>By keywords: Nature, Yellowstone, and 2 other</h4>
+      </>
+    </ArticlesList>
   );
 };
 export default SavedArticles;

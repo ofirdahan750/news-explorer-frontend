@@ -8,7 +8,7 @@ const ArticleCard = ({
   const [isButtonHover, setIsButtonHover] = useState(false);
 
   return (
-    <li className="article-card fade-in ">
+    <li className="article-card fade-in">
       <article className="article-card_wrapper scale-hover">
         <div
           className="article-card_img-container"
@@ -43,7 +43,7 @@ const ArticleCard = ({
                     : require("../../images/Article/bookmark_icons/bookmark-notsaved-gray.svg")
                         .default
                 }
-                alt="Add/Remove to saved article "
+                alt="Add/Remove to saved article"
                 className="article-card__saved-btn-icon "
               />
             </button>

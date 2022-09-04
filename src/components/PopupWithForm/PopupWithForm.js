@@ -10,8 +10,7 @@ const PopupWithForm = ({
     title,
     isFormVaild,
     btnSetting,
-    bottomLink,
-    inputs
+    bottomLink
   },
   currType,
   handlePopupToggleView

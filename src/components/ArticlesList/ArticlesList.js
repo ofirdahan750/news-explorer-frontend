@@ -2,9 +2,10 @@ import {useState} from "react";
 import {useSelector} from "react-redux";
 import ArticleCard from "../ArticleCard/ArticleCard.js";
 import "../SearchArticles/SearchArticles.css";
+
 import PreLoader from "../PreLoader/PreLoader.js";
 
-const ArticlesList = ({articles, isLoggedIn, isDemoData, headline}) => {
+const ArticlesList = ({children, isLoggedIn, isDemoData, articles}) => {
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
   if (
@@ -41,8 +42,7 @@ const ArticlesList = ({articles, isLoggedIn, isDemoData, headline}) => {
   return (
     <section className="articles fade-in">
       <div className="articles__wrapper">
-        {headline}
-
+        {children}
         {isDemoData && (
           <h3 className="articles__title articles__title_text_err-msg ">
             * Sorry, something went wrong during the request. There may be a

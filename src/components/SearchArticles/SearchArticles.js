@@ -96,24 +96,17 @@ const SearchArticles = ({isLoggedIn}) => {
   }, [params, location.pathname]);
 
   if (!listSetting.isArticlesSectionActive) return;
-  const headline = () => {
-    return (
+
+  return (
+    <ArticleList
+      articles={articles}
+      isLoggedIn={isLoggedIn}
+      isDemoData={isDemoData}
+    >
       <h3 className="articles__title articles__title_text_search-results">
         Search results
       </h3>
-    );
-  };
-  return (
-    <section className="articles fade-in">
-      <div className="articles__wrapper">
-        <ArticleList
-          articles={articles}
-          isLoggedIn={isLoggedIn}
-          isDemoData={isDemoData}
-          headline={headline()}
-        />
-      </div>
-    </section>
+    </ArticleList>
   );
 };
 export default SearchArticles;
