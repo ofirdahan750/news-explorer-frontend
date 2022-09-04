@@ -1,6 +1,5 @@
 import setSortedArticles from "../utils/actionUtils.js";
 export const setArticles = ({articles, isSearchHaveResults}) => {
-  console.log("isSearchHaveResults:", isSearchHaveResults);
   return {
     type: "SET_ARTICLES",
     payLoad: isSearchHaveResults ? setSortedArticles(articles) : []

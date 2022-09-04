@@ -19,7 +19,8 @@
 }
 
 .hero-cover {
-  height: 576px; /*Moblie */
+  /* margin: 0 0 32px; Moblie */
+  max-height: 536px;
   background-image: url("../../images/App/hero_img.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -40,7 +41,8 @@
     max-width: calc(100vw - (40px * 2));
   }
   .hero-cover {
-    height: 400px;
+    max-height: 400px;
+    /* margin: 0 0 40px; Moblie */
   }
 }
 
@@ -50,6 +52,7 @@
     max-width: calc(100vw - (104px * 2));
   }
   .hero-cover {
-    height: 536px;
+    max-height: 576px;
+    /* margin: 0 0 80px; Moblie */
   }
 }

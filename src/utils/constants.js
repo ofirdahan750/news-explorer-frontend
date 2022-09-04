@@ -84,8 +84,7 @@ export const articlesState = {
   init: {
     listSetting: {
       isArticlesLoading: false,
-      isArticlesSectionActive: false,
-      openCardsAmount: 3
+      isArticlesSectionActive: false
     },
     articles: [
       {

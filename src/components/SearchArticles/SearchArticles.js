@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
-import ArticleCard from "../ArticleCard/ArticleCard.js";
+import ArticleList from "../ArticlesList/ArticlesList.js";
 import demoData from "../../DemoData/DemoData.json";
 
 import {
@@ -10,7 +10,6 @@ import {
   setArticleListSettings
 } from "../../store/actions/articlesAction";
 import "./SearchArticles.css";
-import PreLoader from "../PreLoader/PreLoader.js";
 import newsApi from "../../utils/NewsApi.js";
 import {checkStringLength} from "../../utils/utils.js";
 const SearchArticles = ({isLoggedIn}) => {
@@ -24,7 +23,7 @@ const SearchArticles = ({isLoggedIn}) => {
   useEffect(() => {
     const searchParmas = params.get("searchParmas");
 
-    if (searchParmas && location.pathname === "/") {
+    if (searchParmas) {
       if (checkStringLength(searchParmas) < 2) {
         navigate("/");
         return;
@@ -32,8 +31,7 @@ const SearchArticles = ({isLoggedIn}) => {
       dispatch(
         setArticleListSettings({
           isArticlesLoading: true,
-          isArticlesSectionActive: true,
-          openCardsAmount: 3
+          isArticlesSectionActive: true
         })
       );
       Promise.any([
@@ -64,6 +62,7 @@ const SearchArticles = ({isLoggedIn}) => {
           );
         })
         .catch((err) => {
+          console.log("err:", err);
           setIsDemoData(true);
           dispatch(
             setArticles({
@@ -86,8 +85,7 @@ const SearchArticles = ({isLoggedIn}) => {
       dispatch(
         setArticleListSettings({
           isArticlesLoading: false,
-          isArticlesSectionActive: false,
-          openCardsAmount: 3
+          isArticlesSectionActive: false
         })
       );
       setIsDemoData(false);
@@ -95,66 +93,24 @@ const SearchArticles = ({isLoggedIn}) => {
 
     // eslint-disable-next-line
   }, [params, location.pathname]);
-  const onShowMoreClick = () => {
-    const newAmount = listSetting.openCardsAmount + 3;
-    dispatch(
-      setArticleListSetting({
-        settingKey: "openCardsAmount",
-        settingData: newAmount
-      })
+
+  if (!listSetting.isArticlesSectionActive) return;
+  const headline = () => {
+    return (
+      <h3 className="articles__title articles__title_text_search-results">
+        Search results
+      </h3>
     );
   };
-  if (!listSetting.isArticlesSectionActive) return;
-  if (listSetting.isArticlesLoading) {
-    return (
-      <section className="articles articles_loading">
-        <PreLoader modifier={"preloader_articles"} />
-        <div className="articles__loading-txt">Searching for news...</div>
-      </section>
-    );
-  }
-  if (
-    listSetting.isArticlesSectionActive &&
-    !listSetting.isArticlesLoading &&
-    !articles.length
-  ) {
-    return (
-      <section className="articles articles_not-found">
-        <div className="articles__not-found-wrapper">
-          <img
-            src={require("../../images/Article/article_not-found.svg").default}
-            alt="a sad emjoi-Not found"
-            className="articles__not-found-img"
-          />
-          <h3 className="articles__not-found-header">Nothing found</h3>
-          <p className="articles__not-found-text">
-            Sorry, but nothing matched your search terms.
-          </p>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section className="articles fade-in">
       <div className="articles__wrapper">
-        <h3 className="articles__title">
-          Search results
-          {isDemoData &&
-            "-Something went wrong with your request, So this is a demo data! "}
-        </h3>
-        <ul className="articles__list list-modifier">
-          {articles.slice(0, listSetting.openCardsAmount).map((article, i) => (
-            <ArticleCard key={i} article={article} isLoggedIn={isLoggedIn} />
-          ))}
-        </ul>
-        <button
-          type="button"
-          onClick={onShowMoreClick}
-          className="articles__button background-color-transition btn-link-modifier"
-        >
-          Show more
-        </button>
+        <ArticleList
+          articles={articles}
+          isLoggedIn={isLoggedIn}
+          isDemoData={isDemoData}
+          headline={headline()}
+        />
       </div>
     </section>
   );

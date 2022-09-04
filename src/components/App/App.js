@@ -3,6 +3,7 @@ import React, {useEffect, useState, useCallback} from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 import PreLoader from "../PreLoader/PreLoader.js";
 import Header from "../Header/Header.js";
@@ -10,6 +11,8 @@ import Search from "../Search/Search.js";
 import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
 import SearchArticles from "../SearchArticles/SearchArticles.js";
 import Footer from "../Footer.js";
+
+import SavedArticles from "../SavedArticles/SavedArticles.js";
 
 import LoginPopupup from "../LoginPopupup/LoginPopupup.js";
 import RegisterPopupup from "../RegisterPopupup/RegisterPopupup.js";
@@ -22,10 +25,7 @@ import {
 } from "../../store/actions/formSettingActions";
 import {setLoading} from "../../store/actions/loadingAction";
 import {validateToken} from "../../utils/auth";
-import {
-  setArticles,
-  setIsArticlesLoading
-} from "../../store/actions/articlesAction";
+
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -207,11 +207,14 @@ const App = () => {
         <Route
           path="/saved-news"
           element={
-            <Header
-              handlePopupToggleView={handlePopupToggleView}
-              isLoggedIn={isLoggedIn}
-              handleLogOutclicked={handleLogOutclicked}
-            />
+            <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
+              <Header
+                handlePopupToggleView={handlePopupToggleView}
+                isLoggedIn={isLoggedIn}
+                handleLogOutclicked={handleLogOutclicked}
+              />
+              <SavedArticles isLoggedIn={isLoggedIn} />
+            </ProtectedRoute>
           }
         />
         <Route path="*" element={<Navigate to="/" />} />
@@ -244,4 +247,79 @@ const App = () => {
     </CurrentUserContext.Provider>
   );
 };
+
+// return (
+//   <CurrentUserContext.Provider value={currentUser}>
+//     <Routes>
+//       <Route
+//         path="/saved-news"
+//         element={
+//           <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
+//             <Header
+//               handlePopupToggleView={handlePopupToggleView}
+//               isLoggedIn={isLoggedIn}
+//               handleLogOutclicked={handleLogOutclicked}
+//             />
+//             <SavedArticles isLoggedIn={isLoggedIn} />
+//           </ProtectedRoute>
+//         }
+//       />
+//       <Route
+//         path="/"
+//         element={
+//           <>
+//             <div
+//                 className={`preloader-container ${
+//                   isLoading && "preloader-container_visible"
+//                 }`}
+//                 >
+//                 <PreLoader modifier={"preloader_app"} />
+//               </div>
+//             <div className="page__content fade-in">
+//               <div
+//                 className="hero-cover"
+//                 role="img"
+//                 aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
+//               >
+//                 <Header
+//                   handlePopupToggleView={handlePopupToggleView}
+//                   isLoggedIn={isLoggedIn}
+//                   handleLogOutclicked={handleLogOutclicked}
+//                 />
+//                 <Search />
+//                 <SearchArticles isLoggedIn={isLoggedIn} />
+//               </div>
+//             </div>
+//           </>
+//         }
+//       />
+//       <Route path="*" element={<Navigate to="/" />} />
+//     </Routes>
+//     <main className="main">
+//       <AboutAuthor />
+//     </main>
+//     <Footer />
+//     <LoginPopupup
+//       onChangeInput={onChangeInput}
+//       handlePopupMouseDown={handlePopupMouseDown}
+//       handlePopupToggleView={handlePopupToggleView}
+//       isInputHaveKey={isInputHaveKey}
+//       onFormSubmitted={onFormSubmitted}
+//       setCurrentUser={setCurrentUser}
+//       setIsLoggedIn={setIsLoggedIn}
+//     />
+//     <RegisterPopupup
+//       onChangeInput={onChangeInput}
+//       handlePopupMouseDown={handlePopupMouseDown}
+//       handlePopupToggleView={handlePopupToggleView}
+//       onFormSubmitted={onFormSubmitted}
+//       isInputHaveKey={isInputHaveKey}
+//     />
+//     <SuccessPopupup
+//       handlePopupMouseDown={handlePopupMouseDown}
+//       handlePopupToggleView={handlePopupToggleView}
+//     />
+//   </CurrentUserContext.Provider>
+// );
+// };
 export default App;

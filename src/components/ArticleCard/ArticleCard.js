@@ -2,13 +2,14 @@ import React, {useState} from "react";
 import "./ArticleCard.css";
 const ArticleCard = ({
   article: {source, title, publishedAt, description, imgUrl, url},
-  isLoggedIn
+  isLoggedIn,
+  isDemoData
 }) => {
   const [isButtonHover, setIsButtonHover] = useState(false);
 
   return (
-    <li className="article-card fade-in scale-hover">
-      <article className="article-card_wrapper">
+    <li className="article-card fade-in ">
+      <article className="article-card_wrapper scale-hover">
         <div
           className="article-card_img-container"
           role="img"
@@ -26,6 +27,10 @@ const ArticleCard = ({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
+                if (isDemoData) {
+                  return;
+                }
+                console.log("click");
               }}
               onMouseOver={() => setIsButtonHover(true)}
               onMouseOut={() => setIsButtonHover(false)}
