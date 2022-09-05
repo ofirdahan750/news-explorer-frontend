@@ -1,8 +1,10 @@
 import ArticlesList from "../ArticlesList/ArticlesList";
 
 import "./SavedArticles/SavedArticles.css";
+import "../ArticleCard/ArticleCardSearch.css";
 const SavedArticles = ({isLoggedIn}) => {
-  const demo = [
+  const demo = [];
+  const demo1 = [
     {
       source: "source.name",
       title: "title",
@@ -149,11 +151,21 @@ const SavedArticles = ({isLoggedIn}) => {
     }
   ];
   return (
-    <ArticlesList articles={demo} isLoggedIn={isLoggedIn} isDemoData={true}>
+    <ArticlesList
+      articles={demo}
+      isLoggedIn={isLoggedIn}
+      isDemoData={false}
+      type="saved"
+    >
       <>
-        <h3 className="ar">Saved articles</h3>
-        <h2>Elise, you have 5 saved articles</h2>
-        <h4>By keywords: Nature, Yellowstone, and 2 other</h4>
+        <h3 className="articles__location-title">Saved articles</h3>
+        <h2 className="articles__title">Elise, you have 5 saved articles</h2>
+        <h4 className="articles__key-title">
+          By keywords:{" "}
+          <span className="articles__key-title">
+            Nature, Yellowstone, and 2 other
+          </span>
+        </h4>
       </>
     </ArticlesList>
   );

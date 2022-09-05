@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import ArticleList from "../ArticlesList/ArticlesList.js";
+import "../ArticleCard/ArticleCardSearch.css";
+
 import demoData from "../../DemoData/DemoData.json";
 
 import {
@@ -102,6 +104,7 @@ const SearchArticles = ({isLoggedIn}) => {
       articles={articles}
       isLoggedIn={isLoggedIn}
       isDemoData={isDemoData}
+      type="search"
     >
       <h3 className="articles__title articles__title_text_search-results">
         Search results

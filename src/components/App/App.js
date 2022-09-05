@@ -212,17 +212,17 @@ const App = () => {
                   />
                   <Search />
                 </div>
+                <SearchArticles isLoggedIn={isLoggedIn} />
+                <main className="main">
+                  <AboutAuthor />
+                </main>
               </div>
             </>
           }
         />
-
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <SearchArticles isLoggedIn={isLoggedIn} />
-      <main className="main">
-        <AboutAuthor />
-      </main>
+
       <Footer />
       <LoginPopupup
         onChangeInput={onChangeInput}

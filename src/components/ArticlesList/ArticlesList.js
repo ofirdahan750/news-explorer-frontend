@@ -1,11 +1,13 @@
-import {useState} from "react";
+import React, {useContext, useState} from "react";
 import {useSelector} from "react-redux";
 import ArticleCard from "../ArticleCard/ArticleCard.js";
-import "../SearchArticles/SearchArticles.css";
+import "./ArticlesList/ArticlesList.css";
 
 import PreLoader from "../PreLoader/PreLoader.js";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-const ArticlesList = ({children, isLoggedIn, isDemoData, articles}) => {
+const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
+  const {name} = useContext(CurrentUserContext);
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
   if (
@@ -23,7 +25,9 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles}) => {
           />
           <h3 className="articles__not-found-header">Nothing found</h3>
           <p className="articles__not-found-text">
-            Sorry, but nothing matched your search terms.
+            {type === "search"
+              ? `Sorry,${name || "You"} but nothing matched your search terms.`
+              : "You don't have any saved articles"}
           </p>
         </div>
       </section>
@@ -40,7 +44,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles}) => {
   }
 
   return (
-    <section className="articles fade-in">
+    <section className={`articles articles_type_${type} fade-in`}>
       <div className="articles__wrapper">
         {children}
         {isDemoData && (
@@ -59,6 +63,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles}) => {
               article={article}
               isLoggedIn={isLoggedIn}
               isDemoData={isDemoData}
+              type={type}
             />
           ))}
         </ul>

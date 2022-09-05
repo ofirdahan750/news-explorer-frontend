@@ -1,0 +1,16 @@
+.articles_type_saved {
+  padding: 8px 0 13px; /*Moblie */
+}
+@media screen and (min-width: 663px) {
+  /*Tablet*/
+  .articles_type_saved {
+    padding: 24px 0 32px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  /*Wide Screen*/
+
+  .articles_type_saved {
+    padding: 40px 0 62px 0;
+  }
+}
