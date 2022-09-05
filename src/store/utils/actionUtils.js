@@ -5,14 +5,14 @@ export default function setSortedArticles(arr) {
     return {
       source: source.name,
       title: title,
-      publishedAt: new Date(formattedDate).toLocaleDateString("en-US", {
+      date: new Date(formattedDate).toLocaleDateString("en-US", {
         year: "numeric",
         month: "long",
         day: "numeric"
       }),
-      description: description,
-      url: url,
-      imgUrl: urlToImage
+      text: description,
+      link: url,
+      image: urlToImage
     };
   });
 }

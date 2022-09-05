@@ -6,11 +6,19 @@ import "./ArticlesList/ArticlesList.css";
 import PreLoader from "../PreLoader/PreLoader.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 
-const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
+const ArticlesList = ({
+  children,
+  isLoggedIn,
+  isDemoData,
+  articles,
+  type,
+  handleSubmit
+}) => {
   const {name} = useContext(CurrentUserContext);
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
-  if (!listSetting.isArticlesSectionActive) return;
+
+  // if (!listSetting.isArticlesSectionActive) return;
   if (
     listSetting.isArticlesSectionActive &&
     !listSetting.isArticlesLoading &&
@@ -65,6 +73,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
               isLoggedIn={isLoggedIn}
               isDemoData={isDemoData}
               type={type}
+              handleSubmit={handleSubmit}
             />
           ))}
         </ul>

@@ -16,14 +16,13 @@ class NewsApi {
   };
 
   getSearchArticles = async ({searchParmas, apiKey}) => {
-    return await this._onHttpRequest(
-      `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
-    );
+    // return await this._onHttpRequest(
+    //   `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
+    // );
     //for Working on the server
     // demoData.totalResults = 0;
-    // return Promise.reject(demoData);
     // return Promise.resolve([]);
-    // return Promise.resolve(demoData);
+    return Promise.reject(demoData);
   };
 }
 const newsApi = new NewsApi({

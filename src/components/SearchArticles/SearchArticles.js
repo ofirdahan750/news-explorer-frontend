@@ -4,6 +4,8 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import ArticleList from "../ArticlesList/ArticlesList.js";
 import "../ArticleCard/ArticleCardSearch.css";
 
+import mainApi from "../../utils/MainApi.js";
+
 import demoData from "../../DemoData/DemoData.json";
 
 import {
@@ -32,7 +34,7 @@ const SearchArticles = ({isLoggedIn}) => {
   const oneDay = new Date().getTime() + 1 * 24 * 60 * 60 * 1000; //Make sure One day top
 
   const handleLocalStorage = () => {
-    if (articles.length) {
+    if (articles.length && !isDemoData) {
       localStorage.setItem("lastSearchArticles", JSON.stringify(articles));
       localStorage.setItem(
         "lastSearchSettings",
@@ -82,6 +84,7 @@ const SearchArticles = ({isLoggedIn}) => {
           isArticlesSectionActive: false
         })
       );
+      setArticles([]);
       setIsDemoData(false);
     };
 
@@ -144,12 +147,20 @@ const SearchArticles = ({isLoggedIn}) => {
         );
       });
   };
+  const handleSubmitToggle = (article) => {
+    console.log("article:", article);
+    article.keyword = searchParmas;
+    mainApi.onSaveArticle(article).then((res) => {
+      console.log("res:", res);
+    });
+  };
 
   return (
     <ArticleList
       articles={articles}
       isLoggedIn={isLoggedIn}
       isDemoData={isDemoData}
+      handleSubmit={handleSubmitToggle}
       type="search"
     >
       <h3 className="articles__title articles__title_text_search-results">

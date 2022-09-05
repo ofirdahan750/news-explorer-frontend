@@ -2,157 +2,53 @@ import ArticlesList from "../ArticlesList/ArticlesList";
 
 import "./SavedArticles/SavedArticles.css";
 import "../ArticleCard/ArticleCardSearch.css";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {
+  setArticleListSetting,
+  setArticleListSettings,
+  setArticles
+} from "../../store/actions/articlesAction";
+import mainApi from "../../utils/MainApi";
 const SavedArticles = ({isLoggedIn}) => {
-  const demo = [];
-  const demo1 = [
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "https://robohash.org/dsf",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    },
-    {
-      source: "source.name",
-      title: "title",
-      publishedAt: "sdfdsf",
-      description: "description",
-      url: "url",
-      imgUrl: "https://i.ytimg.com/vi/UvB2rzswI5Q/maxresdefault.jpg"
-    }
-  ];
+  const {articles, listSetting} = useSelector((state) => state.articlesModule);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(
+      setArticleListSettings({
+        isArticlesLoading: true,
+        isArticlesSectionActive: true
+      })
+    );
+    mainApi
+      .getSavedArticles()
+      .then((res) => {
+        dispatch(setArticles(res.articles));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(setArticles([]));
+      })
+      .finally(() => {
+        dispatch(
+          setArticleListSetting({
+            settingKey: "isArticlesLoading",
+            settingData: false
+          })
+        );
+      });
+    return () => {
+      dispatch(setArticles([]));
+      setArticleListSetting({
+        settingKey: "isArticlesLoading",
+        settingData: false
+      });
+    };
+  }, []);
+
   return (
     <ArticlesList
-      articles={demo}
+      articles={articles}
       isLoggedIn={isLoggedIn}
       isDemoData={false}
       type="saved"

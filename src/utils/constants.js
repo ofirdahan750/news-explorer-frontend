@@ -90,9 +90,10 @@ export const articlesState = {
       {
         source: "Loading...",
         title: "Loading...",
-        publishedAt: "january 1 0000",
-        description: "Loading...",
-        imgUrl: ""
+        date: "january 1 0000",
+        text: "Loading...",
+        image: "",
+        url: ""
       }
     ]
   }
