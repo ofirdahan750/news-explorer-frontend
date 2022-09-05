@@ -23,9 +23,10 @@ const Search = () => {
         setIsInputValue(searchParmas);
       }
     }
-    // return () => {
-    //   setIsInputValue("");
-    // };
+    return () => {
+      setIsInputValue("");
+    };
+    // eslint-disable-next-line
   }, [params, location.pathname]);
 
   return (

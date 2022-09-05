@@ -1,5 +1,11 @@
 import setSortedArticles from "../utils/actionUtils.js";
-export const setArticles = ({articles, isSearchHaveResults}) => {
+export const setArticles = (articles) => {
+  return {
+    type: "SET_ARTICLES",
+    payLoad: articles || []
+  };
+};
+export const setArticlesApi = ({articles, isSearchHaveResults}) => {
   return {
     type: "SET_ARTICLES",
     payLoad: isSearchHaveResults ? setSortedArticles(articles) : []

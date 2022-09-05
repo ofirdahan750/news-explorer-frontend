@@ -10,6 +10,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   const {name} = useContext(CurrentUserContext);
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
+  if (!listSetting.isArticlesSectionActive) return;
   if (
     listSetting.isArticlesSectionActive &&
     !listSetting.isArticlesLoading &&
