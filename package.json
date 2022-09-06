@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fvilers/disable-react-devtools": "^1.3.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -20,13 +21,13 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf build && GENERATE_SOURCEMAP=false react-scripts build && rm -rf ./build/**/*.map",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules && npm i",
     "cleandev": "npm run clean && npm start",
-    "push": "git add . && git commit -m \"Fixed a render bug from local storage + remove all error from react lint \" && git push",
-    "deploy": "rm -rf build && npm run build && scp -r ./build/* ofirdahan1003@news-explorer-ofir.students.nomoredomainssbs.ru:/home/ofirdahan1003/news-explorer-frontend",
+    "push": "git add . && git commit -m \"Disabale dev tools react in production + more uglify \" && git push",
+    "deploy": " npm run build && scp -r ./build/* ofirdahan1003@news-explorer-ofir.students.nomoredomainssbs.ru:/home/ofirdahan1003/news-explorer-frontend",
     "fullpush": "npm run push && npm run deploy",
     "fullpushstart": "npm run push && npm run deploy && npm start",
     "cleanfullpushstart": "npm run clean && npm run fullpush && npm start"
