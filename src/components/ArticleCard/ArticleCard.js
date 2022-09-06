@@ -28,9 +28,9 @@ const ArticleCard = ({
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                // if (isDemoData || isLoggedIn) {
-                //   return;
-                // }
+                if (isDemoData || !isLoggedIn) {
+                  return;
+                }
                 handleSubmit({source, title, date, text, image, link});
               }}
               onMouseOver={() => setIsButtonHover(true)}

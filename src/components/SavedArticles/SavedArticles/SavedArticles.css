@@ -1,6 +1,18 @@
 .articles_type_saved {
   padding: 8px 0 13px; /*Moblie */
 }
+.articles__location-title {
+  margin: 0;
+  padding: 0;
+}
+.articles__key-title {
+  margin: 0;
+  padding: 0;
+}
+.articles__key-info {
+  margin: 0;
+  padding: 0;
+}
 @media screen and (min-width: 663px) {
   /*Tablet*/
   .articles_type_saved {
@@ -9,8 +21,25 @@
 }
 @media screen and (min-width: 1024px) {
   /*Wide Screen*/
-
   .articles_type_saved {
     padding: 40px 0 62px 0;
+  }
+  .articles__location-title {
+    font-weight: 400;
+    font-size: 1.125rem;
+    line-height: 1.3333333333;
+    color: rgba(26, 27, 34, 0.5);
+    margin: 0 0 28px;
+    padding: 0;
+  }
+  .articles__key-title {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1a1b22;
+    margin: 30px 0 0;
+  }
+  .articles__key-title_elm_span {
+    font-weight: 700;
   }
 }
