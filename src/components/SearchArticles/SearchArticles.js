@@ -65,7 +65,11 @@ const SearchArticles = ({isLoggedIn}) => {
   }, [searchArticlesList]);
 
   useEffect(() => {
-    if (searchParmas && (checkStringLength(searchParmas) < 2 || checkStringLength(searchParmas) > 42)  ) {
+    if (
+      searchParmas &&
+      (checkStringLength(searchParmas) < 2 ||
+        checkStringLength(searchParmas) > 42)
+    ) {
       navigate("/");
       return;
     }
@@ -164,7 +168,7 @@ const SearchArticles = ({isLoggedIn}) => {
       console.log("res:", res);
     });
   };
-  if(!searchParmas) return
+  if (!searchParmas) return;
   return (
     <ArticleList
       articles={searchArticlesList}

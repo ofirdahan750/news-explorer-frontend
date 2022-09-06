@@ -3,14 +3,16 @@ import ArticlesList from "../ArticlesList/ArticlesList";
 import "./SavedArticles/SavedArticles.css";
 import "../ArticleCard/ArticleCardSearch.css";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {
   setArticleListSetting,
   setArticleListSettings,
   setArticles
 } from "../../store/actions/articlesAction";
 import mainApi from "../../utils/MainApi";
+import {countAndSortArrByKey} from "../../utils/utils.js";
 const SavedArticles = ({isLoggedIn}) => {
+  const [sortedKeywords, setSortedKeywords] = useState({});
   const {searchArticlesList, savedArticlesList, listSetting} = useSelector(
     (state) => state.articlesModule
   );
@@ -27,7 +29,7 @@ const SavedArticles = ({isLoggedIn}) => {
       .then((res) => {
         dispatch(
           setArticles({
-            articles: res.articles,
+            articles: res,
             key: "savedArticlesList"
           })
         );
@@ -48,13 +50,25 @@ const SavedArticles = ({isLoggedIn}) => {
         );
       });
     return () => {
-      // setArticles({article: [], key: "savedArticlesList"});
       setArticleListSettings({
         isArticlesLoading: false,
         isArticlesSectionActive: false
       });
     };
   }, []);
+  useEffect(() => {
+    if (
+      !savedArticlesList.length ||
+      savedArticlesList[0].source === "Loading..."
+    )
+      return;
+    setSortedKeywords(
+      countAndSortArrByKey({arr: savedArticlesList, key: "keyword"})
+    );
+    return () => {
+      setSortedKeywords({});
+    };
+  }, [savedArticlesList]);
 
   return (
     <ArticlesList
@@ -67,9 +81,16 @@ const SavedArticles = ({isLoggedIn}) => {
         <h3 className="articles__location-title">Saved articles</h3>
         <h2 className="articles__title">Elise, you have 5 saved articles</h2>
         <h4 className="articles__key-title">
-          By keywords:{" "}
+          By keywords:
           <span className="articles__key-title">
-            Nature, Yellowstone, and 2 other
+            {Object.keys(sortedKeywords)[0] &&
+              ` ${Object.keys(sortedKeywords)[0]}`}
+            {Object.keys(sortedKeywords)[1] &&
+              `, ${Object.keys(sortedKeywords)[1]}`}
+            {Object.keys(sortedKeywords).length >= 3
+              ? ` and ${Object.keys(sortedKeywords).length - 2} other`
+              : ""}
+            {Object.keys(sortedKeywords).length && "."}
           </span>
         </h4>
       </>

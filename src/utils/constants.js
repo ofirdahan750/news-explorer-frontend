@@ -103,7 +103,8 @@ export const articlesStateInit = {
       text: "Loading...",
       image: "",
       url: "",
-      keyword: ""
+      keyword: "",
+      owner: ""
     }
   ]
 };
