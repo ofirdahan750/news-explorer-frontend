@@ -1,11 +1,11 @@
 class MainApi {
   constructor() {
-    this._token = localStorage.getItem("jwt") || "";
+    this._token = localStorage.getItem("jwt") || false;
     this._baseUrl =
       "https://api.news-explorer-ofir.students.nomoredomainssbs.ru";
   }
   _onHttpRequest = async ({url, method, data}) => {
-    debugger;
+    if (!this._token) return Promise.reject("User not logged in");
     const res = await fetch(`${this._baseUrl}/${url}`, {
       method,
       headers: {
@@ -19,6 +19,9 @@ class MainApi {
     } else {
       return Promise.reject(`Error: ${res.status}`);
     }
+  };
+  setHeaderToken = (token) => {
+    this._token = token;
   };
   getSavedArticles = async () => {
     return await this._onHttpRequest({

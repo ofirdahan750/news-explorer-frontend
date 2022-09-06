@@ -5,6 +5,7 @@ import "../PopupWithForm/PopupWithForm.css";
 import {authenticate, validateToken} from "../../utils/auth.js";
 import {txtErr} from "../../utils/constants.js";
 import {capitalizeFirstLetter} from "../../utils/utils.js";
+import mainApi from "../../utils/MainApi.js";
 
 const LoginPopupup = ({
   onChangeInput,
@@ -49,6 +50,7 @@ const LoginPopupup = ({
         })
           .then((user) => {
             localStorage.setItem("jwt", user.token);
+            mainApi.setHeaderToken(user.token);
             validateToken(user.token)
               .then((userInfo) => {
                 onFormSubmitted({
@@ -60,6 +62,7 @@ const LoginPopupup = ({
                     isDisable: true
                   }
                 });
+
                 setCurrentUser(userInfo);
                 setIsLoggedIn(true);
                 setTimeout(() => {
@@ -67,6 +70,8 @@ const LoginPopupup = ({
                 }, 2000);
               })
               .catch((err) => {
+                localStorage.removeItem("jwt");
+                mainApi.setHeaderToken("");
                 onFormSubmitted({
                   isDone: true,
                   btnSetting: {txt: "Sign in", isDisable: false},

@@ -41,6 +41,7 @@ const Search = () => {
           className="search__input"
           value={inputValue}
           minLength="2"
+          maxLength="42"
           onChange={(e) => {
             setIsInputValue(e.target.value);
           }}

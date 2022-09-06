@@ -11,7 +11,9 @@ import {
 } from "../../store/actions/articlesAction";
 import mainApi from "../../utils/MainApi";
 const SavedArticles = ({isLoggedIn}) => {
-  const {articles, listSetting} = useSelector((state) => state.articlesModule);
+  const {searchArticlesList, savedArticlesList, listSetting} = useSelector(
+    (state) => state.articlesModule
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
@@ -23,11 +25,19 @@ const SavedArticles = ({isLoggedIn}) => {
     mainApi
       .getSavedArticles()
       .then((res) => {
-        dispatch(setArticles(res.articles));
+        dispatch(
+          setArticles({
+            articles: res.articles,
+            key: "savedArticlesList"
+          })
+        );
       })
       .catch((err) => {
         console.log(err);
-        dispatch(setArticles([]));
+        setArticles({
+          articles: [],
+          key: "savedArticlesList"
+        });
       })
       .finally(() => {
         dispatch(
@@ -38,17 +48,17 @@ const SavedArticles = ({isLoggedIn}) => {
         );
       });
     return () => {
-      dispatch(setArticles([]));
-      setArticleListSetting({
-        settingKey: "isArticlesLoading",
-        settingData: false
+      // setArticles({article: [], key: "savedArticlesList"});
+      setArticleListSettings({
+        isArticlesLoading: false,
+        isArticlesSectionActive: false
       });
     };
   }, []);
 
   return (
     <ArticlesList
-      articles={articles}
+      articles={savedArticlesList}
       isLoggedIn={isLoggedIn}
       isDemoData={false}
       type="saved"

@@ -80,21 +80,30 @@ export const formState = {
   }
 };
 
-export const articlesState = {
-  init: {
-    listSetting: {
-      isArticlesLoading: false,
-      isArticlesSectionActive: false
-    },
-    articles: [
-      {
-        source: "Loading...",
-        title: "Loading...",
-        date: "january 1 0000",
-        text: "Loading...",
-        image: "",
-        url: ""
-      }
-    ]
-  }
+export const articlesStateInit = {
+  listSetting: {
+    isArticlesLoading: false,
+    isArticlesSectionActive: false
+  },
+  searchArticlesList: [
+    {
+      source: "Loading...",
+      title: "Loading...",
+      date: "january 1 0000",
+      text: "Loading...",
+      image: "",
+      url: ""
+    }
+  ],
+  savedArticlesList: [
+    {
+      source: "Loading...",
+      title: "Loading...",
+      date: "january 1 0000",
+      text: "Loading...",
+      image: "",
+      url: "",
+      keyword: ""
+    }
+  ]
 };

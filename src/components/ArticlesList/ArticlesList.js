@@ -18,7 +18,6 @@ const ArticlesList = ({
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
 
-  // if (!listSetting.isArticlesSectionActive) return;
   if (
     listSetting.isArticlesSectionActive &&
     !listSetting.isArticlesLoading &&
@@ -51,6 +50,7 @@ const ArticlesList = ({
       </section>
     );
   }
+  if (!listSetting.isArticlesSectionActive) return;
 
   return (
     <section className={`articles articles_type_${type} fade-in`}>

@@ -19,7 +19,9 @@ import newsApi from "../../utils/NewsApi.js";
 import {checkStringLength} from "../../utils/utils.js";
 const SearchArticles = ({isLoggedIn}) => {
   const [isDemoData, setIsDemoData] = useState(false);
-  const {articles, listSetting} = useSelector((state) => state.articlesModule);
+  const {searchArticlesList, savedArticlesList, listSetting} = useSelector(
+    (state) => state.articlesModule
+  );
 
   const [params] = useSearchParams();
   const location = useLocation();
@@ -31,11 +33,20 @@ const SearchArticles = ({isLoggedIn}) => {
     JSON.parse(localStorage.getItem("lastSearchArticles")) || "";
   const lastSearchSettings =
     JSON.parse(localStorage.getItem("lastSearchSettings")) || "";
-  const oneDay = new Date().getTime() + 1 * 24 * 60 * 60 * 1000; //Make sure One day top
+  const isOneDayOld =
+    lastSearchSettings.timeStamp >=
+    new Date().getTime() + 1 * 24 * 60 * 60 * 1000; //Make sure One day top
 
   const handleLocalStorage = () => {
-    if (articles.length && !isDemoData) {
-      localStorage.setItem("lastSearchArticles", JSON.stringify(articles));
+    if (
+      searchArticlesList.length &&
+      !isDemoData &&
+      searchArticlesList[0].title !== "Loading..."
+    ) {
+      localStorage.setItem(
+        "lastSearchArticles",
+        JSON.stringify(searchArticlesList)
+      );
       localStorage.setItem(
         "lastSearchSettings",
         JSON.stringify({
@@ -47,27 +58,26 @@ const SearchArticles = ({isLoggedIn}) => {
   };
 
   useLayoutEffect(() => {
-    if (!articles.length) return;
+    if (!searchArticlesList.length) return;
     if (lastSearchSettings.keyword !== searchParmas) {
       handleLocalStorage(searchParmas);
     }
-  }, [articles]);
+  }, [searchArticlesList]);
 
   useEffect(() => {
-    if (searchParmas && searchParmas !== "" && location.pathname === "/") {
-      if (checkStringLength(searchParmas) < 2) {
-        navigate("/");
-        return;
-      }
+    if (searchParmas && (checkStringLength(searchParmas) < 2 || checkStringLength(searchParmas) > 42)  ) {
+      navigate("/");
+      return;
+    }
+    if (searchParmas !== "searchParmas" && location.pathname === "/") {
       dispatch(
         setArticleListSettings({
           isArticlesLoading: true,
           isArticlesSectionActive: true
         })
       );
-
       if (
-        lastSearchSettings.timeStamp <= oneDay &&
+        isOneDayOld &&
         lastSearchSettings.keyword === searchParmas &&
         lastSearchArticles.length
       ) {
@@ -78,21 +88,19 @@ const SearchArticles = ({isLoggedIn}) => {
     }
 
     return () => {
-      dispatch(
-        setArticleListSettings({
-          isArticlesLoading: false,
-          isArticlesSectionActive: false
-        })
-      );
-      setArticles([]);
-      setIsDemoData(false);
+      setArticles({article: [], key: "searchArticlesList"});
+      setArticleListSettings({
+        isArticlesLoading: false,
+        isArticlesSectionActive: false
+      });
     };
-
     // eslint-disable-next-line
   }, [params, location.pathname]);
 
   const setArticlesByLocalStorage = (lastSearchArticles) => {
-    dispatch(setArticles(lastSearchArticles));
+    dispatch(
+      setArticles({article: lastSearchArticles, key: "searchArticlesList"})
+    );
     dispatch(
       setArticleListSetting({
         settingKey: "isArticlesLoading",
@@ -120,11 +128,13 @@ const SearchArticles = ({isLoggedIn}) => {
       })
     ])
       .then((res) => {
+        console.log("res:", res);
         setIsDemoData(false);
         dispatch(
           setArticlesApi({
             articles: res.articles,
-            isSearchHaveResults: res.totalResults
+            isSearchHaveResults: res.totalResults,
+            key: "searchArticlesList"
           })
         );
       })
@@ -134,7 +144,8 @@ const SearchArticles = ({isLoggedIn}) => {
         dispatch(
           setArticlesApi({
             articles: demoData.articles,
-            isSearchHaveResults: demoData.totalResults
+            isSearchHaveResults: demoData.totalResults,
+            key: "searchArticlesList"
           })
         );
       })
@@ -148,16 +159,15 @@ const SearchArticles = ({isLoggedIn}) => {
       });
   };
   const handleSubmitToggle = (article) => {
-    console.log("article:", article);
     article.keyword = searchParmas;
     mainApi.onSaveArticle(article).then((res) => {
       console.log("res:", res);
     });
   };
-
+  if(!searchParmas) return
   return (
     <ArticleList
-      articles={articles}
+      articles={searchArticlesList}
       isLoggedIn={isLoggedIn}
       isDemoData={isDemoData}
       handleSubmit={handleSubmitToggle}

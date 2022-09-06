@@ -1,12 +1,11 @@
-import {articlesState} from "../../utils/constants.js";
-const initialState = articlesState.init;
+import {articlesStateInit} from "../../utils/constants.js";
+const initialState = articlesStateInit;
 
 export function articlesReducer(state = initialState, action) {
   const {payLoad, type} = action;
-
   switch (type) {
     case "SET_ARTICLES":
-      return {...state, articles: payLoad};
+      return {...state, [payLoad.key]: payLoad.val};
     case "SET_ARTICLE_LIST_SETTINGS":
       return {
         ...state,
