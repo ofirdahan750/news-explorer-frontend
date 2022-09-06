@@ -25,24 +25,17 @@
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules && npm i",
     "cleandev": "npm run clean && npm start",
-    "push": "git add . && git commit -m \"Setting keyword css + function on going\" && git push",
+    "push": "git add . && git commit -m \"Fixed a render bug from local storage + remove all error from react lint \" && git push",
     "deploy": "rm -rf build && npm run build && scp -r ./build/* ofirdahan1003@news-explorer-ofir.students.nomoredomainssbs.ru:/home/ofirdahan1003/news-explorer-frontend",
     "fullpush": "npm run push && npm run deploy",
     "fullpushstart": "npm run push && npm run deploy && npm start",
     "cleanfullpushstart": "npm run clean && npm run fullpush && npm start"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

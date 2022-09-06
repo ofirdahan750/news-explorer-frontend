@@ -15,9 +15,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 const SavedArticles = ({isLoggedIn}) => {
   const [sortedKeywords, setSortedKeywords] = useState({});
   const {name} = useContext(CurrentUserContext);
-  const {searchArticlesList, savedArticlesList, listSetting} = useSelector(
-    (state) => state.articlesModule
-  );
+  const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
@@ -57,6 +55,7 @@ const SavedArticles = ({isLoggedIn}) => {
         isArticlesSectionActive: false
       });
     };
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (

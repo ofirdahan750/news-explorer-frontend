@@ -19,9 +19,7 @@ import newsApi from "../../utils/NewsApi.js";
 import {checkStringLength} from "../../utils/utils.js";
 const SearchArticles = ({isLoggedIn}) => {
   const [isDemoData, setIsDemoData] = useState(false);
-  const {searchArticlesList, savedArticlesList, listSetting} = useSelector(
-    (state) => state.articlesModule
-  );
+  const {searchArticlesList} = useSelector((state) => state.articlesModule);
 
   const [params] = useSearchParams();
   const location = useLocation();
@@ -62,6 +60,7 @@ const SearchArticles = ({isLoggedIn}) => {
     if (lastSearchSettings.keyword !== searchParmas) {
       handleLocalStorage(searchParmas);
     }
+    // eslint-disable-next-line
   }, [searchArticlesList]);
 
   useEffect(() => {
@@ -81,7 +80,7 @@ const SearchArticles = ({isLoggedIn}) => {
         })
       );
       if (
-        isOneDayOld &&
+        !isOneDayOld &&
         lastSearchSettings.keyword === searchParmas &&
         lastSearchArticles.length
       ) {
@@ -103,7 +102,7 @@ const SearchArticles = ({isLoggedIn}) => {
 
   const setArticlesByLocalStorage = (lastSearchArticles) => {
     dispatch(
-      setArticles({article: lastSearchArticles, key: "searchArticlesList"})
+      setArticles({articles: lastSearchArticles, key: "searchArticlesList"})
     );
     dispatch(
       setArticleListSetting({
