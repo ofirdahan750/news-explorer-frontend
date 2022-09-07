@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import {useState, useEffect, useRef} from "react";
 
 const useEffectSkipInitialRender = (callback, dataArr) => {
   const [data, setData] = useState(null);
@@ -11,6 +11,7 @@ const useEffectSkipInitialRender = (callback, dataArr) => {
       return;
     }
     return callback();
+    // eslint-disable-next-line
   }, dataArr);
 };
 

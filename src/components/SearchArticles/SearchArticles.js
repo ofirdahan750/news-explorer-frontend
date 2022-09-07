@@ -34,16 +34,23 @@ const SearchArticles = ({isLoggedIn}) => {
   const lastSearchSettings = getFromStorage("lastSearchSettings") || "";
   const isOneDayOld = lastSearchSettings.timeStamp >= oneDay; //Make sure One day top
   useEffectSkipInitialRender(() => {
-    saveToStorage("lastSearchArticles", searchArticlesList);
-    saveToStorage("lastSearchSettings", {
-      keyword: searchParmas,
-      timeStamp: Date.now()
-    });
+    if (
+      lastSearchSettings.keyword !== searchParmas &&
+      searchArticlesList.length &&
+      searchArticlesList[0].title !== "Loading..." &&
+      !isDemoData
+    ) {
+      saveToStorage("lastSearchArticles", searchArticlesList);
+      saveToStorage("lastSearchSettings", {
+        keyword: searchParmas,
+        timeStamp: Date.now()
+      });
+    }
     // eslint-disable-next-line
   }, [
     lastSearchSettings.keyword !== searchParmas &&
-      searchArticlesList[0].title !== "Loading..." &&
       searchArticlesList.length &&
+      searchArticlesList[0].title !== "Loading..." &&
       !isDemoData
   ]);
 

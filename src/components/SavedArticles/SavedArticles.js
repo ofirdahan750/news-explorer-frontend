@@ -16,7 +16,7 @@ import {saveToStorage} from "../../utils/StorageService.js";
 const SavedArticles = ({isLoggedIn}) => {
   const [sortedKeywords, setSortedKeywords] = useState({});
   const {name} = useContext(CurrentUserContext);
-  const {savedArticlesList, listSetting} = useSelector(
+  const {savedArticlesList} = useSelector(
     (state) => state.articlesModule
   );
   const dispatch = useDispatch();
@@ -59,6 +59,7 @@ const SavedArticles = ({isLoggedIn}) => {
         isArticlesSectionActive: false
       });
     };
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (

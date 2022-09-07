@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ArticleCard.css";
 const ArticleCard = ({
@@ -9,6 +9,9 @@ const ArticleCard = ({
 }) => {
   const [isButtonHover, setIsButtonHover] = useState(false);
   const {_id} = useContext(CurrentUserContext);
+  if (1 === 2) {
+    console.log("_id:", _id);
+  }
   // useEffect(() => {
   //   first
 
