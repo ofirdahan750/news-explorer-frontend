@@ -16,5 +16,6 @@ export function countAndSortArrByKey({arr, key}) {
   const sortable = Object.fromEntries(
     Object.entries(keyCount).sort(([, a], [, b]) => b - a)
   );
+
   return sortable;
 }

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import ArticleCard from "../ArticleCard/ArticleCard.js";
 import "./ArticlesList/ArticlesList.css";
@@ -17,6 +17,11 @@ const ArticlesList = ({
   const {name} = useContext(CurrentUserContext);
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
+  useEffect(() => {
+    return () => {
+      setOpenCardsAmount(3);
+    };
+  }, []);
 
   if (
     listSetting.isArticlesSectionActive &&

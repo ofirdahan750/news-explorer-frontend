@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ArticleCard.css";
 const ArticleCard = ({
   article: {source, title, date, text, image, link},
@@ -7,6 +8,14 @@ const ArticleCard = ({
   handleSubmit
 }) => {
   const [isButtonHover, setIsButtonHover] = useState(false);
+  const {_id} = useContext(CurrentUserContext);
+  // useEffect(() => {
+  //   first
+
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
 
   return (
     <li className="article-card fade-in">

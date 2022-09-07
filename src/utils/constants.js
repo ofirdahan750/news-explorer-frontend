@@ -6,6 +6,7 @@ export const loadingInitState = {
     email: "Loading@gmail.com"
   }
 };
+export const oneDay = new Date().getTime() + 1 * 24 * 60 * 60 * 1000;
 
 export const formState = {
   init: {

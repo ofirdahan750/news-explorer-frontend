@@ -1,6 +1,8 @@
+import {getFromStorage} from "./StorageService.js";
+
 class MainApi {
   constructor() {
-    this._token = localStorage.getItem("jwt") || false;
+    this._token = getFromStorage("jwt") || false;
     this._baseUrl =
       "https://api.news-explorer-ofir.students.nomoredomainssbs.ru";
   }

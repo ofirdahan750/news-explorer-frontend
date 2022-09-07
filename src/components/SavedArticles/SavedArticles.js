@@ -12,10 +12,13 @@ import {
 import mainApi from "../../utils/MainApi";
 import {countAndSortArrByKey} from "../../utils/utils.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import {saveToStorage} from "../../utils/StorageService.js";
 const SavedArticles = ({isLoggedIn}) => {
   const [sortedKeywords, setSortedKeywords] = useState({});
   const {name} = useContext(CurrentUserContext);
-  const {savedArticlesList} = useSelector((state) => state.articlesModule);
+  const {savedArticlesList, listSetting} = useSelector(
+    (state) => state.articlesModule
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(
@@ -33,6 +36,7 @@ const SavedArticles = ({isLoggedIn}) => {
             key: "savedArticlesList"
           })
         );
+        saveToStorage("savedArticles", res);
       })
       .catch((err) => {
         console.log(err);
@@ -55,7 +59,6 @@ const SavedArticles = ({isLoggedIn}) => {
         isArticlesSectionActive: false
       });
     };
-    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     if (

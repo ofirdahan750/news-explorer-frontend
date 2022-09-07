@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import ArticleList from "../ArticlesList/ArticlesList.js";
@@ -17,6 +17,9 @@ import {
 import "./SearchArticles.css";
 import newsApi from "../../utils/NewsApi.js";
 import {checkStringLength} from "../../utils/utils.js";
+import useEffectSkipInitialRender from "../../hooks/useEffectSkipInitialRender.js";
+import {oneDay} from "../../utils/constants.js";
+import {saveToStorage, getFromStorage} from "../../utils/StorageService.js";
 const SearchArticles = ({isLoggedIn}) => {
   const [isDemoData, setIsDemoData] = useState(false);
   const {searchArticlesList} = useSelector((state) => state.articlesModule);
@@ -27,41 +30,22 @@ const SearchArticles = ({isLoggedIn}) => {
   const navigate = useNavigate();
 
   const searchParmas = params.get("searchParmas");
-  const lastSearchArticles =
-    JSON.parse(localStorage.getItem("lastSearchArticles")) || "";
-  const lastSearchSettings =
-    JSON.parse(localStorage.getItem("lastSearchSettings")) || "";
-  const isOneDayOld =
-    lastSearchSettings.timeStamp >=
-    new Date().getTime() + 1 * 24 * 60 * 60 * 1000; //Make sure One day top
-
-  const handleLocalStorage = () => {
-    if (
-      searchArticlesList.length &&
-      !isDemoData &&
-      searchArticlesList[0].title !== "Loading..."
-    ) {
-      localStorage.setItem(
-        "lastSearchArticles",
-        JSON.stringify(searchArticlesList)
-      );
-      localStorage.setItem(
-        "lastSearchSettings",
-        JSON.stringify({
-          keyword: searchParmas,
-          timeStamp: Date.now()
-        })
-      );
-    }
-  };
-
-  useLayoutEffect(() => {
-    if (!searchArticlesList.length) return;
-    if (lastSearchSettings.keyword !== searchParmas) {
-      handleLocalStorage(searchParmas);
-    }
+  const lastSearchArticles = getFromStorage("lastSearchArticles") || "";
+  const lastSearchSettings = getFromStorage("lastSearchSettings") || "";
+  const isOneDayOld = lastSearchSettings.timeStamp >= oneDay; //Make sure One day top
+  useEffectSkipInitialRender(() => {
+    saveToStorage("lastSearchArticles", searchArticlesList);
+    saveToStorage("lastSearchSettings", {
+      keyword: searchParmas,
+      timeStamp: Date.now()
+    });
     // eslint-disable-next-line
-  }, [searchArticlesList]);
+  }, [
+    lastSearchSettings.keyword !== searchParmas &&
+      searchArticlesList[0].title !== "Loading..." &&
+      searchArticlesList.length &&
+      !isDemoData
+  ]);
 
   useEffect(() => {
     if (
@@ -72,7 +56,7 @@ const SearchArticles = ({isLoggedIn}) => {
       navigate("/");
       return;
     }
-    if (searchParmas !== "searchParmas" && location.pathname === "/") {
+    if (searchParmas && location.pathname === "/") {
       dispatch(
         setArticleListSettings({
           isArticlesLoading: true,
@@ -100,7 +84,9 @@ const SearchArticles = ({isLoggedIn}) => {
     // eslint-disable-next-line
   }, [params, location.pathname]);
 
-  const setArticlesByLocalStorage = (lastSearchArticles) => {
+  const setArticlesByLocalStorage = () => {
+    console.log("Storage");
+
     dispatch(
       setArticles({articles: lastSearchArticles, key: "searchArticlesList"})
     );
@@ -112,6 +98,7 @@ const SearchArticles = ({isLoggedIn}) => {
     );
   };
   const setArticlesByApi = (searchParmas) => {
+    console.log("api");
     Promise.any([
       newsApi.getSearchArticles({
         searchParmas,

@@ -6,6 +6,8 @@ import {authenticate, validateToken} from "../../utils/auth.js";
 import {txtErr} from "../../utils/constants.js";
 import {capitalizeFirstLetter} from "../../utils/utils.js";
 import mainApi from "../../utils/MainApi.js";
+import {saveToStorage} from "../../utils/StorageService.js";
+import {removeFromStorage} from "../../utils/StorageService.js";
 
 const LoginPopupup = ({
   onChangeInput,
@@ -49,7 +51,7 @@ const LoginPopupup = ({
           password: inputs.userPassword.inputVal
         })
           .then((user) => {
-            localStorage.setItem("jwt", user.token);
+            saveToStorage("jwt", user.token);
             mainApi.setHeaderToken(user.token);
             validateToken(user.token)
               .then((userInfo) => {
@@ -64,13 +66,14 @@ const LoginPopupup = ({
                 });
 
                 setCurrentUser(userInfo);
+                console.log("userInfo:", userInfo);
                 setIsLoggedIn(true);
                 setTimeout(() => {
                   handlePopupToggleView("close");
                 }, 2000);
               })
               .catch((err) => {
-                localStorage.removeItem("jwt");
+                removeFromStorage("jwt");
                 mainApi.setHeaderToken("");
                 onFormSubmitted({
                   isDone: true,

@@ -26,6 +26,7 @@ import {
 import {setLoading} from "../../store/actions/loadingAction";
 import {validateToken} from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
+import {getFromStorage, removeFromStorage} from "../../utils/StorageService.js";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -41,7 +42,6 @@ const App = () => {
     onInit(); //When app init set username
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
     const isAllInputsFilled = Object.values(inputs).every((v) => v.inputVal);
@@ -71,7 +71,7 @@ const App = () => {
 
   const onInit = () => {
     dispatch(setLoading(true));
-    const jwt = localStorage.getItem("jwt") || false;
+    const jwt = getFromStorage("jwt") || false;
     if (jwt) {
       validateToken(jwt)
         .then((user) => {
@@ -171,7 +171,7 @@ const App = () => {
   const handleLogOutclicked = () => {
     setIsLoggedIn(false);
     setCurrentUser(loadingInitState.userInfo);
-    localStorage.removeItem("jwt");
+    removeFromStorage("jwt");
     mainApi.setHeaderToken("");
   };
   return (
