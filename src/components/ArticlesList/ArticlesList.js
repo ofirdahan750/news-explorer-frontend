@@ -1,22 +1,22 @@
 import React, {useContext, useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import ArticleCard from "../ArticleCard/ArticleCard.js";
 import "./ArticlesList/ArticlesList.css";
-
 import PreLoader from "../PreLoader/PreLoader.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
+import mainApi from "../../utils/MainApi.js";
+import {useSearchParams} from "react-router-dom";
+import { setSavedArticle } from "../../store/actions/articlesAction.js";
 
-const ArticlesList = ({
-  children,
-  isLoggedIn,
-  isDemoData,
-  articles,
-  type,
-  handleSubmit
-}) => {
+const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   const {name} = useContext(CurrentUserContext);
   const {listSetting} = useSelector((state) => state.articlesModule);
   const [openCardsAmount, setOpenCardsAmount] = useState(3);
+
+  const [params] = useSearchParams();
+  const dispatch = useDispatch();
+
+  const searchParmas = params.get("searchParmas");
   useEffect(() => {
     return () => {
       setOpenCardsAmount(3);
@@ -46,7 +46,15 @@ const ArticlesList = ({
       </section>
     );
   }
-
+  const handleSavedSubmit = ({article, isSaved}) => {
+    // if (!isSaved) {
+      article.keyword = searchParmas;
+      mainApi.onSaveArticle(article).then((res) => {
+        console.log('res:', res)
+        dispatch(setSavedArticle(res));
+      });
+    // }
+  };
   if (listSetting.isArticlesLoading) {
     return (
       <section className="articles articles_loading">
@@ -80,7 +88,7 @@ const ArticlesList = ({
                 isLoggedIn={isLoggedIn}
                 isDemoData={isDemoData}
                 type={type}
-                handleSubmit={handleSubmit}
+                handleSubmit={handleSavedSubmit}
               />
             ))}
           </ul>

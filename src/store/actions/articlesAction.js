@@ -8,10 +8,16 @@ export const setArticles = ({articles, key}) => {
 export const setArticlesApi = ({articles, isSearchHaveResults, key}) => {
   return {
     type: "SET_ARTICLES",
-    payLoad: {
+    payLoad: { 
       key,
       val: isSearchHaveResults ? setSortedArticles(articles) : []
     }
+  };
+};
+export const setSavedArticle = (article) => {
+  return {
+    type: "SET_ARTICLE",
+    payLoad: {val: article, key: "savedArticlesList"}
   };
 };
 

@@ -1,24 +1,39 @@
-import React, {useContext, useState} from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
+import useEffectSkipInitialRender from "../../hooks/useEffectSkipInitialRender";
 import "./ArticleCard.css";
 const ArticleCard = ({
   article: {source, title, date, text, image, link},
   isLoggedIn,
   isDemoData,
-  handleSubmit
+  handleSubmit,
+  type
 }) => {
   const [isButtonHover, setIsButtonHover] = useState(false);
-  const {_id} = useContext(CurrentUserContext);
-  if (1 === 2) {
-    console.log("_id:", _id);
-  }
-  // useEffect(() => {
-  //   first
+  const [isSaved, setIsSaved] = useState(false);
+  const {savedArticlesList} = useSelector((state) => state.articlesModule);
 
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
+  useEffectSkipInitialRender(() => {
+    if (!savedArticlesList.length) {
+      setIsSaved(false);
+    }
+    if (type === "saved") {
+      setIsSaved(true);
+    } else {
+      if (
+        isLoggedIn &&
+        !isDemoData &&
+        savedArticlesList[0].title !== "Loading..."
+      ) {
+        setIsSaved(
+          savedArticlesList.some((article) => {
+            return article.link === link;
+          })
+        );
+      }
+    }
+  }, [savedArticlesList]);
+  if (!title || title === "Loading...") return;
 
   return (
     <li className="article-card fade-in">
@@ -43,14 +58,19 @@ const ArticleCard = ({
                 if (isDemoData || !isLoggedIn) {
                   return;
                 }
-                handleSubmit({source, title, date, text, image, link});
+                if (type === "search") {
+                  handleSubmit({
+                    article: {source, title, date, text, image, link},
+                    isSaved
+                  });
+                }
               }}
               onMouseOver={() => setIsButtonHover(true)}
               onMouseOut={() => setIsButtonHover(false)}
             >
               <img
                 src={
-                  isButtonHover
+                  isSaved
                     ? require("../../images/Article/bookmark_icons/bookmark-notsaved-black.svg")
                         .default
                     : require("../../images/Article/bookmark_icons/bookmark-notsaved-gray.svg")

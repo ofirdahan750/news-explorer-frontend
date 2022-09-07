@@ -26,7 +26,7 @@ import {
 import {setLoading} from "../../store/actions/loadingAction";
 import {validateToken} from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
-import {getFromStorage, removeFromStorage} from "../../utils/StorageService.js";
+import {getFromStorage} from "../../utils/StorageService.js";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -171,7 +171,7 @@ const App = () => {
   const handleLogOutclicked = () => {
     setIsLoggedIn(false);
     setCurrentUser(loadingInitState.userInfo);
-    removeFromStorage("jwt");
+    localStorage.clear();
     mainApi.setHeaderToken("");
   };
   return (

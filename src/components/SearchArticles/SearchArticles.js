@@ -22,7 +22,9 @@ import {oneDay} from "../../utils/constants.js";
 import {saveToStorage, getFromStorage} from "../../utils/StorageService.js";
 const SearchArticles = ({isLoggedIn}) => {
   const [isDemoData, setIsDemoData] = useState(false);
-  const {searchArticlesList} = useSelector((state) => state.articlesModule);
+  const {searchArticlesList, savedArticlesList} = useSelector(
+    (state) => state.articlesModule
+  );
 
   const [params] = useSearchParams();
   const location = useLocation();
@@ -30,6 +32,7 @@ const SearchArticles = ({isLoggedIn}) => {
   const navigate = useNavigate();
 
   const searchParmas = params.get("searchParmas");
+
   const lastSearchArticles = getFromStorage("lastSearchArticles") || "";
   const lastSearchSettings = getFromStorage("lastSearchSettings") || "";
   const isOneDayOld = lastSearchSettings.timeStamp >= oneDay; //Make sure One day top
@@ -79,6 +82,27 @@ const SearchArticles = ({isLoggedIn}) => {
       } else {
         setArticlesByApi(searchParmas);
       }
+
+      if (!savedArticlesList || savedArticlesList[0].title === "Loading...") {
+        mainApi
+
+          .getSavedArticles()
+          .then((res) => {
+            dispatch(
+              setArticles({
+                articles: res,
+                key: "savedArticlesList"
+              })
+            );
+          })
+          .catch((err) => {
+            console.log(err);
+            setArticles({
+              articles: [],
+              key: "savedArticlesList"
+            });
+          });
+      }
     }
 
     return () => {
@@ -104,23 +128,19 @@ const SearchArticles = ({isLoggedIn}) => {
       })
     );
   };
-  const setArticlesByApi = (searchParmas) => {
+  const setArticlesByApi = () => {
     console.log("api");
     Promise.any([
       newsApi.getSearchArticles({
-        searchParmas,
         apiKey: "e8b9e05092bb4f0bb67556814eb1128a"
       }),
       newsApi.getSearchArticles({
-        searchParmas,
         apiKey: "b6cb47ff97024dbdb27153bc1b668f1d"
       }),
       newsApi.getSearchArticles({
-        searchParmas,
         apiKey: "658c53fde9124b66bd158b518a99dee1"
       }),
       newsApi.getSearchArticles({
-        searchParmas,
         apiKey: "3d2609a4fa8b45fda5004ef45fd00a00"
       })
     ])
@@ -155,19 +175,13 @@ const SearchArticles = ({isLoggedIn}) => {
         );
       });
   };
-  const handleSubmitToggle = (article) => {
-    article.keyword = searchParmas;
-    mainApi.onSaveArticle(article).then((res) => {
-      console.log("res:", res);
-    });
-  };
+
   if (!searchParmas) return;
   return (
     <ArticleList
       articles={searchArticlesList}
       isLoggedIn={isLoggedIn}
       isDemoData={isDemoData}
-      handleSubmit={handleSubmitToggle}
       type="search"
     >
       <h3 className="articles__title articles__title_text_search-results">

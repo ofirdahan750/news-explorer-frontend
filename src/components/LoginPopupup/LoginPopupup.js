@@ -66,7 +66,6 @@ const LoginPopupup = ({
                 });
 
                 setCurrentUser(userInfo);
-                console.log("userInfo:", userInfo);
                 setIsLoggedIn(true);
                 setTimeout(() => {
                   handlePopupToggleView("close");

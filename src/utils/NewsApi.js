@@ -1,4 +1,5 @@
 import demoData from "../DemoData/DemoData.json";
+import {searchParmas} from "./constants";
 class NewsApi {
   constructor({baseUrl, from, to, pageSize}) {
     this._baseUrl = baseUrl;
@@ -15,15 +16,14 @@ class NewsApi {
     }
   };
 
-  getSearchArticles = async ({searchParmas, apiKey}) => {
-    console.log('searchParmas:', searchParmas)
-    return await this._onHttpRequest(
-      `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
-    );
+  getSearchArticles = async ({apiKey}) => {
+    // return await this._onHttpRequest(
+    //   `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
+    // );
     //for Testing and dev on the server
     // demoData.totalResults = 0;
     // return Promise.resolve([]);
-    // return Promise.resolve(demoData);
+    return Promise.resolve(demoData);
   };
 }
 const newsApi = new NewsApi({

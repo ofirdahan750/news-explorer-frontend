@@ -12,47 +12,46 @@ import {
 import mainApi from "../../utils/MainApi";
 import {countAndSortArrByKey} from "../../utils/utils.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import {saveToStorage} from "../../utils/StorageService.js";
 const SavedArticles = ({isLoggedIn}) => {
   const [sortedKeywords, setSortedKeywords] = useState({});
   const {name} = useContext(CurrentUserContext);
-  const {savedArticlesList} = useSelector(
-    (state) => state.articlesModule
-  );
+  const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(
-      setArticleListSettings({
-        isArticlesLoading: true,
-        isArticlesSectionActive: true
-      })
-    );
-    mainApi
-      .getSavedArticles()
-      .then((res) => {
-        dispatch(
+    if (savedArticlesList[0].title === "Loading...") {
+      dispatch(
+        setArticleListSettings({
+          isArticlesLoading: true,
+          isArticlesSectionActive: true
+        })
+      );
+      mainApi
+        .getSavedArticles()
+        .then((res) => {
+          dispatch(
+            setArticles({
+              articles: res,
+              key: "savedArticlesList"
+            })
+          );
+        })
+        .catch((err) => {
+          console.log(err);
           setArticles({
-            articles: res,
+            articles: [],
             key: "savedArticlesList"
-          })
-        );
-        saveToStorage("savedArticles", res);
-      })
-      .catch((err) => {
-        console.log(err);
-        setArticles({
-          articles: [],
-          key: "savedArticlesList"
+          });
+        })
+        .finally(() => {
+          dispatch(
+            setArticleListSetting({
+              settingKey: "isArticlesLoading",
+              settingData: false
+            })
+          );
         });
-      })
-      .finally(() => {
-        dispatch(
-          setArticleListSetting({
-            settingKey: "isArticlesLoading",
-            settingData: false
-          })
-        );
-      });
+    }
+
     return () => {
       setArticleListSettings({
         isArticlesLoading: false,
