@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "build": "rm -rf build && react-scripts build",
+    "build": "rm -rf build && GENERATE_SOURCEMAP=false react-scripts build && rm -rf ./build/**/*.map",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules && npm i",

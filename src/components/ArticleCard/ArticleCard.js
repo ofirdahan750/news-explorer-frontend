@@ -12,7 +12,6 @@ const ArticleCard = ({
   const [isButtonHover, setIsButtonHover] = useState(false);
   const [articleId, setArticleId] = useState("");
   const [articleKey, setArticleKey] = useState("");
-  console.log("articleKey:", articleKey);
   const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const [isSaved, setIsSaved] = useState(false);
 
