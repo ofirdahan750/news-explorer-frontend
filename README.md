@@ -1,3 +1,11 @@
+# news-explorer-frontend
+
+Link live:
+<https://news-explorer-ofir.students.nomoredomainssbs.ru>
+
+Back end project repo:
+<https://github.com/ofirdahan750/news-explorer-backend>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
