@@ -12,6 +12,7 @@ const ArticleCard = ({
   const [isButtonHover, setIsButtonHover] = useState(false);
   const [articleId, setArticleId] = useState("");
   const [articleKey, setArticleKey] = useState("");
+  console.log('articleKey:', articleKey)
   const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -38,7 +39,7 @@ const ArticleCard = ({
 
   return (
     <li className="article-card fade-in">
-      <article className="article-card_wrapper  scale-hover">
+      <article className="article-card_wrapper scale-hover">
         <div
           className="article-card_img-container"
           role="img"
@@ -101,7 +102,7 @@ const ArticleCard = ({
             >
               {isDemoData ? "Can't save demo card" : "Sign in to save articles"}
             </span>
-            {isSaved && articleKey && (
+            {isSaved && (
               <span
                 className={`article-card__saved-message article-card__key-message slide-in-right message_visible`}
               >
