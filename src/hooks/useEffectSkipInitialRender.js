@@ -1,7 +1,6 @@
-import {useState, useEffect, useRef} from "react";
+import {useEffect, useRef} from "react";
 
 const useEffectSkipInitialRender = (callback, dataArr) => {
-  const [data, setData] = useState(null);
   const isInitialRender = useRef(true); // in react, when refs are changed component dont re-render
 
   useEffect(() => {

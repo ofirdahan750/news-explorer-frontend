@@ -1,16 +1,26 @@
 import setSortedArticles from "../utils/actionUtils.js";
+
 export const setArticles = ({articles, key}) => {
   return {
     type: "SET_ARTICLES",
-    payLoad: {key, val: articles}
+    payLoad: {
+      key,
+      val: articles || []
+    }
   };
 };
 export const setArticlesApi = ({articles, isSearchHaveResults, key}) => {
+  let sortedArticles = [];
+  if (articles && isSearchHaveResults) {
+    sortedArticles = setSortedArticles(articles).sort(
+      (a, b) => b.timeStampDate - a.timeStampDate
+    );
+  }
   return {
     type: "SET_ARTICLES",
-    payLoad: { 
+    payLoad: {
       key,
-      val: isSearchHaveResults ? setSortedArticles(articles) : []
+      val: sortedArticles || []
     }
   };
 };

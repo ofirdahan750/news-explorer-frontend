@@ -1,5 +1,5 @@
 export default function setSortedArticles(arr) {
-  return arr.map((article) => {
+  const newArray = arr.map((article) => {
     const {source, title, publishedAt, description, urlToImage, url} = article;
     const formattedDate = new Date(publishedAt);
     return {
@@ -10,9 +10,11 @@ export default function setSortedArticles(arr) {
         month: "long",
         day: "numeric"
       }),
+      timeStampDate: formattedDate.getTime(),
       text: description,
       link: url,
       image: urlToImage
     };
   });
+  return newArray;
 }

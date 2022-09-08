@@ -6,7 +6,7 @@ import PreLoader from "../PreLoader/PreLoader.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import mainApi from "../../utils/MainApi.js";
 import {useSearchParams} from "react-router-dom";
-import { setSavedArticle } from "../../store/actions/articlesAction.js";
+import {setSavedArticle} from "../../store/actions/articlesAction.js";
 
 const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   const {name} = useContext(CurrentUserContext);
@@ -18,6 +18,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
 
   const searchParmas = params.get("searchParmas");
   useEffect(() => {
+    setOpenCardsAmount(3);
     return () => {
       setOpenCardsAmount(3);
     };
@@ -47,13 +48,13 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
     );
   }
   const handleSavedSubmit = ({article, isSaved}) => {
-    // if (!isSaved) {
+    if (!isSaved) {
       article.keyword = searchParmas;
       mainApi.onSaveArticle(article).then((res) => {
-        console.log('res:', res)
+        console.log("res:", res);
         dispatch(setSavedArticle(res));
       });
-    // }
+    }
   };
   if (listSetting.isArticlesLoading) {
     return (
@@ -92,7 +93,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
               />
             ))}
           </ul>
-          {articles.length >= openCardsAmount && (
+          {articles.length > openCardsAmount && (
             <button
               type="button"
               onClick={(e) =>

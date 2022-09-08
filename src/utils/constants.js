@@ -91,6 +91,7 @@ export const articlesStateInit = {
       source: "Loading...",
       title: "Loading...",
       date: "january 1 0000",
+      timeStampDate: 0,
       text: "Loading...",
       image: "",
       url: ""

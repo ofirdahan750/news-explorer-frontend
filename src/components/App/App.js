@@ -1,6 +1,6 @@
 import "./App.css";
 import React, {useEffect, useState, useCallback} from "react";
-import {Routes, Route, Navigate} from "react-router-dom";
+import {Routes, Route, Navigate, useNavigate} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
@@ -26,7 +26,8 @@ import {
 import {setLoading} from "../../store/actions/loadingAction";
 import {validateToken} from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
-import {getFromStorage} from "../../utils/StorageService.js";
+import {clearLocalStorage, getFromStorage} from "../../utils/StorageService.js";
+import {capitalizeFirstLetter} from "../../utils/utils";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(loadingInitState.userInfo);
@@ -36,12 +37,14 @@ const App = () => {
     (state) => state.fromSettingModule
   );
   const {isLoading} = useSelector((state) => state.loadingModule);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   useEffect(() => {
     onInit(); //When app init set username
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() => {
     //Set the isFormVaild key on the formSettingReducer
     const isAllInputsFilled = Object.values(inputs).every((v) => v.inputVal);
@@ -75,7 +78,10 @@ const App = () => {
     if (jwt) {
       validateToken(jwt)
         .then((user) => {
+          mainApi.setHeaderToken(jwt);
+          user.name = capitalizeFirstLetter(user.name);
           setCurrentUser(user);
+          setIsLoggedIn(true);
         })
         .catch((err) => {
           console.log(err);
@@ -171,8 +177,9 @@ const App = () => {
   const handleLogOutclicked = () => {
     setIsLoggedIn(false);
     setCurrentUser(loadingInitState.userInfo);
-    localStorage.clear();
+    clearLocalStorage();
     mainApi.setHeaderToken("");
+    navigate("/");
   };
   return (
     <CurrentUserContext.Provider value={currentUser}>

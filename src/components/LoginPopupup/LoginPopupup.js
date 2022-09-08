@@ -55,12 +55,11 @@ const LoginPopupup = ({
             mainApi.setHeaderToken(user.token);
             validateToken(user.token)
               .then((userInfo) => {
+                userInfo.name = capitalizeFirstLetter(userInfo.name);
                 onFormSubmitted({
                   isDone: true,
                   btnSetting: {
-                    txt: `Welcome ${capitalizeFirstLetter(
-                      userInfo.name
-                    )} You have successfully logged in, Please wait...`,
+                    txt: `Welcome ${userInfo.name} You have successfully logged in, Please wait...`,
                     isDisable: true
                   }
                 });

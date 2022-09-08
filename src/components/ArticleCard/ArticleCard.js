@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import useEffectSkipInitialRender from "../../hooks/useEffectSkipInitialRender";
+import {useToggle} from "../../hooks/useToggle";
 import "./ArticleCard.css";
 const ArticleCard = ({
   article: {source, title, date, text, image, link},
@@ -10,29 +11,32 @@ const ArticleCard = ({
   type
 }) => {
   const [isButtonHover, setIsButtonHover] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);
+  // const [isSaved, setIsSaved] = useState(false);
   const {savedArticlesList} = useSelector((state) => state.articlesModule);
 
+  const [isSaved, setIsSaved] = useToggle();
+
   useEffectSkipInitialRender(() => {
-    if (!savedArticlesList.length) {
-      setIsSaved(false);
-    }
+    if (!savedArticlesList.length || isSaved) return;
     if (type === "saved") {
-      setIsSaved(true);
+      setIsSaved();
     } else {
       if (
         isLoggedIn &&
         !isDemoData &&
         savedArticlesList[0].title !== "Loading..."
       ) {
-        setIsSaved(
+        if (
           savedArticlesList.some((article) => {
+            console.log("title: " + title, +" " + article.link === link);
             return article.link === link;
           })
-        );
+        ) {
+          setIsSaved();
+        }
       }
     }
-  }, [savedArticlesList]);
+  }, [savedArticlesList.length]);
   if (!title || title === "Loading...") return;
 
   return (
@@ -58,12 +62,13 @@ const ArticleCard = ({
                 if (isDemoData || !isLoggedIn) {
                   return;
                 }
-                if (type === "search") {
-                  handleSubmit({
-                    article: {source, title, date, text, image, link},
-                    isSaved
-                  });
-                }
+                handleSubmit({
+                  article:
+                    type === "search"
+                      ? {source, title, date, text, image, link}
+                      : {},
+                  isSaved
+                });
               }}
               onMouseOver={() => setIsButtonHover(true)}
               onMouseOut={() => setIsButtonHover(false)}

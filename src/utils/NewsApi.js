@@ -1,5 +1,4 @@
 import demoData from "../DemoData/DemoData.json";
-import {searchParmas} from "./constants";
 class NewsApi {
   constructor({baseUrl, from, to, pageSize}) {
     this._baseUrl = baseUrl;
@@ -16,7 +15,7 @@ class NewsApi {
     }
   };
 
-  getSearchArticles = async ({apiKey}) => {
+  getSearchArticles = async ({searchParmas, apiKey}) => {
     // return await this._onHttpRequest(
     //   `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
     // );

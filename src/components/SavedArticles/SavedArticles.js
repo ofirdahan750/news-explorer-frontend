@@ -75,7 +75,7 @@ const SavedArticles = ({isLoggedIn}) => {
       setSortedKeywords({});
     };
   }, [savedArticlesList]);
-
+  if (!isLoggedIn) return;
   return (
     <ArticlesList
       articles={savedArticlesList}

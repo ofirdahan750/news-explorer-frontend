@@ -9,3 +9,11 @@ export function removeFromStorage(key) {
 export function saveToStorage(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
 }
+export function clearLocalStorage() {
+  localStorage.clear();
+  window.localStorage.clear();
+  const allKeys = Object.keys(localStorage);
+  allKeys.forEach((key) => {
+    removeFromStorage(key);
+  });
+}

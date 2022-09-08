@@ -25,13 +25,12 @@ const SearchArticles = ({isLoggedIn}) => {
   const {searchArticlesList, savedArticlesList} = useSelector(
     (state) => state.articlesModule
   );
-
   const [params] = useSearchParams();
+  const searchParmas = params.get("searchParmas");
+
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const searchParmas = params.get("searchParmas");
 
   const lastSearchArticles = getFromStorage("lastSearchArticles") || "";
   const lastSearchSettings = getFromStorage("lastSearchSettings") || "";
@@ -82,8 +81,11 @@ const SearchArticles = ({isLoggedIn}) => {
       } else {
         setArticlesByApi(searchParmas);
       }
-
-      if (!savedArticlesList || savedArticlesList[0].title === "Loading...") {
+      if (
+        isLoggedIn &&
+        (!savedArticlesList.length ||
+          savedArticlesList[0].title === "Loading...")
+      ) {
         mainApi
 
           .getSavedArticles()
@@ -132,20 +134,23 @@ const SearchArticles = ({isLoggedIn}) => {
     console.log("api");
     Promise.any([
       newsApi.getSearchArticles({
-        apiKey: "e8b9e05092bb4f0bb67556814eb1128a"
+        apiKey: "e8b9e05092bb4f0bb67556814eb1128a",
+        searchParmas
       }),
       newsApi.getSearchArticles({
-        apiKey: "b6cb47ff97024dbdb27153bc1b668f1d"
+        apiKey: "b6cb47ff97024dbdb27153bc1b668f1d",
+        searchParmas
       }),
       newsApi.getSearchArticles({
-        apiKey: "658c53fde9124b66bd158b518a99dee1"
+        apiKey: "658c53fde9124b66bd158b518a99dee1",
+        searchParmas
       }),
       newsApi.getSearchArticles({
-        apiKey: "3d2609a4fa8b45fda5004ef45fd00a00"
+        apiKey: "3d2609a4fa8b45fda5004ef45fd00a00",
+        searchParmas
       })
     ])
       .then((res) => {
-        console.log("res:", res);
         setIsDemoData(false);
         dispatch(
           setArticlesApi({
