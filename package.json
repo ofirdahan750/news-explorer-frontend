@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
-    "build": "rm -rf build && GENERATE_SOURCEMAP=false react-scripts build && rm -rf ./build/**/*.map",
+    "build": "rm -rf build && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rm -rf node_modules && npm i",
@@ -35,17 +35,10 @@
     "cleanfullpushstart": "npm run clean && npm run fullpush && npm start"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
