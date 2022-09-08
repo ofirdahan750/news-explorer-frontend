@@ -8,14 +8,15 @@ const NavHeader = ({
   handlePopupToggleView,
   isMoblieMenuOpen
 }) => {
-  const location = useLocation();
+  const {pathname} = useLocation();
   const {name} = useContext(CurrentUserContext);
   return (
     <nav className="nav-header__container">
       <button
         type="button"
         className={`nav-header__btn ${
-          location.pathname === "/" && "nav-header__btn_active"
+          pathname === "/" &&
+          "nav-header__btn_active nav-header__btn_active_theme_bright"
         } pulsate-bck btn-link-modifier`}
       >
         <Link to="/">Home</Link>
@@ -26,7 +27,7 @@ const NavHeader = ({
           onClick={() => {
             handlePopupToggleView("login");
           }}
-          className="nav-header__btn pulsate-bck nav-header__btn_type_signin btn-link-modifier "
+          className="nav-header__btn nav-header__btn_type_signin pulsate-bck btn-link-modifier"
         >
           Sign in
         </button>
@@ -35,7 +36,8 @@ const NavHeader = ({
           <button
             type="button"
             className={`nav-header__btn ${
-              location.pathname === "/saved-news" && "nav-header__btn_active"
+              pathname === "/saved-news" &&
+              "nav-header__btn_active nav-header__btn_active_theme_dark"
             } pulsate-bck btn-link-modifier`}
           >
             <Link to="/saved-news">Saved articles</Link>
@@ -43,17 +45,20 @@ const NavHeader = ({
           <button
             type="button"
             onClick={handleLogOutclicked}
-            className="nav-header__btn pulsate-bck nav-header__btn_type_signout btn-link-modifier "
+            className={`nav-header__btn pulsate-bck nav-header__btn_type_signout ${
+              pathname === "/"
+                ? "nav-header__btn_type_signout_theme_bright"
+                : "nav-header__btn_type_signout_theme_dark"
+            } btn-link-modifier`}
           >
             <span className="nav-header__logout-text">{name}</span>
             <img
               className="nav-header__logout-icon "
               src={
-                !isMoblieMenuOpen || location.pathname === "/saved-news"
-                  ? require(`../../images/Header/logout_black_theme.svg`)
+                pathname === "/" || isMoblieMenuOpen
+                  ? require(`../../images/Header/logout_bright_theme.svg`)
                       .default
-                  : require(`../../images/Header/logout_white_theme.svg`)
-                      .default
+                  : require(`../../images/Header/logout_dark_theme.svg`).default
               }
               alt={`Log out button icon`}
             />

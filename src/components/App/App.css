@@ -20,7 +20,7 @@
 
 .hero-cover {
   /* margin: 0 0 32px; Moblie */
-  max-height: 536px;
+  /* max-height: 536px; */
   background-image: url("../../images/App/hero_img.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -39,10 +39,6 @@
   /*Tablet*/
   .main {
     max-width: calc(100vw - (40px * 2));
-  }
-  .hero-cover {
-    max-height: 400px;
-    /* margin: 0 0 40px; Moblie */
   }
 }
 

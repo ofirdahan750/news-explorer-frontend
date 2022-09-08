@@ -1,6 +1,6 @@
 import "./Header.css";
 import React, {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 import NavHeader from "../NavHeader/NavHeader.js";
 
@@ -8,7 +8,7 @@ const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
   const [width, setWidth] = useState(window.innerWidth);
   const moblieBreakpoint = 676;
   const [isMoblieMenuOpen, setIsMoblieMenuOpen] = useState(false);
-
+  const {pathname} = useLocation();
   useEffect(() => {
     //Fixing humbeger button if user toggle to bigger/smaller screen
     const handleResizeWindow = () => setWidth(window.innerWidth);
@@ -26,7 +26,11 @@ const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
   return (
     <>
       <header
-        className="header"
+        className={`header ${
+          pathname === "/" || isMoblieMenuOpen
+            ? "header_theme_bright"
+            : "header_theme_dark"
+        }`}
         style={{backgroundColor: isMoblieMenuOpen && "rgba(26, 27, 34, 1)"}}
       >
         <div className="header__wrapper">
@@ -53,7 +57,10 @@ const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
                 src={
                   isMoblieMenuOpen
                     ? require(`../../images/Header/close.svg`).default
-                    : require(`../../images/Header/menu.svg`).default
+                    : pathname === "/"
+                    ? require("../../images/Header/menu_theme_bright.svg")
+                        .default
+                    : require("../../images/Header/menu_theme_dark.svg").default
                 }
                 alt={`A button to ${
                   isMoblieMenuOpen ? "close" : "open"

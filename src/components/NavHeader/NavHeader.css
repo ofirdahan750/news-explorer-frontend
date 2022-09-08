@@ -18,9 +18,15 @@
 }
 
 .nav-header__btn_active {
-  border-bottom: 3px solid #ffffff;
   height: 100%;
   border-top: 3px transparent;
+}
+
+.nav-header__btn_active_theme_bright {
+  border-bottom: 3px solid #ffffff;
+}
+.nav-header__btn_active_theme_dark {
+  border-bottom: 3px solid #1a1b22;
 }
 .nav-header__btn_type_signin {
   height: 56px; /*Moblie */
@@ -30,7 +36,6 @@
   text-align: center;
 }
 .nav-header__btn_type_signout {
-  border: 1px solid #ffffff;
   border-radius: 100px;
   min-width: 100%;
   max-width: unset;
@@ -38,9 +43,14 @@
   text-align: center;
   display: flex;
   align-items: center;
-  /* gap: 0 10px; */
   justify-content: center;
   overflow: hidden;
+}
+.nav-header__btn_type_signout_theme_bright {
+  border: 1px solid #ffffff;
+}
+.nav-header__btn_type_signout_theme_dark {
+  border: 1px solid #d1d2d6;
 }
 
 .nav-header__logout-text {
