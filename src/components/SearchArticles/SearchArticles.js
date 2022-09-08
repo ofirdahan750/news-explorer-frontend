@@ -118,8 +118,6 @@ const SearchArticles = ({isLoggedIn}) => {
   }, [params, location.pathname]);
 
   const setArticlesByLocalStorage = () => {
-    console.log("Storage");
-
     dispatch(
       setArticles({articles: lastSearchArticles, key: "searchArticlesList"})
     );
@@ -131,7 +129,6 @@ const SearchArticles = ({isLoggedIn}) => {
     );
   };
   const setArticlesByApi = () => {
-    console.log("api");
     Promise.any([
       newsApi.getSearchArticles({
         apiKey: "e8b9e05092bb4f0bb67556814eb1128a",

@@ -6,7 +6,10 @@ import PreLoader from "../PreLoader/PreLoader.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import mainApi from "../../utils/MainApi.js";
 import {useSearchParams} from "react-router-dom";
-import {setSavedArticle} from "../../store/actions/articlesAction.js";
+import {
+  setArticles,
+  setSavedArticle
+} from "../../store/actions/articlesAction.js";
 
 const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   const {name} = useContext(CurrentUserContext);
@@ -40,7 +43,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
           <h3 className="articles__not-found-header">Nothing found</h3>
           <p className="articles__not-found-text">
             {type === "search"
-              ? `Sorry,${name || "You"} but nothing matched your search terms.`
+              ? `Sorry${name || "You"} , but nothing matched your search terms.`
               : "You don't have any saved articles"}
           </p>
         </div>
@@ -49,13 +52,32 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   }
   const handleSavedSubmit = ({article, isSaved}) => {
     if (!isSaved) {
-      article.keyword = searchParmas;
-      mainApi.onSaveArticle(article).then((res) => {
-        console.log("res:", res);
-        dispatch(setSavedArticle(res));
-      });
+      article.keyword = searchParmas || false;
+      mainApi
+        .onSaveArticle(article)
+        .then((res) => {
+          dispatch(setSavedArticle(res));
+        })
+        .catch((err) => {});
+    } else {
+      mainApi
+        .onDeleteArticle(article)
+        .then((res) => {
+          mainApi.getSavedArticles().then((res) => {
+            dispatch(
+              setArticles({
+                articles: res,
+                key: "savedArticlesList"
+              })
+            );
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
+
   if (listSetting.isArticlesLoading) {
     return (
       <section className="articles articles_loading">

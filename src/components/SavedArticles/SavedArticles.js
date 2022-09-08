@@ -85,7 +85,7 @@ const SavedArticles = ({isLoggedIn}) => {
     >
       <div className="articles__wrapper">
         <h3 className="articles__location-title">Saved articles</h3>
-        <h2 className="articles__title">
+        <h2 className="articles__title articles__title_type_saved">
           {name}, you have {savedArticlesList.length} saved articles
         </h2>
         <h4 className="articles__key-title">

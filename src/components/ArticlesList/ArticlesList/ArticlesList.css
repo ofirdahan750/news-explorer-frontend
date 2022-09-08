@@ -100,14 +100,14 @@
 .articles__button:hover {
   background: #e8e8e8;
 }
-@media screen and (min-width: 663px) {
+@media screen and (min-width: 768px) {
   /*Tablet*/
 
   .articles__wrapper {
     max-width: calc(100vw - (40px * 2));
   }
   .articles__list {
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, minmax(1px, 1fr));
     gap: 8px;
   }
   .articles__button {
@@ -123,7 +123,6 @@
     max-width: calc(100vw - (104px * 2));
   }
   .articles__list {
-    grid-template-columns: repeat(3, minmax(150px, 1fr));
     gap: 16px;
   }
   .articles__title {

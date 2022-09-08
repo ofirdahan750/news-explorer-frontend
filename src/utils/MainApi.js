@@ -38,6 +38,13 @@ class MainApi {
       data: article
     });
   };
+  onDeleteArticle = async (articleId) => {
+    return await this._onHttpRequest({
+      url: `articles/${articleId}`,
+      method: "DELETE"
+      // data: articleId
+    });
+  };
 }
 const mainApi = new MainApi();
 
