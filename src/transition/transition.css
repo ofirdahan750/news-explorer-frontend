@@ -1,8 +1,0 @@
-.background-color-transition:hover,
-.background-color-transition:active {
-  transition: background-color 0.232s linear;
-}
-.opacity-transition:hover,
-.opacity-transition:active {
-  transition: opacity 0.432s linear;
-}
