@@ -1,0 +1,11 @@
+.btn-link-modifier,
+.btn-link-modifier > * {
+  all: unset;
+  cursor: pointer;
+}
+.list-modifier,
+.list-modifier > * {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

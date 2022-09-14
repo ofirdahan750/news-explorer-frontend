@@ -1,0 +1,52 @@
+.about-author {
+  margin: 40px auto 61px; /*Moblie */
+  gap: 0 24px; /*Moblie */
+  flex-direction: column; /*Moblie */
+  display: flex;
+  align-items: center;
+}
+.about-author__img {
+  max-width: 100%; /*Moblie */
+  object-fit: cover;
+  border-radius: 1000px;
+}
+
+.about-author__headling {
+  font-size: 1.875rem; /*Moblie */
+  line-height: 1.33333333; /*Moblie */
+  font-weight: 400;
+  margin: 0 0 24px;
+  padding: 0;
+}
+.about-author__paragraph {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.3333333333;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 486px) {
+  /*Tablet*/
+  .about-author {
+    margin: 80px auto;
+    flex-direction: row;
+    gap: 0 32px;
+  }
+  .about-author__img {
+    max-width: 232px;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  /*Wide Screen*/
+  .about-author {
+    gap: 0 56px;
+  }
+  .about-author__img {
+    max-width: 464px;
+  }
+  .about-author__headling {
+    font-size: 2.5rem;
+    line-height: 1.15;
+  }
+}

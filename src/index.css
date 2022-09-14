@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}
+/* .Page = Body Element */
+.page {
+  background-color: #ffffff;
+  font-family: "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #1a1b22;
+  -webkit-animation-name: animate-center;
+  -webkit-animation-duration: 1s;
+  animation-name: animate-center;
+  animation-duration: 1s;
+  font-size: 1rem;
+}
+.page__content {
+  margin: 0 auto;
+}
+
+/* Vendor */
+@import url("./vendor/normalize.css");
+
+/* Font Rule */
+@import url("./fonts/inter/inter.css");
+
+/* Modifier */
+@import url("./modifier/modifier.css");
+
+/* Keyframe */
+@import url("./keyframe/keyframe.css");
+
+/* Animation */
+@import url("./animation/animation.css");
+
+/* Transition */
+@import url("./transition/transition.css");
