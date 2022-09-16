@@ -33,7 +33,7 @@ const Header = ({isLoggedIn, handlePopupToggleView, handleLogOutclicked}) => {
         }`}
         style={{backgroundColor: isMoblieMenuOpen && "rgba(26, 27, 34, 1)"}}
       >
-        <div className="header__wrapper">
+        <div className="header__wrapper full-width_type_wrapper">
           <div className="header__logo btn-link-modifier">
             <Link to="/">NewsExplorer</Link>
           </div>

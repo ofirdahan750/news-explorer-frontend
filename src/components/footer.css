@@ -1,5 +1,5 @@
 .footer {
-  max-width: calc(100% - (15px * 2)); /*Moblie*/
+  /* max-width: calc(100% - (15px * 2)); Moblie */
   padding: 20px 0 22px 0; /*Moblie*/
   gap: 38px 0; /*Moblie*/
   justify-content: none; /*Moblie*/
@@ -64,7 +64,7 @@
 }
 @media screen and (min-width: 520px) {
   .footer {
-    max-width: calc(100% - (30px * 2));
+    /* max-width: calc(100% - (30px * 2)); */
   }
   .footer__nav-list {
     grid-template-columns: 70.44% repeat(3, 1fr);
@@ -93,7 +93,7 @@
 
 @media screen and (min-width: 1024px) {
   .footer {
-    max-width: calc(100% - (80px * 2));
+    /* max-width: calc(100% - (80px * 2)); */
     padding: 30px 0 28px;
   }
   .footer__nav-item-txt {

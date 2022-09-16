@@ -1,9 +1,10 @@
 .header {
   height: 56px; /*Moblie*/
   background: rgba(196, 196, 196, 0.01);
-  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-width: 100vw;
   z-index: 10;
-  position: relative;
 }
 .header_theme_dark {
   box-shadow: inset 0px -1px 0px #d1d2d6;
@@ -14,7 +15,6 @@
   color: #ffffff;
 }
 .header__wrapper {
-  max-width: calc(100vw - (16px * 2)); /*Moblie */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,16 +40,16 @@
     height: 66px;
     position: static;
   }
-  .header__wrapper {
-    max-width: calc(100vw - (42px * 2));
-  }
+  /* .header__wrapper {
+    width: calc(100vw - (42px * 2));
+  } */
 }
 @media screen and (min-width: 901px) {
   /*Wide Screen*/
   .header {
     height: 80px;
   }
-  .header__wrapper {
-    max-width: calc(100vw - (104px * 2));
-  }
+  /* .header__wrapper {
+    width: calc(100vw - (104px * 2));
+  } */
 }

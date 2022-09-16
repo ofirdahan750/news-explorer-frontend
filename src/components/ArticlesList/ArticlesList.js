@@ -33,7 +33,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
     !articles.length
   ) {
     return (
-      <section className="articles articles_not-found">
+      <section className="articles full-width articles_not-found">
         <div className="articles__not-found-wrapper">
           <img
             src={require("../../images/Article/article_not-found.svg").default}
@@ -43,7 +43,9 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
           <h3 className="articles__not-found-header">Nothing found</h3>
           <p className="articles__not-found-text">
             {type === "search"
-              ? `Sorry${name !== "Loading..." && ` ${name}` || ''}, but nothing matched your search terms.`
+              ? `Sorry${
+                  (name !== "Loading..." && ` ${name}`) || ""
+                }, but nothing matched your search terms.`
               : "You don't have any saved articles"}
           </p>
         </div>
@@ -80,7 +82,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
 
   if (listSetting.isArticlesLoading) {
     return (
-      <section className="articles articles_loading">
+      <section className="articles full-width articles_loading">
         <PreLoader modifier={"preloader_articles"} />
         <div className="articles__loading-txt">Searching for news...</div>
       </section>
@@ -91,8 +93,8 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   return (
     <>
       {type === "saved" && children}
-      <section className={`articles articles_type_${type} fade-in`}>
-        <div className="articles__wrapper">
+      <section className={`articles full-width articles_type_${type} fade-in`}>
+        <div className="articles__wrapper full-width_type_wrapper">
           {type === "search" && children}
           {isDemoData && (
             <h3 className="articles__title articles__title_text_err-msg ">

@@ -1,6 +1,5 @@
 .articles {
   background-color: #f5f6f7;
-  width: 100%;
 }
 .articles_loading {
   padding: 80px 0;
@@ -54,7 +53,6 @@
   color: #b6bcbf;
 }
 .articles__wrapper {
-  max-width: calc(100vw - (16px * 2)); /*Moblie */
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -102,10 +100,6 @@
 }
 @media screen and (min-width: 768px) {
   /*Tablet*/
-
-  .articles__wrapper {
-    max-width: calc(100vw - (40px * 2));
-  }
   .articles__list {
     grid-template-columns: repeat(3, minmax(1px, 1fr));
     gap: 8px;
@@ -119,9 +113,6 @@
 @media screen and (min-width: 1024px) {
   /*Wide Screen*/
 
-  .articles__wrapper {
-    max-width: calc(100vw - (104px * 2));
-  }
   .articles__list {
     gap: 16px;
   }

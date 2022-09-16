@@ -193,74 +193,74 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content fade-in">
-      <Routes>
-        <Route
-          path="/saved-news"
-          element={
-            <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
-              <Header
-                handlePopupToggleView={handlePopupToggleView}
-                isLoggedIn={isLoggedIn}
-                handleLogOutclicked={handleLogOutclicked}
-              />
-              <SavedArticles isLoggedIn={isLoggedIn} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <>
-              <div
-                className={`preloader-container ${
-                  isLoading && "preloader-container_visible"
-                }`}
-              >
-                <PreLoader modifier={"preloader_app"} />
-              </div>
-              <div
-                className="hero-cover"
-                role="img"
-                aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
-              >
+        <Routes>
+          <Route
+            path="/saved-news"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn} isLoading={isLoading}>
                 <Header
                   handlePopupToggleView={handlePopupToggleView}
                   isLoggedIn={isLoggedIn}
                   handleLogOutclicked={handleLogOutclicked}
                 />
-                <Search />
-              </div>
-              <SearchArticles isLoggedIn={isLoggedIn} />
-              <main className="main">
-                <AboutAuthor />
-              </main>
-            </>
-          }
-        />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
+                <SavedArticles isLoggedIn={isLoggedIn} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <>
+                <div
+                  className={`preloader-container ${
+                    isLoading && "preloader-container_visible"
+                  }`}
+                >
+                  <PreLoader modifier={"preloader_app"} />
+                </div>
+                <div
+                  className="hero-cover full-width"
+                  role="img"
+                  aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
+                >
+                  <Header
+                    handlePopupToggleView={handlePopupToggleView}
+                    isLoggedIn={isLoggedIn}
+                    handleLogOutclicked={handleLogOutclicked}
+                  />
+                  <Search />
+                </div>
+                <SearchArticles isLoggedIn={isLoggedIn} />
+                <main className="main">
+                  <AboutAuthor />
+                </main>
+              </>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
 
-      <Footer />
-      <LoginPopupup
-        onChangeInput={onChangeInput}
-        handlePopupMouseDown={handlePopupMouseDown}
-        handlePopupToggleView={handlePopupToggleView}
-        isInputHaveKey={isInputHaveKey}
-        onFormSubmitted={onFormSubmitted}
-        setCurrentUser={setCurrentUser}
-        setIsLoggedIn={setIsLoggedIn}
-      />
-      <RegisterPopupup
-        onChangeInput={onChangeInput}
-        handlePopupMouseDown={handlePopupMouseDown}
-        handlePopupToggleView={handlePopupToggleView}
-        onFormSubmitted={onFormSubmitted}
-        isInputHaveKey={isInputHaveKey}
-      />
-      <SuccessPopupup
-        handlePopupMouseDown={handlePopupMouseDown}
-        handlePopupToggleView={handlePopupToggleView}
-      />
+        <Footer />
+        <LoginPopupup
+          onChangeInput={onChangeInput}
+          handlePopupMouseDown={handlePopupMouseDown}
+          handlePopupToggleView={handlePopupToggleView}
+          isInputHaveKey={isInputHaveKey}
+          onFormSubmitted={onFormSubmitted}
+          setCurrentUser={setCurrentUser}
+          setIsLoggedIn={setIsLoggedIn}
+        />
+        <RegisterPopupup
+          onChangeInput={onChangeInput}
+          handlePopupMouseDown={handlePopupMouseDown}
+          handlePopupToggleView={handlePopupToggleView}
+          onFormSubmitted={onFormSubmitted}
+          isInputHaveKey={isInputHaveKey}
+        />
+        <SuccessPopupup
+          handlePopupMouseDown={handlePopupMouseDown}
+          handlePopupToggleView={handlePopupToggleView}
+        />
       </div>
     </CurrentUserContext.Provider>
   );

@@ -83,7 +83,7 @@ const SavedArticles = ({isLoggedIn}) => {
       isDemoData={false}
       type="saved"
     >
-      <div className="articles__wrapper">
+      <div className="articles__wrapper full-width_type_wrapper">
         <h3 className="articles__location-title">Saved articles</h3>
         <h2 className="articles__title articles__title_type_saved">
           {name}, you have {savedArticlesList.length} saved articles

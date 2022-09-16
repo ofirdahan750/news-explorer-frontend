@@ -29,23 +29,28 @@
   display: flex;
   flex-direction: column;
   z-index: 30;
-  width: 100vw;
+
+  /* width: calc(100% + (104px * 2)); */
+
+  /* margin:0 -216px 0 0 ; */
 }
-.main {
-  max-width: calc(100vw - (24px * 2)); /*Moblie */
+.page__content {
+  max-width: calc(100vw - (24px * 2));
+  /*Moblie */
   margin: 0 auto;
 }
 @media screen and (min-width: 471px) {
   /*Tablet*/
-  .main {
-    max-width: calc(100vw - (40px * 2));
+  .page__content {
+    width: calc(100vw - (40px * 2));
   }
 }
 
 @media screen and (min-width: 901px) {
   /*Wide Screen*/
-  .main {
-    max-width: calc(100vw - (104px * 2));
+  .page__content {
+    width: calc(100vw - (104px * 2));
+    max-width: 1440px;
   }
   .hero-cover {
     max-height: 576px;

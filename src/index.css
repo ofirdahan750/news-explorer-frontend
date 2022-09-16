@@ -48,10 +48,6 @@ html {
   border-radius: 10px;
 }
 
-.page__content {
-  margin: 0 auto;
-}
-
 /* Vendor */
 @import url("./vendor/normalize.css");
 
