@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
-import useEffectSkipInitialRender from "../../hooks/useEffectSkipInitialRender";
 import {capitalizeFirstLetter} from "../../utils/utils";
 import "./ArticleCard.css";
 const ArticleCard = ({
-  article: {source, title, date, text, image, link},
+  article: {source, title, date, text, image, link, _id = "", keyword = ""},
   isLoggedIn,
   isDemoData,
   handleSubmit,
@@ -16,24 +15,30 @@ const ArticleCard = ({
   const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const [isSaved, setIsSaved] = useState(false);
 
-  useEffectSkipInitialRender(() => {
+  useEffect(() => {
     if (!savedArticlesList.length || savedArticlesList[0].title === "Loading") {
       setIsSaved(false);
-    } else {
-      if (isLoggedIn && !isDemoData) {
-        const matchedCard =
-          savedArticlesList.find((article) => article.link === link) || false;
-        if (matchedCard) {
-          setIsSaved(true);
-          setArticleId(matchedCard._id);
-          setArticleKey(matchedCard.keyword);
-        } else {
-          setIsSaved(false);
-          setArticleId("");
-        }
+      return;
+    }
+    if (type === "saved") {
+      setIsSaved(true);
+      setArticleId(_id);
+      setArticleKey(keyword);
+      return;
+    }
+    if (isLoggedIn && !isDemoData) {
+      const matchedCard =
+        savedArticlesList.find((article) => article.link === link) || false;
+      if (matchedCard) {
+        setIsSaved(true);
+        setArticleId(matchedCard._id);
+        setArticleKey(matchedCard.keyword);
+      } else {
+        setIsSaved(false);
+        setArticleId("");
       }
     }
-  }, [savedArticlesList.length]);
+  }, [savedArticlesList]);
   if (!title || title === "Loading...") return;
 
   return (
