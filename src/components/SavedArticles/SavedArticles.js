@@ -17,8 +17,9 @@ const SavedArticles = ({isLoggedIn}) => {
   const {name} = useContext(CurrentUserContext);
   const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (savedArticlesList[0].title === "Loading...") {
+    if (!savedArticlesList || savedArticlesList[0]?.title === "Loading...") {
       dispatch(
         setArticleListSettings({
           isArticlesLoading: true,

@@ -34,7 +34,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
   ) {
     return (
       <section className="articles full-width articles_not-found">
-        <div className="articles__not-found-wrapper">
+        <div className="articles__not-found-wrapper full-width_type_wrapper">
           <img
             src={require("../../images/Article/article_not-found.svg").default}
             alt="a sad emjoi-Not found"
@@ -60,6 +60,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
         .then((res) => {
           dispatch(setSavedArticle(res));
         })
+
         .catch((err) => {});
     } else {
       mainApi

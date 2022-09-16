@@ -45,7 +45,7 @@ const App = () => {
   const {isLoading} = useSelector((state) => state.loadingModule);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {pathName} = useLocation();
+  const {pathname} = useLocation();
 
   useEffect(() => {
     onInit(); //When app init set username
@@ -186,7 +186,7 @@ const App = () => {
     setCurrentUser(loadingInitState.userInfo);
     clearLocalStorage();
     mainApi.setHeaderToken("");
-    if (pathName !== "/") {
+    if (pathname !== "/") {
       navigate("/");
     }
   };

@@ -38,6 +38,7 @@ const ArticleCard = ({
         setArticleId("");
       }
     }
+    // eslint-disable-next-line
   }, [savedArticlesList]);
   if (!title || title === "Loading...") return;
 
