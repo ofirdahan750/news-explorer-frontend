@@ -1,6 +1,12 @@
 import "./App.css";
 import React, {useEffect, useState, useCallback} from "react";
-import {Routes, Route, Navigate, useNavigate} from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation
+} from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import {loadingInitState, txtErr} from "../../utils/constants";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
@@ -38,8 +44,9 @@ const App = () => {
   );
   const {isLoading} = useSelector((state) => state.loadingModule);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+  const {pathName} = useLocation();
+
   useEffect(() => {
     onInit(); //When app init set username
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -179,10 +186,13 @@ const App = () => {
     setCurrentUser(loadingInitState.userInfo);
     clearLocalStorage();
     mainApi.setHeaderToken("");
-    navigate("/");
+    if (pathName !== "/") {
+      navigate("/");
+    }
   };
   return (
     <CurrentUserContext.Provider value={currentUser}>
+      <div className="page__content fade-in">
       <Routes>
         <Route
           path="/saved-news"
@@ -208,24 +218,22 @@ const App = () => {
               >
                 <PreLoader modifier={"preloader_app"} />
               </div>
-              <div className="page__content fade-in">
-                <div
-                  className="hero-cover"
-                  role="img"
-                  aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
-                >
-                  <Header
-                    handlePopupToggleView={handlePopupToggleView}
-                    isLoggedIn={isLoggedIn}
-                    handleLogOutclicked={handleLogOutclicked}
-                  />
-                  <Search />
-                </div>
-                <SearchArticles isLoggedIn={isLoggedIn} />
-                <main className="main">
-                  <AboutAuthor />
-                </main>
+              <div
+                className="hero-cover"
+                role="img"
+                aria-label="Main photo cover of the the site - a Hand holding a white mobile phone"
+              >
+                <Header
+                  handlePopupToggleView={handlePopupToggleView}
+                  isLoggedIn={isLoggedIn}
+                  handleLogOutclicked={handleLogOutclicked}
+                />
+                <Search />
               </div>
+              <SearchArticles isLoggedIn={isLoggedIn} />
+              <main className="main">
+                <AboutAuthor />
+              </main>
             </>
           }
         />
@@ -253,6 +261,7 @@ const App = () => {
         handlePopupMouseDown={handlePopupMouseDown}
         handlePopupToggleView={handlePopupToggleView}
       />
+      </div>
     </CurrentUserContext.Provider>
   );
 };

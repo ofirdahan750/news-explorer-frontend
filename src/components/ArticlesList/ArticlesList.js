@@ -43,7 +43,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
           <h3 className="articles__not-found-header">Nothing found</h3>
           <p className="articles__not-found-text">
             {type === "search"
-              ? `Sorry${name || "You"} , but nothing matched your search terms.`
+              ? `Sorry${name !== "Loading..." && ` ${name}` || ''}, but nothing matched your search terms.`
               : "You don't have any saved articles"}
           </p>
         </div>

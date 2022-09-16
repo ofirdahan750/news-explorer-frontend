@@ -6,6 +6,10 @@ input:focus {
   outline: none;
 }
 /* .Page = Body Element */
+html {
+  overflow-x: hidden;
+  height: 100vh;
+}
 .page {
   background-color: #ffffff;
   font-family: "Inter", Arial, sans-serif;
@@ -17,7 +21,33 @@ input:focus {
   animation-name: animate-center;
   animation-duration: 1s;
   font-size: 1rem;
+  overflow-x: hidden;
+  height: 100vh;
 }
+.page::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.page::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.page::-webkit-scrollbar-thumb {
+  background-color: #aab74d;
+  background-image: -webkit-linear-gradient(
+    rgba(255, 255, 255, 0.3) 20%,
+    transparent 20%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 0.3) 60%,
+    transparent 60%,
+    transparent 80%,
+    rgba(255, 255, 255, 0.3) 80%
+  );
+  border-radius: 10px;
+}
+
 .page__content {
   margin: 0 auto;
 }

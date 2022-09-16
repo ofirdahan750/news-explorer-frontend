@@ -1,7 +1,7 @@
 .header {
   height: 56px; /*Moblie*/
   background: rgba(196, 196, 196, 0.01);
-  width: 100%;
+  width: 100vw;
   z-index: 10;
   position: relative;
 }
