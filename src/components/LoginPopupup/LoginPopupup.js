@@ -1,7 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
 import {useSelector} from "react-redux";
-import "../PopupWithForm/PopupWithForm.css";
 import {authenticate, validateToken} from "../../utils/auth.js";
 import {txtErr} from "../../utils/constants.js";
 import {capitalizeFirstLetter} from "../../utils/utils.js";
@@ -94,7 +93,7 @@ const LoginPopupup = ({
     >
       <label className="popup__label">Email</label>
       <input
-        className="popup__input popup__input_order_first-input"
+        className="popup__input"
         autoFocus
         onChange={(e) => {
           onChangeInput(e);
@@ -113,7 +112,7 @@ const LoginPopupup = ({
 
       <label className="popup__label">Password</label>
       <input
-        className="popup__input popup__input_order_second-input"
+        className="popup__input"
         type="password"
         value={isInputHaveKey({key: "userPassword", subKey: "inputVal"})}
         name="userPassword"

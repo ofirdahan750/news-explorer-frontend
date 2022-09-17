@@ -1,4 +1,4 @@
-import DemoSearchData from "../DemoData/DemoSearchData.json";
+// import DemoSearchData from "../DemoData/DemoSearchData.json";
 class NewsApi {
   constructor({baseUrl, from, to, pageSize}) {
     this._baseUrl = baseUrl;
@@ -20,7 +20,7 @@ class NewsApi {
       `${this._baseUrl}/everything?q=${searchParmas}&apiKey=${apiKey}&from=${this._from}&to=${this._to}&pageSize=${this._pageSize}`
     );
     //for Testing and dev on the server
-    // demoData.totalResults = 0;
+    // DemoSearchData.totalResults = 0;
     // return Promise.resolve([]);
     // return Promise.resolve(DemoSearchData);
     // return Promise.reject();

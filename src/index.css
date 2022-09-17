@@ -1,10 +1,7 @@
 * {
   box-sizing: border-box;
 }
-textarea:focus,
-input:focus {
-  outline: none;
-}
+
 /* .Page = Body Element */
 html {
   overflow-x: hidden;
@@ -12,7 +9,7 @@ html {
 }
 .page {
   background-color: #ffffff;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #1a1b22;
@@ -52,8 +49,9 @@ html {
 @import url("./vendor/normalize.css");
 
 /* Font Rule */
-@import url("./fonts/inter/inter.css");
+@import url("./fonts/roboto/roboto.css");
 @import url("./fonts/roboto-slab/roboto-slab.css");
+@import url("./fonts/inter/inter.css");
 @import url("./fonts/Source-Sans-Pro/source-sans-pro.css");
 
 /* Modifier */

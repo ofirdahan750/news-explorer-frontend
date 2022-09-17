@@ -24,26 +24,30 @@
   display: grid; /*Moblie*/
   margin: 0 auto; /*Moblie*/
   grid-template-areas:
-    "footer__nav-item-txt_content_home footer__nav-item-icon_name_github footer__nav-item-icon_name_linkedin footer__nav-item-icon_name_facebook"
-    "footer__nav-item-txt_content_practicum . . .";
+    "footer__nav-item_grid-area_home footer__nav-item_grid-area_github footer__nav-item_grid-area_linkedin footer__nav-item_grid-area_facebook"
+    "footer__nav-item_grid-area_practicum . . .";
   grid-template-columns: 55.44% repeat(auto-fit, minmax(26px, 2fr)); /*Moblie*/
   width: 100%; /*Moblie*/
   gap: 17.78px 0;
   padding: 0;
 }
-.footer__nav-item-txt_content_home {
-  grid-area: footer__nav-item-txt_content_home;
+.footer__nav-item_grid-area_home {
+  grid-area: footer__nav-item_grid-area_home;
 }
-.footer__nav-item-icon_name_github {
-  grid-area: footer__nav-item-icon_name_github;
+.footer__nav-item_grid-area_practicum {
+  grid-area: footer__nav-item_grid-area_practicum;
 }
-.footer__nav-item-icon_name_linkedin {
-  grid-area: footer__nav-item-icon_name_linkedin;
+.footer__nav-item_grid-area_github {
+  grid-area: footer__nav-item_grid-area_github;
 }
-.footer__nav-item-txt_content_practicum {
-  grid-area: footer__nav-item-txt_content_practicum;
+.footer__nav-item_grid-area_linkedin {
+  grid-area: footer__nav-item_grid-area_linkedin;
 }
 
+.footer__nav-item_grid-area_facebook {
+  grid-area: footer__nav-item_grid-area_facebook;
+  margin: 0;
+}
 .footer__nav-item-txt {
   margin: 0; /*Moblie*/
   font-size: 1.125rem;
@@ -58,10 +62,6 @@
   height: auto;
 }
 
-.footer__nav-item-icon_name_facebook {
-  grid-area: footer__nav-item-icon_name_facebook;
-  margin: 0;
-}
 @media screen and (min-width: 520px) {
   .footer__nav-list {
     grid-template-columns: 70.44% repeat(3, 1fr);

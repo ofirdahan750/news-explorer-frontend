@@ -87,15 +87,18 @@
   font-size: 0.75rem;
   line-height: 1.25;
   color: #2f71e5;
+  font-family: "Inter";
 }
 .popup__input {
   border: unset;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   padding: 0 0 10px;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.214285714285714;
+  font-family: "Inter";
 }
+
 .popup__input-error {
   color: red;
   font-size: 0.75rem;
@@ -138,6 +141,7 @@
   text-align: center;
   color: #000000;
   margin: 22px 0 0;
+  font-family: "Inter";
 }
 .popup__bottom-link_type_signup_success {
   margin: 14px 0 0;

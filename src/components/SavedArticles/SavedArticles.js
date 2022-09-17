@@ -1,18 +1,17 @@
 import ArticlesList from "../ArticlesList/ArticlesList";
 import demoSavedData from "../../DemoData/DemoSavedData.json";
 
-import "./SavedArticles/SavedArticles.css";
-import "../ArticleCard/ArticleCardSearch.css";
+import "./SavedArticles.css";
 import {useDispatch, useSelector} from "react-redux";
 import {useContext, useEffect, useState, useRef} from "react";
 import {
   setArticleListSetting,
   setArticleListSettings,
   setArticles
-} from "../../store/actions/articlesAction";
-import mainApi from "../../utils/MainApi";
+} from "../../store/actions/articlesAction.js";
+import mainApi from "../../utils/MainApi.js";
 import {countAndSortArrByKey} from "../../utils/utils.js";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 const SavedArticles = ({isLoggedIn}) => {
   const [sortedKeywords, setSortedKeywords] = useState({});
   const {name} = useContext(CurrentUserContext);
@@ -33,7 +32,7 @@ const SavedArticles = ({isLoggedIn}) => {
         isDemoData.current = false;
         dispatch(
           setArticles({
-            articles: res,
+            articles: res.reverse(),
             key: "savedArticlesList"
           })
         );

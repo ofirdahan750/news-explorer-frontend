@@ -9,7 +9,7 @@ const Footer = () => {
       </div>
       <nav className="footer__nav-list">
         <Link
-          className="footer__nav-item-txt footer__nav-item-txt_content_home btn-link-modifier"
+          className="footer__nav-item-txt footer__nav-item_grid-area_home btn-link-modifier"
           to="/"
         >
           <span>Home</span>
@@ -18,12 +18,12 @@ const Footer = () => {
           href="https://practicum.com"
           target="_blank"
           rel="noreferrer"
-          className="footer__nav-item-txt footer__nav-item-txt_content_practicum btn-link-modifier"
+          className="footer__nav-item-txt footer__nav-item_grid-area_practicum btn-link-modifier"
         >
           Practicum
         </a>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_github shake-horizontal btn-link-modifier"
+          className="footer__nav-item-icon footer__nav-item_grid-area_github shake-horizontal btn-link-modifier"
           href="https://github.com/ofirdahan750"
           target="_blank"
           rel="noreferrer"
@@ -35,7 +35,7 @@ const Footer = () => {
           />
         </a>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_linkedin shake-horizontal btn-link-modifier"
+          className="footer__nav-item-icon footer__nav-item_grid-area_linkedin shake-horizontal btn-link-modifier"
           href="https://www.linkedin.com/in/ofir-dahan-8ba3a318a/"
           target="_blank"
           rel="noreferrer"
@@ -47,7 +47,7 @@ const Footer = () => {
           />
         </a>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_facebook shake-horizontal btn-link-modifier"
+          className="footer__nav-item-icon footer__nav-item_grid-area_facebook shake-horizontal btn-link-modifier"
           href="https://www.facebook.com/Ofir.Dahan1/"
           target="_blank"
           rel="noreferrer"

@@ -1,7 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 import React from "react";
 import {useSelector} from "react-redux";
-import "../PopupWithForm/PopupWithForm.css";
 
 const SuccessPopupup = ({handlePopupMouseDown, handlePopupToggleView}) => {
   const {

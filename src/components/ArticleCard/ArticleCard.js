@@ -48,9 +48,9 @@ const ArticleCard = ({
 
   return (
     <li className="article-card fade-in">
-      <article className="article-card_wrapper scale-hover">
+      <article className="article-card__wrapper scale-hover">
         <div
-          className="article-card_img-container"
+          className="article-card__img-container"
           role="img"
           aria-label="A photo from the article"
           style={{backgroundImage: `url(${image})`}}
@@ -62,7 +62,7 @@ const ArticleCard = ({
         >
           <div
             className={`article-card__saved-wrapper ${
-              isSaved ? "article-card_wrapper_type_saved" : ""
+              isSaved ? "article-card__wrapper_type_saved" : ""
             }`}
           >
             <div className="article-card__saved-btn-wrapper">

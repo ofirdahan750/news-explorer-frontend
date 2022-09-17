@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import ArticleCard from "../ArticleCard/ArticleCard.js";
-import "./ArticlesList/ArticlesList.css";
+import "./ArticlesList.css";
 import PreLoader from "../PreLoader/PreLoader.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.js";
 import mainApi from "../../utils/MainApi.js";
@@ -61,7 +61,9 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
           dispatch(setSavedArticle(res));
         })
 
-        .catch((err) => {});
+        .catch((err) => {
+          console.log(`Error : ${err}`);
+        });
     } else {
       mainApi
         .onDeleteArticle(article)
@@ -98,7 +100,7 @@ const ArticlesList = ({children, isLoggedIn, isDemoData, articles, type}) => {
         <div className="articles__wrapper full-width_type_wrapper">
           {type === "search" && children}
           {isDemoData && (
-            <h3 className="articles__title articles__title_text_err-msg ">
+            <h3 className="articles__title articles__title_type_err-msg ">
               * Sorry, something went wrong during the request. There may be a
               connection issue or the server may be down. This is a{" "}
               <span style={{fontWeight: "600", textDecoration: "underline"}}>

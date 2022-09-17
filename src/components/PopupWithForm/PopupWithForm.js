@@ -17,7 +17,7 @@ const PopupWithForm = ({
 }) => {
   return (
     <div
-      className={`popup popup_type_${
+      className={`popup popup__type_${
         isOpen && currType === type ? `${currType} popup_visible` : ""
       }`}
       onMouseDown={handlePopupMouseDown}

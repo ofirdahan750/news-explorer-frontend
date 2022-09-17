@@ -68,10 +68,10 @@
   margin: 0;
 }
 
-.articles__title_text_search-results {
+.articles__title_type_search-results {
   font-size: 1.875rem; /*Moblie */
 }
-.articles__title_text_err-msg {
+.articles__title_type_err-msg {
   font-size: 1.3645rem; /*Moblie */
   margin: 8px 0 0;
 }
@@ -120,10 +120,10 @@
     font-size: 2.5rem;
     line-height: 1.15;
   }
-  .articles__title_text_search-results {
+  .articles__title_type_search-results {
     font-size: 2.5rem;
   }
-  .articles__title_text_err-msg {
+  .articles__title_type_err-msg {
     font-size: 1.7rem;
     margin: 15px 0 0;
   }
