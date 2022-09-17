@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import ArticleList from "../ArticlesList/ArticlesList.js";
@@ -6,7 +6,7 @@ import "../ArticleCard/ArticleCardSearch.css";
 
 import mainApi from "../../utils/MainApi.js";
 
-import demoData from "../../DemoData/DemoData.json";
+import demoSearchData from "../../DemoData/DemoSearchData.json";
 
 import {
   setArticles,
@@ -19,11 +19,14 @@ import newsApi from "../../utils/NewsApi.js";
 import {checkStringLength} from "../../utils/utils.js";
 import useEffectSkipInitialRender from "../../hooks/useEffectSkipInitialRender.js";
 import {oneDay} from "../../utils/constants.js";
-import {saveToStorage, getFromStorage} from "../../utils/StorageService.js";
-console.log(process.env.API_KEY_1);
+import {
+  saveToStorage,
+  getFromStorage,
+  removeFromStorage
+} from "../../utils/StorageService.js";
 
 const SearchArticles = ({isLoggedIn}) => {
-  const [isDemoData, setIsDemoData] = useState(false);
+  const isDemoData = useRef(false);
   const {searchArticlesList, savedArticlesList} = useSelector(
     (state) => state.articlesModule
   );
@@ -42,7 +45,7 @@ const SearchArticles = ({isLoggedIn}) => {
       lastSearchSettings.keyword !== searchParmas &&
       searchArticlesList.length &&
       searchArticlesList[0].title !== "Loading..." &&
-      !isDemoData
+      !isDemoData.current
     ) {
       saveToStorage("lastSearchArticles", searchArticlesList);
       saveToStorage("lastSearchSettings", {
@@ -52,10 +55,10 @@ const SearchArticles = ({isLoggedIn}) => {
     }
     // eslint-disable-next-line
   }, [
-    lastSearchSettings.keyword !== searchParmas &&
-      searchArticlesList.length &&
-      searchArticlesList[0].title !== "Loading..." &&
-      !isDemoData
+    isDemoData,
+    searchArticlesList[0]?.title !== "Loading...",
+    searchArticlesList,
+    lastSearchSettings.keyword !== searchParmas
   ]);
 
   useEffect(() => {
@@ -81,6 +84,8 @@ const SearchArticles = ({isLoggedIn}) => {
       ) {
         setArticlesByLocalStorage(lastSearchArticles);
       } else {
+        removeFromStorage("lastSearchArticles");
+        removeFromStorage("lastSearchSettings");
         setArticlesByApi(searchParmas);
       }
       if (
@@ -89,7 +94,6 @@ const SearchArticles = ({isLoggedIn}) => {
           savedArticlesList[0].title === "Loading...")
       ) {
         mainApi
-
           .getSavedArticles()
           .then((res) => {
             dispatch(
@@ -101,20 +105,24 @@ const SearchArticles = ({isLoggedIn}) => {
           })
           .catch((err) => {
             console.log(err);
-            setArticles({
-              articles: [],
-              key: "savedArticlesList"
-            });
+            dispatch(
+              setArticles({
+                articles: [],
+                key: "savedArticlesList"
+              })
+            );
           });
       }
     }
 
     return () => {
-      setArticles({article: [], key: "searchArticlesList"});
-      setArticleListSettings({
-        isArticlesLoading: false,
-        isArticlesSectionActive: false
-      });
+      dispatch(
+        setArticleListSettings({
+          isArticlesLoading: false,
+          isArticlesSectionActive: false
+        })
+      );
+      isDemoData.current = false;
     };
     // eslint-disable-next-line
   }, [params, location.pathname]);
@@ -150,7 +158,7 @@ const SearchArticles = ({isLoggedIn}) => {
       })
     ])
       .then((res) => {
-        setIsDemoData(false);
+        isDemoData.current = false;
         dispatch(
           setArticlesApi({
             articles: res.articles,
@@ -160,12 +168,12 @@ const SearchArticles = ({isLoggedIn}) => {
         );
       })
       .catch((err) => {
-        console.log("err:", err);
-        setIsDemoData(true);
+        isDemoData.current = true;
+        console.log("Error: ", err);
         dispatch(
           setArticlesApi({
-            articles: demoData.articles,
-            isSearchHaveResults: demoData.totalResults,
+            articles: demoSearchData.articles,
+            isSearchHaveResults: demoSearchData.totalResults,
             key: "searchArticlesList"
           })
         );
@@ -185,7 +193,7 @@ const SearchArticles = ({isLoggedIn}) => {
     <ArticleList
       articles={searchArticlesList}
       isLoggedIn={isLoggedIn}
-      isDemoData={isDemoData}
+      isDemoData={isDemoData.current}
       type="search"
     >
       <h3 className="articles__title articles__title_text_search-results">

@@ -14,14 +14,16 @@ const Footer = () => {
         >
           <span>Home</span>
         </Link>
-        <Link
-          className="footer__nav-item-txt footer__nav-item-txt_content_practicum btn-link-modifier"
-          to="/"
-        >
-          <span>Practicum</span>
-        </Link>
         <a
-          className="footer__nav-item-icon footer__nav-item-icon_name_practicum shake-horizontal btn-link-modifier"
+          href="https://practicum.com"
+          target="_blank"
+          rel="noreferrer"
+          className="footer__nav-item-txt footer__nav-item-txt_content_practicum btn-link-modifier"
+        >
+          Practicum
+        </a>
+        <a
+          className="footer__nav-item-icon footer__nav-item-icon_name_github shake-horizontal btn-link-modifier"
           href="https://github.com/ofirdahan750"
           target="_blank"
           rel="noreferrer"

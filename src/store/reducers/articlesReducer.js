@@ -3,7 +3,6 @@ const initialState = articlesStateInit;
 
 export function articlesReducer(state = initialState, action) {
   const {payLoad, type} = action;
-
   switch (type) {
     case "SET_ARTICLES":
       return {...state, [payLoad.key]: payLoad.val};

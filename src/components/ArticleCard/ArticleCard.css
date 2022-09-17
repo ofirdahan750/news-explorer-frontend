@@ -32,10 +32,16 @@
 .article-card_wrapper_type_saved {
   justify-content: space-between;
 }
+.article-card__saved-btn-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0 5px;
+  align-items: stretch;
+}
 .article-card__saved-btn {
   z-index: 10;
   height: 40px;
-  width: 40px;
+  min-width: 40px;
   background: #ffffff;
   border-radius: 8px;
   display: flex;
@@ -57,7 +63,25 @@
   font-size: 0.75rem;
   line-height: 1.1666666667;
   font-weight: 500;
+  max-height: 100%;
+  max-width: 100%;
+}
+.article-card__key-message {
+  min-width: none;
+  padding: 8px 20px; /*Moblie*/
+  background: #ffffff;
+  border-radius: 10px;
+  display: block;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.7142857143;
+  text-align: center;
+  color: #000000;
   max-height: 40px;
+  display: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .message_visible {
@@ -147,6 +171,7 @@
   .article-card__saved-message {
     padding: 12px 2.5px;
   }
+
   .article-card__published-date {
     margin: 0 0 12px;
     padding: 0;
@@ -160,7 +185,7 @@
     margin: 0 0 12px 0;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1150px) {
   /*Wide Screen*/
 
   .article-card__txt-container {
@@ -175,6 +200,9 @@
   }
   .article-card__saved-message {
     padding: 11px 20px;
+  }
+  .article-card__key-message {
+    padding: 8px 22px;
   }
   .article-card__published-date {
     margin: 0 0 12px;

@@ -16,7 +16,11 @@ const ArticleCard = ({
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    if (!savedArticlesList.length || savedArticlesList[0].title === "Loading") {
+    if (
+      !savedArticlesList.length ||
+      savedArticlesList[0].title === "Loading" ||
+      !isLoggedIn
+    ) {
       setIsSaved(false);
       return;
     }
@@ -39,7 +43,7 @@ const ArticleCard = ({
       }
     }
     // eslint-disable-next-line
-  }, [savedArticlesList]);
+  }, [savedArticlesList, isLoggedIn]);
   if (!title || title === "Loading...") return;
 
   return (
@@ -61,55 +65,68 @@ const ArticleCard = ({
               isSaved ? "article-card_wrapper_type_saved" : ""
             }`}
           >
-            <button
-              className="article-card__saved-btn btn-link-modifier"
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                if (isDemoData || !isLoggedIn) {
-                  return;
-                }
-                handleSubmit({
-                  article: !isSaved
-                    ? {source, title, date, text, image, link}
-                    : articleId,
-                  isSaved
-                });
-              }}
-              onMouseOver={() => setIsButtonHover(true)}
-              onMouseOut={() => setIsButtonHover(false)}
-            >
-              <img
-                src={
-                  type === "saved"
-                    ? require("../../images/Article/bookmark_icons/trash.svg")
-                        .default
-                    : isSaved
-                    ? require("../../images/Article/bookmark_icons/bookmark-blue.svg")
-                        .default
-                    : isButtonHover
-                    ? require("../../images/Article/bookmark_icons/bookmark-notsaved-black.svg")
-                        .default
-                    : require("../../images/Article/bookmark_icons/bookmark-notsaved-gray.svg")
-                        .default
-                }
-                alt="Add/Remove to saved article"
-                className="article-card__saved-btn-icon "
-              />
-            </button>
-
-            <span
-              className={`article-card__saved-message ${
-                isButtonHover &&
-                (!isLoggedIn || isDemoData) &&
-                "slide-in-right message_visible"
-              }`}
-            >
-              {isDemoData ? "Can't save demo card" : "Sign in to save articles"}
-            </span>
+            <div className="article-card__saved-btn-wrapper">
+              <button
+                className="article-card__saved-btn btn-link-modifier"
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (isDemoData || !isLoggedIn) {
+                    return;
+                  }
+                  handleSubmit({
+                    article: !isSaved
+                      ? {source, title, date, text, image, link}
+                      : articleId,
+                    isSaved
+                  });
+                }}
+                onMouseOver={() => setIsButtonHover(true)}
+                onMouseOut={() => setIsButtonHover(false)}
+              >
+                <img
+                  src={
+                    type === "saved"
+                      ? require("../../images/Article/bookmark_icons/trash.svg")
+                          .default
+                      : isSaved
+                      ? require("../../images/Article/bookmark_icons/bookmark-blue.svg")
+                          .default
+                      : isButtonHover
+                      ? require("../../images/Article/bookmark_icons/bookmark-notsaved-black.svg")
+                          .default
+                      : require("../../images/Article/bookmark_icons/bookmark-notsaved-gray.svg")
+                          .default
+                  }
+                  alt={`${
+                    type === "search"
+                      ? isSaved
+                        ? "Blue bookmark to remove from saved"
+                        : `${
+                            isButtonHover ? "black" : "gray"
+                          } bookmark to add to saved art`
+                      : "Trash bin to remove from saved"
+                  }`}
+                  className="article-card__saved-btn-icon"
+                />
+              </button>
+              {(!isLoggedIn || isDemoData || type === "saved") && (
+                <span
+                  className={`article-card__saved-message ${
+                    isButtonHover && "slide-in-right message_visible"
+                  }`}
+                >
+                  {isDemoData
+                    ? `Can't ${!isSaved ? "save" : "remove"} demo card`
+                    : type === "search"
+                    ? "Sign in to save articles"
+                    : "Remove from saved"}
+                </span>
+              )}
+            </div>
             {isSaved && (
               <span
-                className={`article-card__saved-message article-card__key-message slide-in-right message_visible`}
+                className={`article-card__key-message slide-in-right message_visible`}
               >
                 {capitalizeFirstLetter(articleKey)}
               </span>

@@ -30,6 +30,8 @@ class MainApi {
       url: "articles",
       method: "GET"
     });
+    //For dubug :
+    // return Promise.reject("error");
   };
   onSaveArticle = async (article) => {
     return await this._onHttpRequest({
@@ -42,7 +44,6 @@ class MainApi {
     return await this._onHttpRequest({
       url: `articles/${articleId}`,
       method: "DELETE"
-      // data: articleId
     });
   };
 }

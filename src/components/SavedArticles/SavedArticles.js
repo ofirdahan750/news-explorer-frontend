@@ -1,9 +1,10 @@
 import ArticlesList from "../ArticlesList/ArticlesList";
+import demoSavedData from "../../DemoData/DemoSavedData.json";
 
 import "./SavedArticles/SavedArticles.css";
 import "../ArticleCard/ArticleCardSearch.css";
 import {useDispatch, useSelector} from "react-redux";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useState, useRef} from "react";
 import {
   setArticleListSetting,
   setArticleListSettings,
@@ -17,47 +18,53 @@ const SavedArticles = ({isLoggedIn}) => {
   const {name} = useContext(CurrentUserContext);
   const {savedArticlesList} = useSelector((state) => state.articlesModule);
   const dispatch = useDispatch();
+  const isDemoData = useRef(false);
 
   useEffect(() => {
-    if (!savedArticlesList || savedArticlesList[0]?.title === "Loading...") {
-      dispatch(
-        setArticleListSettings({
-          isArticlesLoading: true,
-          isArticlesSectionActive: true
-        })
-      );
-      mainApi
-        .getSavedArticles()
-        .then((res) => {
-          dispatch(
-            setArticles({
-              articles: res,
-              key: "savedArticlesList"
-            })
-          );
-        })
-        .catch((err) => {
-          console.log(err);
+    dispatch(
+      setArticleListSettings({
+        isArticlesLoading: true,
+        isArticlesSectionActive: true
+      })
+    );
+    mainApi
+      .getSavedArticles()
+      .then((res) => {
+        isDemoData.current = false;
+        dispatch(
           setArticles({
-            articles: [],
+            articles: res,
             key: "savedArticlesList"
-          });
-        })
-        .finally(() => {
-          dispatch(
-            setArticleListSetting({
-              settingKey: "isArticlesLoading",
-              settingData: false
-            })
-          );
-        });
-    }
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+        isDemoData.current = true;
+        dispatch(
+          setArticles({
+            articles: demoSavedData,
+            key: "savedArticlesList"
+          })
+        );
+      })
+      .finally(() => {
+        dispatch(
+          setArticleListSetting({
+            settingKey: "isArticlesLoading",
+            settingData: false
+          })
+        );
+      });
 
     return () => {
-      setArticleListSettings({
-        isArticlesLoading: false,
-        isArticlesSectionActive: false
-      });
+      dispatch(
+        setArticleListSettings({
+          isArticlesLoading: false,
+          isArticlesSectionActive: false
+        })
+      );
+      isDemoData.current = false;
     };
     // eslint-disable-next-line
   }, []);
@@ -81,25 +88,29 @@ const SavedArticles = ({isLoggedIn}) => {
     <ArticlesList
       articles={savedArticlesList}
       isLoggedIn={isLoggedIn}
-      isDemoData={false}
+      isDemoData={isDemoData.current}
       type="saved"
     >
       <div className="articles__wrapper full-width_type_wrapper">
         <h3 className="articles__location-title">Saved articles</h3>
-        <h2 className="articles__title articles__title_type_saved">
-          {name}, you have {savedArticlesList.length} saved articles
-        </h2>
-        <h4 className="articles__key-title">
-          By keywords:
-          <span className="articles__key-title articles__key-title_elm_span">
-            {sortedKeywords[0] && ` ${sortedKeywords[0]}`}
-            {sortedKeywords[1] && `, ${sortedKeywords[1]}`}
-            {sortedKeywords.length >= 3
-              ? ` and ${sortedKeywords.length - 2} other`
-              : ""}
-            .
-          </span>
-        </h4>
+        {!isDemoData.current && (
+          <>
+            <h2 className="articles__title articles__title_type_saved">
+              {name}, you have {savedArticlesList.length} saved articles
+            </h2>
+            <h4 className="articles__key-title">
+              By keywords:
+              <span className="articles__key-title articles__key-title_elm_span">
+                {sortedKeywords[0] && ` ${sortedKeywords[0]}`}
+                {sortedKeywords[1] && `, ${sortedKeywords[1]}`}
+                {sortedKeywords.length >= 3
+                  ? ` and ${sortedKeywords.length - 2} other`
+                  : ""}
+                .
+              </span>
+            </h4>
+          </>
+        )}
       </div>
     </ArticlesList>
   );
