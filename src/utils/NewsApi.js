@@ -23,6 +23,7 @@ class NewsApi {
     // demoData.totalResults = 0;
     // return Promise.resolve([]);
     return Promise.resolve(demoData);
+    // return Promise.reject();
   };
 }
 const newsApi = new NewsApi({

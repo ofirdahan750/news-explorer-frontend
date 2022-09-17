@@ -12,6 +12,7 @@
 }
 
 .about-author__headling {
+  font-family: "Roboto Slab";
   font-size: 1.875rem; /*Moblie */
   line-height: 1.33333333; /*Moblie */
   font-weight: 400;

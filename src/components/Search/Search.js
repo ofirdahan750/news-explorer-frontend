@@ -10,8 +10,8 @@ const Search = () => {
 
   const onSubmitSearch = (e) => {
     e.preventDefault();
-    if (inputValue.length < 2) return;
-    navigate(`/?searchParmas=${inputValue}`);
+    if (inputValue.length < 2 || inputValue.length > 42) return;
+    navigate(`/?searchParmas=${inputValue.toLowerCase()}`);
   };
   useEffect(() => {
     const searchParmas = params.get("searchParmas");
@@ -19,9 +19,8 @@ const Search = () => {
       if (checkStringLength(searchParmas) < 2) {
         navigate("/");
         return;
-      } else {
-        setIsInputValue(searchParmas);
       }
+      setIsInputValue(searchParmas);
     }
     return () => {
       setIsInputValue("");

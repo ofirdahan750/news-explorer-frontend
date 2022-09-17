@@ -20,6 +20,8 @@ import {checkStringLength} from "../../utils/utils.js";
 import useEffectSkipInitialRender from "../../hooks/useEffectSkipInitialRender.js";
 import {oneDay} from "../../utils/constants.js";
 import {saveToStorage, getFromStorage} from "../../utils/StorageService.js";
+console.log(process.env.API_KEY_1);
+
 const SearchArticles = ({isLoggedIn}) => {
   const [isDemoData, setIsDemoData] = useState(false);
   const {searchArticlesList, savedArticlesList} = useSelector(
@@ -131,7 +133,7 @@ const SearchArticles = ({isLoggedIn}) => {
   const setArticlesByApi = () => {
     Promise.any([
       newsApi.getSearchArticles({
-        apiKey: "e8b9e05092bb4f0bb67556814eb1128a",
+        apiKey: "",
         searchParmas
       }),
       newsApi.getSearchArticles({

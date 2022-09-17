@@ -117,7 +117,7 @@ const ArticleCard = ({
           </div>
         </div>
         <div className="article-card__txt-container">
-          <h3 className="article-card__published-date">{date}</h3>
+          <div className="article-card__published-date">{date}</div>
           <h2 className="article-card__title">{title}</h2>
           <p className="article-card__description">{`${text}`}</p>
           <a

@@ -26,6 +26,7 @@
   height: 82.5px;
 }
 .articles__not-found-header {
+  font-family: "Roboto Slab";
   font-size: 1.5625rem;
   line-height: 1.1538461538;
   color: #1a1b22;

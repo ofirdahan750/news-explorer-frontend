@@ -63,14 +63,11 @@
   margin: 0;
 }
 @media screen and (min-width: 520px) {
-  .footer {
-    /* max-width: calc(100% - (30px * 2)); */
-  }
   .footer__nav-list {
     grid-template-columns: 70.44% repeat(3, 1fr);
   }
 }
-@media screen and (min-width: 789px) {
+@media screen and (min-width: 768px) {
   .footer {
     gap: 0 5px;
     justify-content: space-between;
@@ -93,7 +90,6 @@
 
 @media screen and (min-width: 1024px) {
   .footer {
-    /* max-width: calc(100% - (80px * 2)); */
     padding: 30px 0 28px;
   }
   .footer__nav-item-txt {

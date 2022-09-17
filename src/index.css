@@ -53,6 +53,8 @@ html {
 
 /* Font Rule */
 @import url("./fonts/inter/inter.css");
+@import url("./fonts/roboto-slab/roboto-slab.css");
+@import url("./fonts/Source-Sans-Pro/source-sans-pro.css");
 
 /* Modifier */
 @import url("./modifier/modifier.css");
