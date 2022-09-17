@@ -22,10 +22,10 @@
   border-top: 3px transparent;
 }
 
-.nav-header__btn_active_theme_bright {
+.nav-header__btn_active.theme_bright {
   border-bottom: 3px solid #ffffff;
 }
-.nav-header__btn_active_theme_dark {
+.nav-header__btn_active.theme_dark {
   border-bottom: 3px solid #1a1b22;
 }
 .nav-header__btn_type_signin {
@@ -46,10 +46,10 @@
   justify-content: center;
   overflow: hidden;
 }
-.nav-header__btn_type_signout_theme_bright {
+.nav-header__btn_type_signout.theme_bright {
   border: 1px solid #ffffff;
 }
-.nav-header__btn_type_signout_theme_dark {
+.nav-header__btn_type_signout.theme_dark {
   border: 1px solid #d1d2d6;
 }
 
