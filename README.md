@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <!-- <div align="center"> -->
-<div align="center">[![MIT License][license-shield]][license-url]</div>
+[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 <!-- </div> -->
 <!-- PROJECT LOGO -->
@@ -11,7 +11,7 @@
     <img src="src/images/About/ofir.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">News Explorer</h3>
+<h1 align="center">News Explorer</h1>
 
   <p align="center">
     project_description
@@ -39,16 +39,13 @@
     </li>
     <li>
       <ul>
-        <li><a href="#prerequisites">Dependencies</a></li>
+        <li><a href="#dependencieslist">Dependencies List</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
