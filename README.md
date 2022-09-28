@@ -37,7 +37,7 @@ Searching and saving the lasted articles and reading them at any time.
        <li> <a href="#built-with">Built With</a></li>
     <li>
       <ul>
-        <li><a href="#dependencies list">Dependencies List</a></li>
+        <li><a href="#dependencies-list">Dependencies List</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
