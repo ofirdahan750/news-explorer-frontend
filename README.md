@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-<div aligen="center">
+<div align="center">
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 </div>
