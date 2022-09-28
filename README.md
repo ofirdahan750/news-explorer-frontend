@@ -61,9 +61,9 @@ Searching and saving the lasted articles and reading them at any time.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+## Built With
 
-- [![React][react.js]][react-url]
+[![React][react.js]][react-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -108,18 +108,6 @@ Searching and saving the lasted articles and reading them at any time.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
-
-See the [open issues](https://github.com/ofirdahan750/news-explorer-frontend/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 
@@ -133,7 +121,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Ofir Dahan - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Ofir Dahan - [![LinkedIn][linkedin-shield]][linkedin-url] - email@email_client.com
 
 Project Link: [https://github.com/ofirdahan750/news-explorer-frontend](https://github.com/ofirdahan750/news-explorer-frontend)
 
