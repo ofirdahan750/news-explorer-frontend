@@ -1,9 +1,5 @@
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -121,7 +117,7 @@ Searching and saving the lasted articles and reading them at any time.
 - [ ] Feature 3
   - [ ] Nested Feature
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/ofirdahan750/news-explorer-frontend/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -137,27 +133,27 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Ofir Dahan - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/ofirdahan750/news-explorer-frontend](https://github.com/ofirdahan750/news-explorer-frontend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ofirdahan750/news-explorer-frontend.svg?style=for-the-badge
+[contributors-url]: https://github.com/ofirdahan750/news-explorer-frontend/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ofirdahan750/news-explorer-frontend.svg?style=for-the-badge
+[forks-url]: https://github.com/ofirdahan750/news-explorer-frontend/network/members
+[stars-shield]: https://img.shields.io/github/stars/ofirdahan750/news-explorer-frontend.svg?style=for-the-badge
+[stars-url]: https://github.com/ofirdahan750/news-explorer-frontend/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ofirdahan750/news-explorer-frontend.svg?style=for-the-badge
+[issues-url]: https://github.com/ofirdahan750/news-explorer-frontend/issues
+[license-shield]: https://img.shields.io/github/license/ofirdahan750/news-explorer-frontend.svg?style=for-the-badge
+[license-url]: https://github.com/ofirdahan750/news-explorer-frontend/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://www.linkedin.com/in/ofir-dahan-8ba3a318a/
 [product-screenshot]: images/screenshot.png
 [next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [next-url]: https://nextjs.org/
