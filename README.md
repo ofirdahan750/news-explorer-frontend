@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <!-- <div align="center"> -->
-[![MIT License][license-shield]][license-url]
+<div align="center">[![MIT License][license-shield]][license-url]</div>
 [![LinkedIn][linkedin-shield]][linkedin-url]
 <!-- </div> -->
 <!-- PROJECT LOGO -->
