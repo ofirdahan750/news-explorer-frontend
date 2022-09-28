@@ -1,8 +1,9 @@
 <a name="readme-top"></a>
 
+<div aligen="center">
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+</div>
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -107,7 +108,6 @@ Searching and saving the lasted articles and reading them at any time.
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- LICENSE -->
 
