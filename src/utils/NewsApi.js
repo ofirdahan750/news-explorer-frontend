@@ -22,7 +22,7 @@ class NewsApi {
     //for Testing and dev on the server
     // DemoSearchData.totalResults = 0;
     // return Promise.resolve([]);
-    return Promise.resolve(DemoSearchData);
+    // return Promise.resolve(DemoSearchData);
     // return Promise.reject();
   };
 }
