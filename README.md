@@ -1,9 +1,9 @@
 <a name="readme-top"></a>
 
-<div align="center">
+<!-- <div align="center"> -->
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-</div>
+<!-- </div> -->
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
