@@ -120,7 +120,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Ofir Dahan - [![LinkedIn][linkedin-shield]][linkedin-url] - email@email_client.com
+Ofir Dahan - [![LinkedIn][linkedin-shield]][linkedin-url] - Ofirdahan1003@gmail.com
 
 Project Link: [https://github.com/ofirdahan750/news-explorer-frontend](https://github.com/ofirdahan750/news-explorer-frontend)
 
