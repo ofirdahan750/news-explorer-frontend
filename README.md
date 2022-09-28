@@ -52,7 +52,7 @@ Searching and saving the lasted articles and reading them at any time.
 
 
 * Fully functional Full-Stack app.
-* Front-End Framework: React including Reusable Components, Redux ,Contexts and Hooks. Suitable for all screen sizes from 320PX, CSS implementation with BEM method.
+* Front-End Framework: React including Reusable Components, Redux, Contexts and Hooks. Suitable for all screen sizes from 320PX, CSS implementation with BEM method.
 * Server in NodeJS 16+ & MongoD, Express, PM2 and more. using latest JS features.
 * APIs: A Private proxy server from Yandex with https://newsapi.org.
 * Server, Api and Storage : Google Cloud VM.
