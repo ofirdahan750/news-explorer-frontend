@@ -89,7 +89,7 @@
 }
 .article-card__txt-container {
   height: 270px; /*Moblie */
-  padding: 16px 16px;
+  margin: 16px;
 }
 
 .article-card__published-date {
@@ -190,6 +190,7 @@
 
   .article-card__txt-container {
     height: 304px;
+    margin: 24px;
   }
 
   .article-card__img-container {
