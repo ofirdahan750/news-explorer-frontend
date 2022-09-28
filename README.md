@@ -16,7 +16,7 @@
 <h1 align="center">News Explorer</h1>
 
   <p align="center">
-    project_description
+Searching and saving the lasted articles and reading them at any time.
     <br />
     <a href="https://github.com/ofirdahan750/news-explorer-frontend"><strong>Explore the docs »</strong></a>
     <br />
@@ -33,10 +33,8 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <a href="#built-with">Built With</a>
-    </li>
+    <li>  <a href="#about-the-project">About The Project</a> </li>
+       <li> <a href="#built-with">Built With</a></li>
     <li>
       <ul>
         <li><a href="#dependencies list">Dependencies List</a></li>
@@ -54,7 +52,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Searching and saving the lasted articles and reading them at any time.
+---
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
