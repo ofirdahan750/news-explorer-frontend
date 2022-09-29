@@ -1,8 +1,9 @@
+import { SET_ARTICLE, SET_ARTICLES, SET_ARTICLE_LIST_SETTING, SET_ARTICLE_LIST_SETTINGS } from "../constants.js";
 import setSortedArticles from "../utils/actionUtils.js";
 
 export const setArticles = ({articles, key}) => {
   return {
-    type: "SET_ARTICLES",
+    type: SET_ARTICLES,
     payLoad: {
       key,
       val: articles || []
@@ -17,7 +18,7 @@ export const setArticlesApi = ({articles, isSearchHaveResults, key}) => {
     );
   }
   return {
-    type: "SET_ARTICLES",
+    type: SET_ARTICLES,
     payLoad: {
       key,
       val: sortedArticles || []
@@ -26,14 +27,14 @@ export const setArticlesApi = ({articles, isSearchHaveResults, key}) => {
 };
 export const setSavedArticle = (article) => {
   return {
-    type: "SET_ARTICLE",
+    type: SET_ARTICLE,
     payLoad: {val: article, key: "savedArticlesList"}
   };
 };
 
 export const setArticleListSettings = (settingData) => {
-  return {type: "SET_ARTICLE_LIST_SETTINGS", payLoad: settingData};
+  return {type: SET_ARTICLE_LIST_SETTINGS, payLoad: settingData};
 };
 export const setArticleListSetting = ({settingKey, settingData}) => {
-  return {type: "SET_ARTICLE_LIST_SETTING", payLoad: {settingKey, settingData}};
+  return {type: SET_ARTICLE_LIST_SETTING, payLoad: {settingKey, settingData}};
 };
