@@ -30,7 +30,7 @@ Searching and saving the lasted articles and reading them at any time.
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details markdown="9">
+<details>
   <summary>Table of Contents</summary>
   <ol>
     <li>  <a href="#about-the-project">About The Project</a> </li>
