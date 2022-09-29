@@ -30,8 +30,8 @@ Searching and saving the lasted articles and reading them at any time.
 </div>
 
 <!-- TABLE OF CONTENTS -->
-<details>
-  <!-- <summary>Table of Contents</summary> -->
+<!-- <details> -->
+  <summary>Table of Contents</summary>
   <ol>
     <li>  <a href="#about-the-project">About The Project</a> </li>
        <li> <a href="#built-with">Built With</a></li>
@@ -44,7 +44,7 @@ Searching and saving the lasted articles and reading them at any time.
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
-</details>
+<!-- </details> -->
 
 <!-- ABOUT THE PROJECT -->
 
