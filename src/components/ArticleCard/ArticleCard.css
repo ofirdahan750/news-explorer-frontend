@@ -89,7 +89,7 @@
 }
 .article-card__txt-container {
   height: 270px; /*Moblie */
-  margin: 16px;
+  margin: 0 16px;
 }
 
 .article-card__published-date {
@@ -158,9 +158,6 @@
 @media screen and (min-width: 768px) {
   /*Tablet*/
 
-  .article-card__txt-container {
-    height: 270px;
-  }
   .article-card__img-container {
     max-height: 150px;
   }
@@ -190,7 +187,7 @@
 
   .article-card__txt-container {
     height: 304px;
-    margin: 24px;
+    margin: 0 24px;
   }
 
   .article-card__img-container {

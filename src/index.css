@@ -2,11 +2,12 @@
   box-sizing: border-box;
 }
 
-/* .Page = Body Element */
 html {
-  overflow-x: hidden;
+  overflow: hidden;
   height: 100vh;
 }
+/* .Page = Body Element */
+
 .page {
   background-color: #ffffff;
   font-family: "Roboto", "Inter", Arial, sans-serif;
@@ -45,7 +46,11 @@ html {
   );
   border-radius: 10px;
 }
-
+@media screen and (max-width: 1150px) {
+  .page::-webkit-scrollbar {
+    width: 0; /* Remove scroll on moblie */
+  }
+}
 /* Vendor */
 @import url("./vendor/normalize.css");
 
