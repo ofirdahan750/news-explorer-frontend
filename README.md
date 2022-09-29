@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ofirdahan750/news-explorer-frontend">
-    <img src="src/images/ReadMe/readme-logo.png" alt="Logo" width="160" height="160">
+    <img src="src/images/ReadMe/readme-logo.png" alt="Logo" >
   </a>
 
 <h1 align="center">News Explorer</h1>
