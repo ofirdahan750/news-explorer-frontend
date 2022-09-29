@@ -2,7 +2,7 @@
 
 <!-- <div align="center"> -->
 
-<div align="center">[![MIT License][license-shield]][license-url]</div>
+[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- </div> -->
