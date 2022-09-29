@@ -36,7 +36,7 @@ Searching and saving the lasted articles and reading them at any time.
     <li>  <a href="#about-the-project">About The Project</a> </li>
        <li> <a href="#built-with">Built With</a></li>
       <li><a href="#figma">Figma</a> </li>
-      <li>Getting started
+      <li ><a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#dependencies-list">Dependencies List</a></li>
         <li><a href="#installation">Installation</a></li>
@@ -74,7 +74,8 @@ Searching and saving the lasted articles and reading them at any time.
 
 <!-- GETTING STARTED -->
 
-## Dependencies List
+## Getting Started
+### Dependencies List
 
 ```
  "@fvilers/disable-react-devtools": "^1.3.0",
