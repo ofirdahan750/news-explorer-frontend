@@ -29,7 +29,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <img
-            src={require("../images/Footer/github.svg").default}
+            src={require("../../images/Footer/github.svg").default}
             alt="Github Page Icon button"
             className="footer__icon"
           />
@@ -41,7 +41,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <img
-            src={require("../images/Footer/linkedin.svg").default}
+            src={require("../../images/Footer/linkedin.svg").default}
             alt="Linkedin page icon button"
             className="footer__icon"
           />
@@ -53,7 +53,7 @@ const Footer = () => {
           rel="noreferrer"
         >
           <img
-            src={require("../images/Footer/facebook.svg").default}
+            src={require("../../images/Footer/facebook.svg").default}
             alt="Facebook page icon button"
             className="footer__icon"
           />

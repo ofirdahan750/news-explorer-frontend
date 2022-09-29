@@ -16,7 +16,7 @@ import Header from "../Header/Header.js";
 import Search from "../Search/Search.js";
 import AboutAuthor from "../AboutAuthor/AboutAuthor.js";
 import SearchArticles from "../SearchArticles/SearchArticles.js";
-import Footer from "../Footer.js";
+import Footer from "../Footer/Footer.js";
 
 import SavedArticles from "../SavedArticles/SavedArticles.js";
 
