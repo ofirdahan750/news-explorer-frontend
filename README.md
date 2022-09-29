@@ -36,10 +36,13 @@ Searching and saving the lasted articles and reading them at any time.
     <li>  <a href="#about-the-project">About The Project</a> </li>
        <li> <a href="#built-with">Built With</a></li>
       <li><a href="#figma">Figma</a> </li>
+      <li>Getting started
       <ul>
         <li><a href="#dependencies-list">Dependencies List</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
+      </li>
+
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
