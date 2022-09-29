@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ofirdahan750/news-explorer-frontend">
-    <img src="src/images/ReadMe/readme-logo.svg" alt="Logo" >
+    <img src="src/images/ReadMe/readme-logo.png" alt="Logo" >
   </a>
 
 <h1 align="center">News Explorer</h1>
@@ -50,14 +50,13 @@ Searching and saving the lasted articles and reading them at any time.
 
 ## About The Project
 
-
-* Fully functional Full-Stack app.
-* Front-End Framework: React including Reusable Components, Redux, Contexts and Hooks. Suitable for all screen sizes from 320PX, CSS implementation with BEM method.
-* Server in NodeJS 16+ & MongoD, Express, PM2 and more. using latest JS features.
-* APIs: A Private proxy server from Yandex with https://newsapi.org.
-* Server, Api and Storage : Google Cloud VM.
-* Domain: Yandex Server.
-* Fully authorization app.
+- Fully functional Full-Stack app.
+- Front-End Framework: React including Reusable Components, Redux, Contexts and Hooks. Suitable for all screen sizes from 320PX, CSS implementation with BEM method.
+- Server in NodeJS 16+ & MongoD, Express, PM2 and more. using latest JS features.
+- APIs: A Private proxy server from Yandex with https://newsapi.org.
+- Server, Api and Storage : Google Cloud VM.
+- Domain: Yandex Server.
+- Fully authorization app.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -68,13 +67,15 @@ Searching and saving the lasted articles and reading them at any time.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Figma
- <a href="https://www.figma.com/file/z1bxDn7eBEDlsDhnZ9dtin/Your-Final-Project?node-id=0%3A1">Link to the project on Figma</a>
+
+<a href="https://www.figma.com/file/z1bxDn7eBEDlsDhnZ9dtin/Your-Final-Project?node-id=0%3A1">Link to the project on Figma</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
+
 ### Dependencies List
 
 ```
