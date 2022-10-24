@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow: hidden;
+  height: 100vh;
+}
+/* .Page = Body Element */
+
+.page {
+  background-color: #ffffff;
+  font-family: "Roboto", "Inter", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #1a1b22;
+  -webkit-animation-name: animate-center;
+  -webkit-animation-duration: 1s;
+  animation-name: animate-center;
+  animation-duration: 1s;
+  font-size: 1rem;
+  overflow-x: hidden;
+  height: 100vh;
+  max-width: 100%;
+}
+.page::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.page::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.page::-webkit-scrollbar-thumb {
+  background-color: #aab74d;
+  background-image: -webkit-linear-gradient(
+    rgba(255, 255, 255, 0.3) 20%,
+    transparent 20%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.3) 40%,
+    rgba(255, 255, 255, 0.3) 60%,
+    transparent 60%,
+    transparent 80%,
+    rgba(255, 255, 255, 0.3) 80%
+  );
+  border-radius: 10px;
+}
+@media screen and (max-width: 1150px) {
+  .page::-webkit-scrollbar {
+    width: 0; /* Remove scroll on moblie */
+  }
+}
+/* Vendor */
+@import url("./vendor/normalize.css");
+
+/* Font Rule */
+@import url("./fonts/roboto/roboto.css");
+@import url("./fonts/roboto-slab/roboto-slab.css");
+@import url("./fonts/inter/inter.css");
+@import url("./fonts/Source-Sans-Pro/source-sans-pro.css");
+
+/* Modifier */
+@import url("./modifier/modifier.css");
+
+/* Keyframe */
+@import url("./keyframe/keyframe.css");
+
+/* Animation */
+@import url("./animation/animation.css");
+
+/* Transition */
+@import url("./transition/transition.css");
