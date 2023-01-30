@@ -32,7 +32,7 @@ const newsApi = new NewsApi({
     "en-US"
   ),
   to: new Date(Date.now()).toLocaleDateString("en-US"),
-  pageSize: 100
+  pageSize: 100,
 });
 
 export default newsApi;

@@ -1,4 +1,4 @@
-import { SET_LOADING } from "../constants";
+import {SET_LOADING} from "../constants";
 
 const initialState = {isLoading: false};
 

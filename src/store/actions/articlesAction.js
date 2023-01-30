@@ -1,4 +1,9 @@
-import { SET_ARTICLE, SET_ARTICLES, SET_ARTICLE_LIST_SETTING, SET_ARTICLE_LIST_SETTINGS } from "../constants.js";
+import {
+  SET_ARTICLE,
+  SET_ARTICLES,
+  SET_ARTICLE_LIST_SETTING,
+  SET_ARTICLE_LIST_SETTINGS
+} from "../constants.js";
 import setSortedArticles from "../utils/actionUtils.js";
 
 export const setArticles = ({articles, key}) => {
