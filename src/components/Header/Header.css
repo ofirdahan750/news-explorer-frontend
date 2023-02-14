@@ -1,0 +1,56 @@
+.header {
+  height: 56px; /*Moblie*/
+  background: rgba(196, 196, 196, 0.01);
+  margin-left: -50vw;
+  margin-right: -50vw;
+  min-width: 100vw;
+  z-index: 10;
+}
+.header_theme_dark {
+  box-shadow: inset 0px -1px 0px #d1d2d6;
+  color: #1a1b22;
+}
+.header_theme_bright {
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.header__logo {
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  font-family: "Roboto Slab";
+}
+.header__moblie-menu-btn {
+  max-width: 24px;
+  max-height: 24px;
+}
+.header__moblie-menu-img {
+  object-fit: cover;
+}
+@media screen and (min-width: 676px) {
+  /*Tablet*/
+  .header {
+    height: 66px;
+    position: static;
+  }
+  /* .header__wrapper {
+    width: calc(100vw - (42px * 2));
+  } */
+}
+@media screen and (min-width: 901px) {
+  /*Wide Screen*/
+  .header {
+    height: 80px;
+  }
+  /* .header__wrapper {
+    width: calc(100vw - (104px * 2));
+  } */
+}

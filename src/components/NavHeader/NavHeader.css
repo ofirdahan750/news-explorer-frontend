@@ -1,0 +1,118 @@
+.nav-header__container {
+  display: flex;
+  gap: 22px 0; /*Moblie */
+  align-items: unset; /*Moblie */
+  position: absolute; /*Moblie */
+  flex-direction: column; /*Moblie */
+  background-color: rgb(26, 27, 34); /*Moblie */
+  width: 100%; /*Moblie */
+  padding: 16px 16px 24px; /*Moblie */
+  justify-content: space-around; /*Moblie */
+  height: unset;
+}
+.nav-header__btn {
+  width: fit-content; /*Moblie */
+  font-size: 1.125rem; /*Moblie */
+  line-height: 3.1111111111; /*Moblie */  
+  font-weight: 500;
+}
+
+.nav-header__btn_active {
+  height: 100%;
+  border-top: 3px transparent;
+}
+
+.nav-header__btn_active.theme_bright {
+  border-bottom: 3px solid #ffffff;
+}
+.nav-header__btn_active.theme_dark {
+  border-bottom: 3px solid #1a1b22;
+}
+.nav-header__btn_type_signin {
+  height: 56px; /*Moblie */
+  width: 100%; /*Moblie */
+  border: 1px solid #ffffff;
+  border-radius: 100px;
+  text-align: center;
+}
+.nav-header__btn_type_signout {
+  border-radius: 100px;
+  min-width: 100%;
+  max-width: unset;
+  max-height: unset;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.nav-header__btn_type_signout.theme_bright {
+  border: 1px solid #ffffff;
+}
+.nav-header__btn_type_signout.theme_dark {
+  border: 1px solid #d1d2d6;
+}
+
+.nav-header__logout-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0;
+  margin: 0 5px 0;
+}
+
+@media screen and (min-width: 676px) {
+  /*Tablet*/
+  .nav-header__container {
+    align-items: center;
+    justify-content: unset;
+
+    position: static;
+    gap: 0 16px;
+    flex-direction: row;
+    width: auto;
+    background-color: transparent;
+    padding: 0;
+    height: 100%;
+  }
+  .nav-header__btn {
+    font-size: 1rem;
+    line-height: 1.5;
+    width: unset;
+  }
+  .nav-header__btn_type_signout {
+    width: 100px;
+    height: 40px;
+    padding: 0 15px;
+    min-width: unset;
+    justify-content: center;
+  }
+  .nav-header__btn_type_signin {
+    width: 152px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  /*Wide Screen*/
+  .nav-header__container {
+    gap: 0 42px;
+    max-width: unset;
+  }
+  .nav-header__btn {
+    font-size: 1.125rem;
+    line-height: 1.333333333;
+  }
+  .nav-header__btn_type_signin {
+    width: 176px;
+    height: 48px;
+  }
+  .nav-header__btn_type_signout {
+    padding: 0 15px;
+    width: 112px;
+    height: 48px;
+  }
+  .nav-header__logout-text {
+    margin: 0 19px 0;
+  }
+}
