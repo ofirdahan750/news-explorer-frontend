@@ -21,7 +21,7 @@ Searching and saving the lasted articles and reading them at any time.
     <a href="https://github.com/ofirdahan750/news-explorer-frontend"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://news-explorer-ofir.students.nomoredomainssbs.ru">View Demo</a>
+    <a href="https://news-explorer-ofir.students.nomoredomainssbs.ru">View Demo (Not Live)</a>
     ·
     <a href="https://github.com/ofirdahan750/news-explorer-frontend/issues">Report Bug</a>
     ·
